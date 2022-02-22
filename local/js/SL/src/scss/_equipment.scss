@@ -1,0 +1,202 @@
+.equipment {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+    background-image: url('../img/area-back.svg');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+
+    @include breakpoint(mobile) {
+        background-image: none;
+        padding: 5rem 0;
+        padding-bottom: 1.5rem;
+        background-image: url('../img/equipment-back-mobile.svg');
+        background-position: center bottom
+    }
+}
+
+.equipment__top-row {
+    @include grid();
+    margin-bottom: 3rem;
+
+    @include breakpoint(mobile) {
+        margin-bottom: 2rem;
+    }
+}
+
+.equipment__small-heading {
+    grid-column: span 2;
+
+    @include breakpoint(mobile) {
+        grid-column: 1 / -1;
+        margin-bottom: 1rem;
+
+        br {
+            display: none;
+        }
+    }
+}
+
+.equipment__large-heading {
+    grid-column: span 14;
+    max-width: 91rem;
+    margin-top: -0.5rem;
+
+    @include breakpoint(mobile) {
+        grid-column: 1 / -1;
+        margin: 0;
+    }
+}
+
+.equipment__text {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 125%;
+    color: #495f73;
+    margin-bottom: 5rem;
+    max-width: 60rem;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 125%;
+        grid-column: 1 / -1;
+        order: -1;
+        margin-bottom: 9rem;
+        z-index: 10;
+    }
+}
+
+.equipment__bottom-row {
+    @include grid();
+}
+
+.equipment__content {
+    @include breakpointMF(small-tablet) {
+        grid-column: 3 / -1;
+        grid-row: 1 / 2;
+    }
+
+    @include breakpoint(mobile) {
+        display: contents;
+    }
+}
+
+.equipment__diagram {
+    @include breakpointMF(small-tablet) {
+        grid-column: 3 / -1;
+        grid-row: 1 / 2;
+        position: relative;
+        pointer-events: none;
+    }
+
+    @include breakpoint(mobile) {
+      
+        position: relative;
+        z-index: 1;
+        grid-column: 1 / -1;
+    }
+}
+
+.equipment__diagram-items {
+    @include breakpoint(mobile) {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-gap: 1rem;
+    }
+}
+
+.equipment__diagram-image {
+    display: block;
+    height: auto;
+
+    @include breakpoint(mobile) {
+        position: absolute;
+        width: 35rem;
+        z-index: -1;
+        pointer-events: none;
+        top: -14rem;
+        right: -7rem;
+    }
+}
+
+.equipment__diagram-item {
+    position: absolute;
+    width: 26rem;
+    background-color: #fff;
+    border: 2px solid #eef4fb;
+    border-radius: 1.5rem;
+    text-align: center;
+    padding: 3rem 2rem;
+    transform: translate(-50%, -50%);
+    z-index: 40;
+    pointer-events: initial;
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 13rem;
+        background-color: #eef4fb;
+        width: 100%;
+        z-index: -1;
+        pointer-events: none;
+
+        @include breakpoint(mobile) {
+            height: 7.5rem;
+        }
+    }
+
+    .no-touch &:hover,
+    .touch &:active {
+        color: var(--primary-color);
+    }
+
+    @include breakpoint(mobile) {
+        position: relative;
+        width: 100%;
+        padding: 1.5rem;
+        border: 1.5px solid #eef4fb;
+        transform: none;
+        left: auto !important;
+        top: auto !important;
+    }
+}
+
+.equipment__diagram-item-image {
+    width: 100%;
+    height: 14.5rem;
+    object-fit: contain;
+    margin-bottom: 2rem;
+    mix-blend-mode: darken;
+
+    @include breakpoint(mobile) {
+        height: 9rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+.equipment__diagram-item-text {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 125%;
+    text-align: center;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 115%;
+    }
+}
+
+
+.equipment__more-btn {
+    @include breakpoint(mobile) {
+        grid-column: 1 / -1;
+        margin-top: 3rem;
+    }
+}

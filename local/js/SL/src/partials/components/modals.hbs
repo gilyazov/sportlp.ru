@@ -1,0 +1,61 @@
+<div class="modal js-modal" id="callback-modal">
+    <div class="modal__inner-modal">
+        <picture>
+            <source srcset="img/modal-bg.avif" type="image/avif">
+            <img src="img/modal-bg.webp" alt="" class="modal__bg-image">
+        </picture>
+        <button class="modal__close js-close-modal">
+            <svg width="14" height="14" aria-hidden="true" class="icon-close">
+                <use xlink:href="#close"></use>
+            </svg>
+        </button>
+        <h3 class="modal__heading">
+            Получите консультацию
+            эксперта сейчас
+        </h3>
+        <div class="modal__text hide-on-mobile">
+            <p>
+                Заполните форму и получите консультацию в ближайшее время!
+            </p>
+        </div>
+        <form action="/" class="modal__form" data-need-validation="">
+            <div class="modal__form-fields">
+                <div class="modal__form-field">
+                    <input type="text" name="name" class="text-input modal__form-field-input" required=""
+                        placeholder="Имя">
+                </div>
+                <div class="modal__form-field">
+                    <input type="tel" name="phone" class="text-input modal__form-field-input js-phone-input" required=""
+                        placeholder="+7 000 000-00-00" data-parsley-phone="">
+                </div>
+            </div>
+            <button type="submit" class="blue-btn modal__form-submit">
+                Отправить заявку
+            </button>
+        </form>
+    </div>
+</div>
+<div class="modal js-modal" id="success-modal">
+    <div class="modal__inner-modal">
+        <picture>
+            <source srcset="img/modal-bg-short.avif" type="image/avif">
+            <img src="img/modal-bg-short.webp" alt="" class="modal__bg-image">
+        </picture>
+        <button class="modal__close js-close-modal">
+            <svg width="14" height="14" aria-hidden="true" class="icon-close">
+                <use xlink:href="#close"></use>
+            </svg>
+        </button>
+        <h3 class="modal__heading">
+            Ваша заявка успешно отправлена!
+        </h3>
+        <div class="modal__text">
+            <p>
+                Наш эксперт свяжется с вами в ближайшее время.
+            </p>
+        </div>
+        <button class="blue-btn modal__success-close js-close-modal">
+            Отлично
+        </button>
+    </div>
+</div>

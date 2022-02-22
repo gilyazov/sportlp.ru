@@ -1,0 +1,137 @@
+.what-to-choose {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+    border-radius: 2rem;
+    overflow: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    padding: 3.5rem;
+    color: white;
+    padding-bottom: 3.2rem;
+    &:link,
+    &:visited {
+        color: white;
+    }
+
+    .no-touch &:hover,
+    .touch &:active {
+        .what-to-choose__bg-image {
+            transform: scale(1.05);
+        }
+    }
+
+    .icon-question {
+        width: 4.5rem;
+        height: 4.5rem;
+        flex-shrink: 0;
+        margin-bottom: 2.4rem;
+    }
+
+    @include breakpoint(mobile) {
+        padding: 1.5rem;
+        border-radius: 1.5rem;
+
+        .icon-question {
+            width: 3.5rem;
+            height: 3.5rem;
+            margin-bottom: 2.5rem;
+        }
+    }
+}
+
+.what-to-choose__row {
+    display: flex;
+    align-items: flex-end;
+}
+
+.what-to-choose__title {
+    width: 50%;
+    flex-grow: 1;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 125%;
+    text-transform: uppercase;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 2rem;
+        line-height: 125%;
+    }
+}
+
+.what-to-choose__read {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 2rem;
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 100%;
+    text-transform: uppercase;
+    @include breakpoint(mobile) {
+        margin-bottom: 0.4rem;
+    }
+   
+
+    svg {
+        width: 1.5rem;
+        height: 1.5rem;
+        flex-shrink: 0;
+        margin-left: 1.5rem;
+
+        @include breakpoint(mobile) {
+            margin: 0;
+        }
+    }
+
+  
+}
+
+.what-to-choose__read-text {
+    @include breakpoint(mobile) {
+        display: none;
+    }
+}
+
+.what-to-choose__bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            90deg,
+            rgba(1, 31, 58, 0.45) 0%,
+            rgba(1, 31, 58, 0.425) 25.34%,
+            rgba(1, 31, 58, 0.35) 47.58%,
+            rgba(1, 31, 58, 0.3) 67.61%,
+            rgba(1, 31, 58, 0.2) 81.82%,
+            rgba(1, 31, 58, 0) 100%
+        );
+    }
+
+    
+}
+
+.what-to-choose__bg-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}

@@ -1,0 +1,205 @@
+.about {
+    padding: 10rem 0;
+    background-color: #fff;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(5rem);
+
+    .animatable & {
+        opacity: 1;
+        visibility: inherit;
+        transform: translateY(0rem);
+        transition: transform 0.6s ease-out 1.2s, opacity 0.6s ease 1.2s, visibility 0.6s ease 1.2s, background-color 0.2s;
+    }
+    @include breakpoint(mobile) {
+        padding: 5rem 0;
+    }
+}
+
+.about__row {
+    @include grid();
+}
+
+.about__small-heading {
+    opacity: 0;
+    visibility: hidden;
+    &.revealed {
+        opacity: 1;
+        visibility: inherit;
+        transition: opacity .2s, visibility .2s;
+    }
+    @include breakpointMF(small-tablet) {
+        grid-column: span 2;
+        margin-top: 0.5rem;
+    }
+
+    @include breakpoint(mobile) {
+        grid-column: 1 / -1;
+        margin-bottom: 1rem;
+    }
+}
+
+.about__content {
+    @include breakpointMF(small-tablet) {
+        grid-column: span 7;
+    }
+
+    @include breakpoint(mobile) {
+        display: contents;
+    }
+}
+
+.about__text {
+    margin-bottom: 4rem;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 3.5rem;
+    line-height: 135%;
+
+    @include breakpoint(mobile) {
+        font-weight: 600;
+        font-size: 2rem;
+        line-height: 125%;
+        grid-column: 1 / -1;
+        margin-bottom: 2rem;
+    }
+}
+
+.about__more-link {
+    display: inline-flex;
+    align-items: center;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 100%;
+    text-transform: uppercase;
+    color: var(--primary-color);
+   
+    transition: color .2s, opacity .2s, visibility .2s;
+    opacity: 0;
+    visibility: hidden;
+    &.revealed {
+        opacity: 1;
+        visibility: inherit;
+    }
+
+    @include breakpoint(mobile) {
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 100%;
+        grid-column: 1 / -1;
+        order: 10;
+    }
+
+    &:link,
+    &:visited {
+        color: var(--primary-color);
+    }
+    svg {
+        flex-shrink: 0;
+        fill: currentColor;
+        width: 1.7rem;
+        height: 1.7rem;
+        margin-left: 1.5rem;
+
+        @include breakpoint(mobile) {
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-left: 1rem;
+        }
+    }
+
+    @include underline();
+}
+
+.about__numbers {
+    @include breakpointMF(small-tablet) {
+        grid-column: span 7;
+    }
+
+    @include breakpoint(mobile) {
+        grid-column: 1 / -1;
+        margin-bottom: 3rem;
+    }
+}
+
+.about__numbers-list {
+    display: grid;
+    grid-gap: 3rem;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    grid-row-gap: 5rem;
+
+    @include breakpoint(mobile) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-gap: 1rem;
+        grid-row-gap: 2rem;
+        grid-column: 1 / -1;
+    }
+}
+
+.about__numbers-list-item {
+    @include breakpointMF(small-tablet) {
+        &:nth-child(odd) {
+            grid-column: span 3;
+            padding-left: 4.5rem;
+        }
+
+        &:nth-child(even) {
+            grid-column: span 4;
+        }
+    }
+}
+
+.about__numbers-card-number {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 8rem;
+    line-height: 100%;
+    letter-spacing: 0.03em;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    overflow: hidden;
+    -webkit-text-fill-color: white;
+    -webkit-text-stroke-width: .2rem;
+    -webkit-text-stroke-color: var(--primary-color);
+
+    @include breakpoint(mobile) {
+        font-weight: 600;
+        font-size: 5rem;
+        line-height: 100%;
+        letter-spacing: 0.03em;
+        -webkit-text-stroke-width: 1.5px;
+    }
+}
+
+.about__numbers-card-number-inner {
+    transform: translateY(100%);
+    transition: transform 0.3s ease-out;
+
+    .revealed & {
+        transform: translateY(0%);
+    }
+}
+
+.about__numbers-card-text {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 125%;
+    overflow: hidden;
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1.3rem;
+        line-height: 115%;
+    }
+}
+
+.about__numbers-card-text-inner {
+    transform: translateY(100%);
+    transition: transform 0.3s ease-out;
+
+    .revealed & {
+        transform: translateY(0%);
+    }
+}

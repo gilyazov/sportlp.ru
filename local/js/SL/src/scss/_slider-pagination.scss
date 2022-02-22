@@ -1,0 +1,22 @@
+.slider-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    .swiper-pagination-bullet {
+        opacity: 1;
+        margin: 0;
+        background: #BED2E4;
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 1rem;
+        transition: background-color .2s, width .2s;
+        flex-shrink: 0;
+    }
+
+    .swiper-pagination-bullet-active {
+        width: 3rem;
+        background-color: var(--primary-color);
+    }
+}

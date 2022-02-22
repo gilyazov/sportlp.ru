@@ -1,0 +1,1282 @@
+{{#extend "layout"}}
+{{#content "main"}}
+
+<section class="catalog-page">
+    <div class="container">
+        <div class="catalog-page__top-row">
+            <div class="catalog-page__top-content">
+                <h1 class="catalog-page__main-heading">
+                    Каталог
+                </h1>
+                <div class="catalog-page__categories">
+                    <ul class="catalog-page__categories-list">
+                        <li class="catalog-page__categories-list-item active">
+                            <a href="#" class="catalog-page__categories-link">
+                                Всей техники
+                            </a>
+                        </li>
+                        <li class="catalog-page__categories-list-item">
+                            <a href="#" class="catalog-page__categories-link">
+                                По брендам
+                            </a>
+                        </li>
+                        <li class="catalog-page__categories-list-item">
+                            <a href="#" class="catalog-page__categories-link">
+                                По типам ледорвых арен
+                            </a>
+                        </li>
+                        <li class="catalog-page__categories-list-item">
+                            <a href="#" class="catalog-page__categories-link">
+                                По типам привода
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="catalog-page__what-to-choose">
+                <a href="#" class="what-to-choose">
+                    <div class="what-to-choose__bg">
+                        <img data-src="img/what-to-choose.jpg" alt="" class="what-to-choose__bg-image lazyload">
+                    </div>
+                    <svg width="14" height="14" aria-hidden="true" class="icon-question">
+                        <use xlink:href="#question"></use>
+                    </svg>
+                    <div class="what-to-choose__row">
+                        <h3 class="what-to-choose__title">
+                            Как подобрать подходящую модель?
+                        </h3>
+                        <div class="what-to-choose__read">
+                            <span class="what-to-choose__read-text">
+
+
+                                читать
+                            </span>
+                            <svg width="14" height="14" aria-hidden="true" class="icon-diagonal-arrow">
+                                <use xlink:href="#diagonal-arrow"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+        <div class="catalog-page__layout">
+            <div class="catalog-page__sidebar js-catalog-sticky-sidebar">
+                <div class="catalog-page__filters-popup js-modal" id="filters-modal">
+                    <div class="catalog-page__filters-popup-top-row">
+                        <h4 class="catalog-page__filters-popup-heading">
+                            Фильтры
+                        </h4>
+                        <button class="catalog-page__filters-popup-close js-close-modal">
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+
+                    <form action="/" method="GET" class="catalog-page__filters">
+                        <div class="catalog-page__filters-categories">
+                            <ul class="catalog-page__filters-categories-list">
+                                <li class="catalog-page__filters-categories-list-item active">
+                                    <a href="#" class="catalog-page__filters-categories-link">
+                                        Новые льдозаливочные машины
+                                        <span class="catalog-page__filters-categories-count">
+                                            20
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="catalog-page__filters-categories-list-item">
+                                    <a href="#" class="catalog-page__filters-categories-link">
+                                        Льдозаливочные машины с пробегом
+                                        <span class="catalog-page__filters-categories-count">
+                                            10
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="catalog-page__filters-categories-list-item">
+                                    <a href="#" class="catalog-page__filters-categories-link">
+                                        Машины для подрезки льда у борта
+                                        <span class="catalog-page__filters-categories-count">
+                                            5
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <button class="catalog-page__reset-btn" type="reset">
+                            <svg width="14" height="14" aria-hidden="true" class="icon-close">
+                                <use xlink:href="#close"></use>
+                            </svg>
+                            Сбросить все фильтры
+                        </button>
+                        <div class="catalog-page__filters-blocks">
+                            <div class="catalog-page__filters-block">
+                                <h3 class="catalog-page__filters-block-heading">
+                                    Бренд
+                                </h3>
+                                <div class="catalog-page__filters-brands">
+                                    <label class="catalog-page__filters-checkbox">
+                                        <input type="radio" name="brand" class="catalog-page__filters-checkbox-input"
+                                            checked="">
+                                        <span class="catalog-page__filters-checkbox-content">
+                                            Все
+                                        </span>
+                                    </label>
+                                    <label class="catalog-page__filters-checkbox">
+                                        <input type="radio" name="brand" class="catalog-page__filters-checkbox-input">
+                                        <span class="catalog-page__filters-checkbox-content">
+                                            Zamboni
+                                        </span>
+                                    </label>
+                                    <label class="catalog-page__filters-checkbox">
+                                        <input type="radio" name="brand" class="catalog-page__filters-checkbox-input">
+                                        <span class="catalog-page__filters-checkbox-content">
+                                            ENGO
+                                        </span>
+                                    </label>
+                                    <label class="catalog-page__filters-checkbox">
+                                        <input type="radio" name="brand" class="catalog-page__filters-checkbox-input">
+                                        <span class="catalog-page__filters-checkbox-content">
+                                            Olympia
+                                        </span>
+                                    </label>
+                                    <label class="catalog-page__filters-checkbox">
+                                        <input type="radio" name="brand" class="catalog-page__filters-checkbox-input">
+                                        <span class="catalog-page__filters-checkbox-content">
+                                            WM
+                                        </span>
+                                    </label>
+                                    <label class="catalog-page__filters-checkbox">
+                                        <input type="radio" name="brand" class="catalog-page__filters-checkbox-input">
+                                        <span class="catalog-page__filters-checkbox-content">
+                                            Форвард
+                                        </span>
+                                    </label>
+                                    <label class="catalog-page__filters-checkbox">
+                                        <input type="radio" name="brand" class="catalog-page__filters-checkbox-input">
+                                        <span class="catalog-page__filters-checkbox-content">
+                                            N-Ice
+                                        </span>
+                                    </label>
+                                    <label class="catalog-page__filters-checkbox">
+                                        <input type="radio" name="brand" class="catalog-page__filters-checkbox-input">
+                                        <span class="catalog-page__filters-checkbox-content">
+                                            УАЗ
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="catalog-page__filters-block">
+                                <h3 class="catalog-page__filters-block-heading">
+                                    Тип привода
+                                </h3>
+                                <div class="catalog-page__filters-brands">
+                                    <label class="catalog-page__filters-checkbox">
+                                        <input type="radio" name="drive" class="catalog-page__filters-checkbox-input"
+                                            checked="">
+                                        <span class="catalog-page__filters-checkbox-content">
+                                            Все
+                                        </span>
+                                    </label>
+                                    <label class="catalog-page__filters-checkbox">
+                                        <input type="radio" name="drive" class="catalog-page__filters-checkbox-input">
+                                        <span class="catalog-page__filters-checkbox-content">
+                                            <svg width="14" height="14" aria-hidden="true" class="icon-fuel">
+                                                <use xlink:href="#fuel"></use>
+                                            </svg>
+                                            Бензин
+                                            <span class="catalog-page__filters-checkbox-info">
+                                                практично
+                                                <span class="catalog-page__filters-checkbox-info-icon">
+                                                    <svg width="14" height="14" aria-hidden="true" class="icon-notice">
+                                                        <use xlink:href="#notice"></use>
+                                                    </svg>
+                                                    <span class="catalog-page__filters-checkbox-info-dropdown">
+                                                        <span
+                                                            class="catalog-page__filters-checkbox-info-dropdown-inner">
+                                                            Встроеная система автоматической мойки
+                                                        </span>
+                                                    </span>
+                                                </span>
+
+
+                                            </span>
+                                        </span>
+                                    </label>
+                                    <label class="catalog-page__filters-checkbox">
+                                        <input type="radio" name="drive" class="catalog-page__filters-checkbox-input">
+                                        <span class="catalog-page__filters-checkbox-content">
+                                            <svg width="14" height="14" aria-hidden="true" class="icon-electric">
+                                                <use xlink:href="#electric"></use>
+                                            </svg>
+                                            Электричество
+                                            <span class="catalog-page__filters-checkbox-info">
+                                                практично
+                                                <span class="catalog-page__filters-checkbox-info-icon">
+                                                    <svg width="14" height="14" aria-hidden="true" class="icon-notice">
+                                                        <use xlink:href="#notice"></use>
+                                                    </svg>
+                                                    <span class="catalog-page__filters-checkbox-info-dropdown">
+                                                        <span
+                                                            class="catalog-page__filters-checkbox-info-dropdown-inner">
+                                                            Встроеная система автоматической мойки
+                                                        </span>
+                                                    </span>
+                                                </span>
+
+
+                                            </span>
+                                        </span>
+                                    </label>
+                                    <label class="catalog-page__filters-checkbox">
+                                        <input type="radio" name="drive" class="catalog-page__filters-checkbox-input">
+                                        <span class="catalog-page__filters-checkbox-content">
+                                            <svg width="14" height="14" aria-hidden="true" class="icon-gas">
+                                                <use xlink:href="#gas"></use>
+                                            </svg>
+                                            Газ
+                                            <span class="catalog-page__filters-checkbox-info">
+                                                экономично
+                                                <span class="catalog-page__filters-checkbox-info-icon">
+                                                    <svg width="14" height="14" aria-hidden="true" class="icon-notice">
+                                                        <use xlink:href="#notice"></use>
+                                                    </svg>
+                                                    <span class="catalog-page__filters-checkbox-info-dropdown">
+                                                        <span
+                                                            class="catalog-page__filters-checkbox-info-dropdown-inner">
+                                                            Встроеная система автоматической мойки
+                                                        </span>
+                                                    </span>
+                                                </span>
+
+
+                                            </span>
+                                        </span>
+                                    </label>
+
+                                </div>
+                            </div>
+                            <div class="catalog-page__filters-block">
+                                <h3 class="catalog-page__filters-block-heading">
+                                    Тип привода
+                                </h3>
+                                <div class="catalog-page__filters-brands">
+                                    <label class="catalog-page__filters-checkbox">
+                                        <input type="radio" name="area" class="catalog-page__filters-checkbox-input"
+                                            checked="">
+                                        <span class="catalog-page__filters-checkbox-content">
+                                            Все
+                                        </span>
+                                    </label>
+                                    <label class="catalog-page__filters-checkbox">
+                                        <input type="radio" name="area" class="catalog-page__filters-checkbox-input">
+                                        <span class="catalog-page__filters-checkbox-content">
+                                            <svg width="14" height="14" aria-hidden="true" class="icon-one">
+                                                <use xlink:href="#one"></use>
+                                            </svg>
+                                            до 1 200
+                                            <span class="catalog-page__filters-checkbox-info">
+                                                небольшая
+                                                <span class="catalog-page__filters-checkbox-info-icon">
+                                                    <svg width="14" height="14" aria-hidden="true" class="icon-notice">
+                                                        <use xlink:href="#notice"></use>
+                                                    </svg>
+                                                    <span class="catalog-page__filters-checkbox-info-dropdown">
+                                                        <span
+                                                            class="catalog-page__filters-checkbox-info-dropdown-inner">
+                                                            Встроеная система автоматической мойки
+                                                        </span>
+                                                    </span>
+                                                </span>
+
+
+                                            </span>
+                                        </span>
+                                    </label>
+                                    <label class="catalog-page__filters-checkbox">
+                                        <input type="radio" name="area" class="catalog-page__filters-checkbox-input">
+                                        <span class="catalog-page__filters-checkbox-content">
+                                            <svg width="14" height="14" aria-hidden="true" class="icon-two">
+                                                <use xlink:href="#two"></use>
+                                            </svg>
+                                            до 1 800
+                                            <span class="catalog-page__filters-checkbox-info">
+                                                стандартная
+                                                <span class="catalog-page__filters-checkbox-info-icon">
+                                                    <svg width="14" height="14" aria-hidden="true" class="icon-notice">
+                                                        <use xlink:href="#notice"></use>
+                                                    </svg>
+                                                    <span class="catalog-page__filters-checkbox-info-dropdown">
+                                                        <span
+                                                            class="catalog-page__filters-checkbox-info-dropdown-inner">
+                                                            Встроеная система автоматической мойки
+                                                        </span>
+                                                    </span>
+                                                </span>
+
+
+                                            </span>
+                                        </span>
+                                    </label>
+                                    <label class="catalog-page__filters-checkbox">
+                                        <input type="radio" name="area" class="catalog-page__filters-checkbox-input">
+                                        <span class="catalog-page__filters-checkbox-content">
+                                            <svg width="14" height="14" aria-hidden="true" class="icon-three">
+                                                <use xlink:href="#three"></use>
+                                            </svg>
+                                            до 3 000
+                                            <span class="catalog-page__filters-checkbox-info">
+                                                открытый каток
+                                                <span class="catalog-page__filters-checkbox-info-icon">
+                                                    <svg width="14" height="14" aria-hidden="true" class="icon-notice">
+                                                        <use xlink:href="#notice"></use>
+                                                    </svg>
+                                                    <span class="catalog-page__filters-checkbox-info-dropdown">
+                                                        <span
+                                                            class="catalog-page__filters-checkbox-info-dropdown-inner">
+                                                            Встроеная система автоматической мойки
+                                                        </span>
+                                                    </span>
+                                                </span>
+
+
+                                            </span>
+                                        </span>
+                                    </label>
+                                    <label class="catalog-page__filters-checkbox">
+                                        <input type="radio" name="area" class="catalog-page__filters-checkbox-input">
+                                        <span class="catalog-page__filters-checkbox-content">
+                                            <svg width="14" height="14" aria-hidden="true" class="icon-four">
+                                                <use xlink:href="#four"></use>
+                                            </svg>
+                                            до 7 000
+                                            <span class="catalog-page__filters-checkbox-info">
+                                                хоккей с мячом
+                                                <span class="catalog-page__filters-checkbox-info-icon">
+                                                    <svg width="14" height="14" aria-hidden="true" class="icon-notice">
+                                                        <use xlink:href="#notice"></use>
+                                                    </svg>
+                                                    <span class="catalog-page__filters-checkbox-info-dropdown">
+                                                        <span
+                                                            class="catalog-page__filters-checkbox-info-dropdown-inner">
+                                                            Встроеная система автоматической мойки
+                                                        </span>
+                                                    </span>
+                                                </span>
+
+
+                                            </span>
+                                        </span>
+                                    </label>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit"
+                            class="blue-small-btn blue-small-btn--orange catalog-page__filters-submit js-close-modal">
+                            Применить фильтры
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+            <div class="catalog-page__main">
+                <div class="catalog-page__buttons">
+                    <a href="#filters-modal" class="arrow-btn-small catalog-page__mobile-filters-btn js-open-modal">
+                        Фильтры
+                        <svg width="14" height="14" aria-hidden="true" class="icon-filters">
+                            <use xlink:href="#filters"></use>
+                        </svg>
+                    </a>
+
+                    <div class="catalog-page__sorting">
+                        <button class="catalog-page__sorting-btn">
+                            Сортировать
+                            <svg width="14" height="14" aria-hidden="true" class="icon-sort">
+                                <use xlink:href="#sort"></use>
+                            </svg>
+                        </button>
+                        <h4 class="catalog-page__sorting-heading">
+                            Сортировать:
+                        </h4>
+                        <div class="catalog-page__sorting-dropdown">
+
+                            <div class="catalog-page__sorting-dropdown-inner">
+
+
+                                <div class="catalog-page__sorting-links">
+                                    <a href="#" class="catalog-page__sorting-link">
+                                        по популярности
+                                    </a>
+                                    <a href="#" class="catalog-page__sorting-link active">
+                                        по площади обработки
+                                        <svg width="14" height="14" aria-hidden="true" class="icon-sort">
+                                            <use xlink:href="#sort"></use>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="catalog-page__results-list">
+                    <li class="catalog-page__results-list-item">
+                        <div class="catalog-card">
+                            <div class="catalog-card__label catalog-card__label--sale">
+                                <svg width="14" height="14" aria-hidden="true" class="icon-sale">
+                                    <use xlink:href="#sale"></use>
+                                </svg>
+                                скидка
+                            </div>
+                            <div class="catalog-card__top-row">
+                                <div class="catalog-card__image-slider">
+                                    <div class="swiper-container">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <div class="catalog-card__image-slider-card">
+                                                    <img data-src="img/catalog-previews/1.jpg" alt=""
+                                                        class="catalog-card__image-slider-image lazyload">
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <div class="catalog-card__image-slider-card">
+                                                    <img data-src="img/catalog-previews/2.jpg" alt=""
+                                                        class="catalog-card__image-slider-image lazyload">
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <div class="catalog-card__image-slider-card">
+                                                    <img data-src="img/catalog-previews/3.jpg" alt=""
+                                                        class="catalog-card__image-slider-image lazyload">
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <div class="catalog-card__image-slider-card">
+                                                    <img data-src="img/catalog-previews/4.jpg" alt=""
+                                                        class="catalog-card__image-slider-image lazyload">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="catalog-card__image-slider-pagination">
+
+                                    </div>
+                                </div>
+                                <div class="catalog-card__info">
+                                    <div class="catalog-card__country">
+                                        Канада
+                                        <img data-src="img/flags/canada.svg" alt=""
+                                            class="catalog-card__country-flag lazyload">
+                                    </div>
+                                    <div class="catalog-card__rating">
+                                        <svg width="14" height="14" aria-hidden="true" class="icon-star">
+                                            <use xlink:href="#star"></use>
+                                        </svg>
+                                        5
+                                    </div>
+                                    <div class="catalog-card__reviews">
+                                        10 отзывов
+                                    </div>
+                                    <div class="catalog-card__tags">
+                                        <div class="catalog-card__tag">
+                                            <svg width="14" height="14" aria-hidden="true" class="icon-electric">
+                                                <use xlink:href="#electric"></use>
+                                            </svg>
+                                            Электро
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="catalog-card__main-content">
+                                <h4 class="catalog-card__title">
+                                    Zamboni 560AC
+                                </h4>
+                                <div class="catalog-card__description">
+                                    Продолжительная служба батареи
+                                </div>
+                            </div>
+                            <div class="catalog-card__stats">
+                                <div class="catalog-card__stats-item">
+                                    <div class="catalog-card__stats-key">
+                                        <svg width="14" height="14" aria-hidden="true" class="icon-area">
+                                            <use xlink:href="#area"></use>
+                                        </svg>
+                                        Площадь заливки
+                                    </div>
+                                    <div class="catalog-card__stats-value">
+                                        1 200 м²
+                                    </div>
+                                </div>
+                                <div class="catalog-card__stats-item">
+                                    <div class="catalog-card__stats-key">
+                                        <svg width="14" height="14" aria-hidden="true" class="icon-water">
+                                            <use xlink:href="#water"></use>
+                                        </svg>
+                                        Ёмкость для воды
+                                    </div>
+                                    <div class="catalog-card__stats-value">
+                                        738 л
+                                    </div>
+                                </div>
+                                <div class="catalog-card__stats-item">
+                                    <div class="catalog-card__stats-key">
+                                        <svg width="14" height="14" aria-hidden="true" class="icon-snow">
+                                            <use xlink:href="#snow"></use>
+                                        </svg>
+                                        Ёмкость для снега
+                                    </div>
+                                    <div class="catalog-card__stats-value">
+                                        3,54 м³
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="catalog-card__btns">
+                                <a href="#" class="blue-small-btn catalog-card__details-btn">
+                                    Смотреть <span class="hide-on-mobile">модель</span>
+                                </a>
+                                <a href="#" class="catalog-card__like-btn">
+                                    <svg width="14" height="14" aria-hidden="true" class="icon-heart">
+                                        <use xlink:href="#heart"></use>
+                                    </svg>
+                                </a>
+                                <a href="#" class="catalog-card__fav-btn">
+                                    <svg width="14" height="14" aria-hidden="true" class="icon-comparisons">
+                                        <use xlink:href="#comparisons"></use>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="catalog-page__results-list-item">
+                        <div class="catalog-card">
+                            <div class="catalog-card__label catalog-card__label--bestseller">
+                                <svg width="14" height="14" aria-hidden="true" class="icon-cup">
+                                    <use xlink:href="#cup"></use>
+                                </svg>
+                                хит-продаж
+                            </div>
+                            <div class="catalog-card__top-row">
+                                <div class="catalog-card__image-slider">
+                                    <div class="swiper-container">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <div class="catalog-card__image-slider-card">
+                                                    <img data-src="img/catalog-previews/2.jpg" alt=""
+                                                        class="catalog-card__image-slider-image lazyload">
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <div class="catalog-card__image-slider-card">
+                                                    <img data-src="img/catalog-previews/1.jpg" alt=""
+                                                        class="catalog-card__image-slider-image lazyload">
+                                                </div>
+                                            </div>
+
+                                            <div class="swiper-slide">
+                                                <div class="catalog-card__image-slider-card">
+                                                    <img data-src="img/catalog-previews/3.jpg" alt=""
+                                                        class="catalog-card__image-slider-image lazyload">
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <div class="catalog-card__image-slider-card">
+                                                    <img data-src="img/catalog-previews/4.jpg" alt=""
+                                                        class="catalog-card__image-slider-image lazyload">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="catalog-card__image-slider-pagination">
+
+                                    </div>
+                                </div>
+                                <div class="catalog-card__info">
+                                    <div class="catalog-card__country">
+                                        Италия
+                                        <img data-src="img/flags/italy.svg" alt=""
+                                            class="catalog-card__country-flag lazyload">
+                                    </div>
+                                    <div class="catalog-card__rating">
+                                        <svg width="14" height="14" aria-hidden="true" class="icon-star">
+                                            <use xlink:href="#star"></use>
+                                        </svg>
+                                        4.8
+                                    </div>
+                                    <div class="catalog-card__reviews">
+                                        10 отзывов
+                                    </div>
+                                    <div class="catalog-card__tags">
+                                        <div class="catalog-card__tag">
+                                            <svg width="14" height="14" aria-hidden="true" class="icon-electric">
+                                                <use xlink:href="#electric"></use>
+                                            </svg>
+                                            Электро
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="catalog-card__main-content">
+                                <h4 class="catalog-card__title">
+                                    ENGO Ice Puma
+                                </h4>
+                                <div class="catalog-card__description">
+                                    Идеально для небольших катков
+                                </div>
+                            </div>
+                            <div class="catalog-card__stats">
+                                <div class="catalog-card__stats-item">
+                                    <div class="catalog-card__stats-key">
+                                        <svg width="14" height="14" aria-hidden="true" class="icon-area">
+                                            <use xlink:href="#area"></use>
+                                        </svg>
+                                        Площадь заливки
+                                    </div>
+                                    <div class="catalog-card__stats-value">
+                                        1 200 м²
+                                    </div>
+                                </div>
+                                <div class="catalog-card__stats-item">
+                                    <div class="catalog-card__stats-key">
+                                        <svg width="14" height="14" aria-hidden="true" class="icon-water">
+                                            <use xlink:href="#water"></use>
+                                        </svg>
+                                        Ёмкость для воды
+                                    </div>
+                                    <div class="catalog-card__stats-value">
+                                        500 л
+                                    </div>
+                                </div>
+                                <div class="catalog-card__stats-item">
+                                    <div class="catalog-card__stats-key">
+                                        <svg width="14" height="14" aria-hidden="true" class="icon-snow">
+                                            <use xlink:href="#snow"></use>
+                                        </svg>
+                                        Ёмкость для снега
+                                    </div>
+                                    <div class="catalog-card__stats-value">
+                                        2,2 м³
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="catalog-card__btns">
+                                <a href="#" class="blue-small-btn catalog-card__details-btn">
+                                    Смотреть <span class="hide-on-mobile">модель</span>
+                                </a>
+                                <a href="#" class="catalog-card__like-btn">
+                                    <svg width="14" height="14" aria-hidden="true" class="icon-heart">
+                                        <use xlink:href="#heart"></use>
+                                    </svg>
+                                </a>
+                                <a href="#" class="catalog-card__fav-btn">
+                                    <svg width="14" height="14" aria-hidden="true" class="icon-comparisons">
+                                        <use xlink:href="#comparisons"></use>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="catalog-page__results-list-item">
+                        <div class="catalog-card">
+                            <div class="catalog-card__label">
+                                <svg width="14" height="14" aria-hidden="true" class="icon-ok">
+                                    <use xlink:href="#ok"></use>
+                                </svg>
+                                в наличии
+                            </div>
+                            <div class="catalog-card__top-row">
+                                <div class="catalog-card__image-slider">
+                                    <div class="swiper-container">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <div class="catalog-card__image-slider-card">
+                                                    <img data-src="img/catalog-previews/3.jpg" alt=""
+                                                        class="catalog-card__image-slider-image lazyload">
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <div class="catalog-card__image-slider-card">
+                                                    <img data-src="img/catalog-previews/2.jpg" alt=""
+                                                        class="catalog-card__image-slider-image lazyload">
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <div class="catalog-card__image-slider-card">
+                                                    <img data-src="img/catalog-previews/1.jpg" alt=""
+                                                        class="catalog-card__image-slider-image lazyload">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="swiper-slide">
+                                                <div class="catalog-card__image-slider-card">
+                                                    <img data-src="img/catalog-previews/4.jpg" alt=""
+                                                        class="catalog-card__image-slider-image lazyload">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="catalog-card__image-slider-pagination">
+
+                                    </div>
+                                </div>
+                                <div class="catalog-card__info">
+                                    <div class="catalog-card__country">
+                                        США
+                                        <img data-src="img/flags/usa.svg" alt=""
+                                            class="catalog-card__country-flag lazyload">
+                                    </div>
+                                    <div class="catalog-card__rating">
+                                        <svg width="14" height="14" aria-hidden="true" class="icon-star">
+                                            <use xlink:href="#star"></use>
+                                        </svg>
+                                        4.8
+                                    </div>
+                                    <div class="catalog-card__reviews">
+                                        10 отзывов
+                                    </div>
+                                    <div class="catalog-card__tags">
+                                        <div class="catalog-card__tag">
+                                            <svg width="14" height="14" aria-hidden="true" class="icon-electric">
+                                                <use xlink:href="#electric"></use>
+                                            </svg>
+                                            Электро
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="catalog-card__main-content">
+                                <h4 class="catalog-card__title">
+                                    Olympia mini e
+                                </h4>
+                                <div class="catalog-card__description">
+                                    Компактность и экономичность
+                                </div>
+                            </div>
+                            <div class="catalog-card__stats">
+                                <div class="catalog-card__stats-item">
+                                    <div class="catalog-card__stats-key">
+                                        <svg width="14" height="14" aria-hidden="true" class="icon-area">
+                                            <use xlink:href="#area"></use>
+                                        </svg>
+                                        Площадь заливки
+                                    </div>
+                                    <div class="catalog-card__stats-value">
+                                        1 200 м²
+                                    </div>
+                                </div>
+                                <div class="catalog-card__stats-item">
+                                    <div class="catalog-card__stats-key">
+                                        <svg width="14" height="14" aria-hidden="true" class="icon-water">
+                                            <use xlink:href="#water"></use>
+                                        </svg>
+                                        Ёмкость для воды
+                                    </div>
+                                    <div class="catalog-card__stats-value">
+                                        238 л
+                                    </div>
+                                </div>
+                                <div class="catalog-card__stats-item">
+                                    <div class="catalog-card__stats-key">
+                                        <svg width="14" height="14" aria-hidden="true" class="icon-snow">
+                                            <use xlink:href="#snow"></use>
+                                        </svg>
+                                        Ёмкость для снега
+                                    </div>
+                                    <div class="catalog-card__stats-value">
+                                        1,23 м³
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="catalog-card__btns">
+                                <a href="#" class="blue-small-btn catalog-card__details-btn">
+                                    Смотреть <span class="hide-on-mobile">модель</span>
+                                </a>
+                                <a href="#" class="catalog-card__like-btn">
+                                    <svg width="14" height="14" aria-hidden="true" class="icon-heart">
+                                        <use xlink:href="#heart"></use>
+                                    </svg>
+                                </a>
+                                <a href="#" class="catalog-card__fav-btn">
+                                    <svg width="14" height="14" aria-hidden="true" class="icon-comparisons">
+                                        <use xlink:href="#comparisons"></use>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="catalog-page__results-special-item">
+                        <div class="catalog-page__help">
+                            <h4 class="catalog-page__help-heading">
+                                Поможем с выбором техники под ваши цели!
+                            </h4>
+
+                            <form action="#" class="catalog-page__help-form" data-need-validation="">
+                                <div class="catalog-page__help-form-input-wrapper">
+                                    <input type="text" name="name"
+                                        class="text-input text-input--small text-input--white" required=""
+                                        placeholder="Ваше имя">
+                                </div>
+                                <div class="catalog-page__help-form-input-wrapper">
+                                    <input type="tel" name="phone"
+                                        class="text-input text-input--small text-input--white js-phone-input"
+                                        required="" data-parsley-phone="" placeholder="+7 000 000-00-00">
+                                </div>
+                                <button type="submit"
+                                    class="blue-small-btn blue-small-btn--orange catalog-page__help-submit">
+                                    Отправить
+                                </button>
+                            </form>
+                        </div>
+                    </li>
+
+                    <li class="catalog-page__results-list-item">
+                        <div class="catalog-card">
+                            <div class="catalog-card__label">
+                                <svg width="14" height="14" aria-hidden="true" class="icon-ok">
+                                    <use xlink:href="#ok"></use>
+                                </svg>
+                                в наличии
+                            </div>
+                            <div class="catalog-card__top-row">
+                                <div class="catalog-card__image-slider">
+                                    <div class="swiper-container">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <div class="catalog-card__image-slider-card">
+                                                    <img data-src="img/catalog-previews/4.jpg" alt=""
+                                                        class="catalog-card__image-slider-image lazyload">
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <div class="catalog-card__image-slider-card">
+                                                    <img data-src="img/catalog-previews/3.jpg" alt=""
+                                                        class="catalog-card__image-slider-image lazyload">
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <div class="catalog-card__image-slider-card">
+                                                    <img data-src="img/catalog-previews/2.jpg" alt=""
+                                                        class="catalog-card__image-slider-image lazyload">
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <div class="catalog-card__image-slider-card">
+                                                    <img data-src="img/catalog-previews/1.jpg" alt=""
+                                                        class="catalog-card__image-slider-image lazyload">
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                                    <div class="catalog-card__image-slider-pagination">
+
+                                    </div>
+                                </div>
+                                <div class="catalog-card__info">
+                                    <div class="catalog-card__country">
+                                        Польша
+                                        <img data-src="img/flags/poland.svg" alt=""
+                                            class="catalog-card__country-flag lazyload">
+                                    </div>
+                                    <div class="catalog-card__rating">
+                                        <svg width="14" height="14" aria-hidden="true" class="icon-star">
+                                            <use xlink:href="#star"></use>
+                                        </svg>
+                                        3.5
+                                    </div>
+                                    <div class="catalog-card__reviews">
+                                        10 отзывов
+                                    </div>
+                                    <div class="catalog-card__tags">
+                                        <div class="catalog-card__tag">
+                                            <svg width="14" height="14" aria-hidden="true" class="icon-electric">
+                                                <use xlink:href="#electric"></use>
+                                            </svg>
+                                            Электро
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="catalog-card__main-content">
+                                <h4 class="catalog-card__title">
+                                    N-Ice M800
+                                </h4>
+                                <div class="catalog-card__description">
+                                    Простое обслуживание машины
+                                </div>
+                            </div>
+                            <div class="catalog-card__stats">
+                                <div class="catalog-card__stats-item">
+                                    <div class="catalog-card__stats-key">
+                                        <svg width="14" height="14" aria-hidden="true" class="icon-area">
+                                            <use xlink:href="#area"></use>
+                                        </svg>
+                                        Площадь заливки
+                                    </div>
+                                    <div class="catalog-card__stats-value">
+                                        1 200 м²
+                                    </div>
+                                </div>
+                                <div class="catalog-card__stats-item">
+                                    <div class="catalog-card__stats-key">
+                                        <svg width="14" height="14" aria-hidden="true" class="icon-water">
+                                            <use xlink:href="#water"></use>
+                                        </svg>
+                                        Ёмкость для воды
+                                    </div>
+                                    <div class="catalog-card__stats-value">
+                                        510 л
+                                    </div>
+                                </div>
+                                <div class="catalog-card__stats-item">
+                                    <div class="catalog-card__stats-key">
+                                        <svg width="14" height="14" aria-hidden="true" class="icon-snow">
+                                            <use xlink:href="#snow"></use>
+                                        </svg>
+                                        Ёмкость для снега
+                                    </div>
+                                    <div class="catalog-card__stats-value">
+                                        2,0 м³
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="catalog-card__btns">
+                                <a href="#" class="blue-small-btn catalog-card__details-btn">
+                                    Смотреть <span class="hide-on-mobile">модель</span>
+                                </a>
+                                <a href="#" class="catalog-card__like-btn">
+                                    <svg width="14" height="14" aria-hidden="true" class="icon-heart">
+                                        <use xlink:href="#heart"></use>
+                                    </svg>
+                                </a>
+                                <a href="#" class="catalog-card__fav-btn">
+                                    <svg width="14" height="14" aria-hidden="true" class="icon-comparisons">
+                                        <use xlink:href="#comparisons"></use>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="catalog-page__results-list-item">
+                        <div class="catalog-card">
+                            <div class="catalog-card__label catalog-card__label--order">
+                                <svg width="14" height="14" aria-hidden="true" class="icon-calendar">
+                                    <use xlink:href="#calendar"></use>
+                                </svg>
+                                под заказ
+                            </div>
+                            <div class="catalog-card__top-row">
+                                <div class="catalog-card__image-slider">
+                                    <div class="swiper-container">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <div class="catalog-card__image-slider-card">
+                                                    <img data-src="img/catalog-previews/5.jpg" alt=""
+                                                        class="catalog-card__image-slider-image lazyload">
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <div class="catalog-card__image-slider-card">
+                                                    <img data-src="img/catalog-previews/3.jpg" alt=""
+                                                        class="catalog-card__image-slider-image lazyload">
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <div class="catalog-card__image-slider-card">
+                                                    <img data-src="img/catalog-previews/2.jpg" alt=""
+                                                        class="catalog-card__image-slider-image lazyload">
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <div class="catalog-card__image-slider-card">
+                                                    <img data-src="img/catalog-previews/1.jpg" alt=""
+                                                        class="catalog-card__image-slider-image lazyload">
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                                    <div class="catalog-card__image-slider-pagination">
+
+                                    </div>
+                                </div>
+                                <div class="catalog-card__info">
+                                    <div class="catalog-card__country">
+                                        Польша
+                                        <img data-src="img/flags/poland.svg" alt=""
+                                            class="catalog-card__country-flag lazyload">
+                                    </div>
+                                    <div class="catalog-card__rating">
+                                        <svg width="14" height="14" aria-hidden="true" class="icon-star">
+                                            <use xlink:href="#star"></use>
+                                        </svg>
+                                        4.2
+                                    </div>
+                                    <div class="catalog-card__reviews">
+                                        10 отзывов
+                                    </div>
+                                    <div class="catalog-card__tags">
+                                        <div class="catalog-card__tag">
+                                            <svg width="14" height="14" aria-hidden="true" class="icon-electric">
+                                                <use xlink:href="#electric"></use>
+                                            </svg>
+                                            Электро
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="catalog-card__main-content">
+                                <h4 class="catalog-card__title">
+                                    N-Ice M1200
+                                </h4>
+                                <div class="catalog-card__description">
+                                    Полногидравлическая система управления
+                                </div>
+                            </div>
+                            <div class="catalog-card__stats">
+                                <div class="catalog-card__stats-item">
+                                    <div class="catalog-card__stats-key">
+                                        <svg width="14" height="14" aria-hidden="true" class="icon-area">
+                                            <use xlink:href="#area"></use>
+                                        </svg>
+                                        Площадь заливки
+                                    </div>
+                                    <div class="catalog-card__stats-value">
+                                        1 200 м²
+                                    </div>
+                                </div>
+                                <div class="catalog-card__stats-item">
+                                    <div class="catalog-card__stats-key">
+                                        <svg width="14" height="14" aria-hidden="true" class="icon-water">
+                                            <use xlink:href="#water"></use>
+                                        </svg>
+                                        Ёмкость для воды
+                                    </div>
+                                    <div class="catalog-card__stats-value">
+                                        300 л
+                                    </div>
+                                </div>
+                                <div class="catalog-card__stats-item">
+                                    <div class="catalog-card__stats-key">
+                                        <svg width="14" height="14" aria-hidden="true" class="icon-snow">
+                                            <use xlink:href="#snow"></use>
+                                        </svg>
+                                        Ёмкость для снега
+                                    </div>
+                                    <div class="catalog-card__stats-value">
+                                        1,35 м³
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="catalog-card__btns">
+                                <a href="#" class="blue-small-btn catalog-card__details-btn">
+                                    Смотреть <span class="hide-on-mobile">модель</span>
+                                </a>
+                                <a href="#" class="catalog-card__like-btn">
+                                    <svg width="14" height="14" aria-hidden="true" class="icon-heart">
+                                        <use xlink:href="#heart"></use>
+                                    </svg>
+                                </a>
+                                <a href="#" class="catalog-card__fav-btn">
+                                    <svg width="14" height="14" aria-hidden="true" class="icon-comparisons">
+                                        <use xlink:href="#comparisons"></use>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="catalog-page__results-list-item">
+                        <div class="catalog-card">
+                            <div class="catalog-card__label catalog-card__label--bestseller">
+                                <svg width="14" height="14" aria-hidden="true" class="icon-cup">
+                                    <use xlink:href="#cup"></use>
+                                </svg>
+                                хит-продаж
+                            </div>
+                            <div class="catalog-card__top-row">
+                                <div class="catalog-card__image-slider">
+                                    <div class="swiper-container">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <div class="catalog-card__image-slider-card">
+                                                    <img data-src="img/catalog-previews/6.jpg" alt=""
+                                                        class="catalog-card__image-slider-image lazyload">
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <div class="catalog-card__image-slider-card">
+                                                    <img data-src="img/catalog-previews/3.jpg" alt=""
+                                                        class="catalog-card__image-slider-image lazyload">
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <div class="catalog-card__image-slider-card">
+                                                    <img data-src="img/catalog-previews/2.jpg" alt=""
+                                                        class="catalog-card__image-slider-image lazyload">
+                                                </div>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <div class="catalog-card__image-slider-card">
+                                                    <img data-src="img/catalog-previews/1.jpg" alt=""
+                                                        class="catalog-card__image-slider-image lazyload">
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                                    <div class="catalog-card__image-slider-pagination">
+
+                                    </div>
+                                </div>
+                                <div class="catalog-card__info">
+                                    <div class="catalog-card__country">
+                                        Италия
+                                        <img data-src="img/flags/italy.svg" alt=""
+                                            class="catalog-card__country-flag lazyload">
+                                    </div>
+                                    <div class="catalog-card__rating">
+                                        <svg width="14" height="14" aria-hidden="true" class="icon-star">
+                                            <use xlink:href="#star"></use>
+                                        </svg>
+                                        4.6
+                                    </div>
+                                    <div class="catalog-card__reviews">
+                                        10 отзывов
+                                    </div>
+                                    <div class="catalog-card__tags">
+                                        <div class="catalog-card__tag">
+                                            <svg width="14" height="14" aria-hidden="true" class="icon-electric">
+                                                <use xlink:href="#electric"></use>
+                                            </svg>
+                                            Электро
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="catalog-card__main-content">
+                                <h4 class="catalog-card__title">
+                                    ENGO Ice Tiger
+                                </h4>
+                                <div class="catalog-card__description">
+                                    Автоматическая работа машины
+                                </div>
+                            </div>
+                            <div class="catalog-card__stats">
+                                <div class="catalog-card__stats-item">
+                                    <div class="catalog-card__stats-key">
+                                        <svg width="14" height="14" aria-hidden="true" class="icon-area">
+                                            <use xlink:href="#area"></use>
+                                        </svg>
+                                        Площадь заливки
+                                    </div>
+                                    <div class="catalog-card__stats-value">
+                                        3 000 м²
+                                    </div>
+                                </div>
+                                <div class="catalog-card__stats-item">
+                                    <div class="catalog-card__stats-key">
+                                        <svg width="14" height="14" aria-hidden="true" class="icon-water">
+                                            <use xlink:href="#water"></use>
+                                        </svg>
+                                        Ёмкость для воды
+                                    </div>
+                                    <div class="catalog-card__stats-value">
+                                        1 100 л
+                                    </div>
+                                </div>
+                                <div class="catalog-card__stats-item">
+                                    <div class="catalog-card__stats-key">
+                                        <svg width="14" height="14" aria-hidden="true" class="icon-snow">
+                                            <use xlink:href="#snow"></use>
+                                        </svg>
+                                        Ёмкость для снега
+                                    </div>
+                                    <div class="catalog-card__stats-value">
+                                        3,6 м³
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="catalog-card__btns">
+                                <a href="#" class="blue-small-btn catalog-card__details-btn">
+                                    Смотреть <span class="hide-on-mobile">модель</span>
+                                </a>
+                                <a href="#" class="catalog-card__like-btn">
+                                    <svg width="14" height="14" aria-hidden="true" class="icon-heart">
+                                        <use xlink:href="#heart"></use>
+                                    </svg>
+                                </a>
+                                <a href="#" class="catalog-card__fav-btn">
+                                    <svg width="14" height="14" aria-hidden="true" class="icon-comparisons">
+                                        <use xlink:href="#comparisons"></use>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="catalog-page__results-special-item">
+                        <div class="promo__card promo__card--compact">
+                            <picture>
+                                <source data-srcset="img/umka-mobile.jpg" media="(max-width: 640px)">
+                                <img data-src="img/umka-compact.jpg" alt="" class="promo__card-image lazyload">
+                            </picture>
+                            <h2 class="promo__card-heading">
+                                УМКА — универсальная машина для обслуживания катков и решения коммунальных задач
+                            </h2>
+                            <ul class="promo__advantages-list">
+                                <li class="promo__advantages-item">
+                                    <img src="img/promo/1.svg" alt="" class="promo__advantages-icon">
+                                    <div class="promo__advantages-content">
+                                        <div class="promo__advantages-text">
+                                            Привлекательная цена
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="promo__advantages-item">
+                                    <img src="img/promo/2.svg" alt="" class="promo__advantages-icon">
+
+                                    <div class="promo__advantages-content">
+                                        <div class="promo__advantages-text">
+                                            Наличие кабины
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="promo__advantages-item">
+                                    <img src="img/promo/3.svg" alt="" class="promo__advantages-icon">
+                                    <div class="promo__advantages-content">
+                                        <div class="promo__advantages-text">
+                                            3 года гарантии
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                            <div class="promo__btns">
+
+
+                                <a href="#" class="small-arrow-btn-filled small-arrow-btn-filled--orange promo__btn">
+                                    Смотреть модель
+                                    <svg width="14" height="14" aria-hidden="true" class="icon-diagonal-arrow">
+                                        <use xlink:href="#diagonal-arrow"></use>
+                                    </svg>
+                                </a>
+                                <a href="#" class="arrow-btn arrow-btn--white promo__all-specs-btn">
+                                    Все характеристики
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{{/content}}
+{{/extend}}

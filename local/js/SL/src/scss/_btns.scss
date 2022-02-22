@@ -1,0 +1,406 @@
+.blue-small-btn {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.5rem;
+    align-self: flex-start;
+    line-height: 100%;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 2rem 3rem;
+    background-color: var(--primary-color);
+    color: white;
+    transition: background-color 0.2s, color 0.2s;
+    border-radius: 1.5rem;
+    flex-shrink: 0;
+    white-space: nowrap;
+    justify-content: center;
+    text-align: center;
+    @include breakpoint(mobile) {
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 100%;
+        padding: 1.5rem 2rem;
+        border-radius: 1rem;
+    }
+    &:link,
+    &:visited {
+        color: white;
+    }
+
+    .no-touch &:hover,
+    .touch &:active {
+        background-color: var(--primary-color-hover);
+    }
+
+    &--orange {
+        background-color: var(--secondary-color);
+
+        .no-touch &:hover,
+        .touch &:active {
+            background-color: var(--secondary-color-hover);
+        }
+    }
+}
+
+.blue-btn {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 100%;
+    align-self: flex-start;
+    line-height: 100%;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 2.5rem 5rem;
+    background-color: var(--primary-color);
+    color: white;
+    transition: background-color 0.2s, color 0.2s;
+    border-radius: 2rem;
+    flex-shrink: 0;
+    white-space: nowrap;
+    justify-content: center;
+    text-align: center;
+    @include breakpoint(mobile) {
+        padding: 2rem 4rem;
+        border-radius: 1.5rem;
+
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 100%;
+    }
+    &:link,
+    &:visited {
+        color: white;
+    }
+
+    .no-touch &:hover,
+    .touch &:active {
+        background-color: var(--primary-color-hover);
+    }
+
+    &--orange {
+        background-color: var(--secondary-color);
+
+        .no-touch &:hover,
+        .touch &:active {
+            background-color: var(--secondary-color-hover);
+        }
+    }
+}
+
+.arrow-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: 0.2rem solid var(--primary-color);
+    padding: 2.3rem 5rem;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 100%;
+    text-transform: uppercase;
+    border-radius: 2rem;
+    flex-shrink: 0;
+    white-space: nowrap;
+    align-self: flex-start;
+    transition: background-color 0.2s, color 0.2s;
+    color: var(--text-color);
+    &:link,
+    &:visited {
+        color: var(--text-color);
+    }
+    svg {
+        width: 2rem;
+        height: 2rem;
+        flex-shrink: 0;
+        margin-left: 2rem;
+        fill: currentColor;
+    }
+
+    .no-touch &:hover,
+    .touch &:active {
+        color: var(--primary-color);
+    }
+
+    &--white {
+        border-color: white;
+        color: white;
+        &:link,
+        &:visited {
+            color: white;
+        }
+
+        .no-touch &:hover,
+        .touch &:active {
+            color: white;
+        }
+    }
+
+    @include breakpoint(mobile) {
+        padding: 1.8rem 4rem;
+        border-radius: 1.5rem;
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 100%;
+
+        svg {
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-left: 1.5rem;
+        }
+    }
+}
+
+.arrow-btn-small {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: 0.2rem solid var(--primary-color);
+    padding: 1.7rem 3rem;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 100%;
+    text-transform: uppercase;
+    border-radius: 1.5rem;
+    flex-shrink: 0;
+    white-space: nowrap;
+    align-self: flex-start;
+    transition: background-color 0.2s, color 0.2s;
+    color: var(--text-color);
+    &:link,
+    &:visited {
+        color: var(--text-color);
+    }
+    svg {
+        width: 1.7rem;
+        height: 1.7rem;
+        flex-shrink: 0;
+        margin-left: 1rem;
+        fill: currentColor;
+    }
+
+    .no-touch &:hover,
+    .touch &:active {
+        color: var(--primary-color);
+    }
+
+    &--filled {
+        background-color: var(--primary-color);
+        color: white;
+
+        .no-touch &:hover,
+        .touch &:active {
+            color: white;
+            background-color: var(--primary-color-hover);
+        }
+    }
+
+    &--green {
+        color: white;
+        background: #4fcd3b;
+        border-color: #4fcd3b;
+        &:link,
+        &:visited {
+            color: white;
+        }
+        .no-touch &:hover,
+        .touch &:active {
+            background: #4fcd3b;
+        }
+    }
+
+    &--white {
+        border-color: white;
+        color: white;
+        &:link,
+        &:visited {
+            color: white;
+        }
+
+        .no-touch &:hover,
+        .touch &:active {
+            color: white;
+        }
+    }
+
+    @include breakpoint(mobile) {
+        padding: 1.3rem 2rem;
+        border-radius: 1.5rem;
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 100%;
+        border-radius: 1rem;
+        svg {
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-left: 1rem;
+        }
+    }
+}
+
+.arrow-btn-filled {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 5rem;
+    border-radius: 2rem;
+    color: white;
+    background-color: var(--primary-color);
+    transition: background-color 0.2s, color 0.2s;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 100%;
+    text-transform: uppercase;
+    svg {
+        width: 2rem;
+        height: 2rem;
+        flex-shrink: 0;
+        margin-left: 2rem;
+        fill: currentColor;
+    }
+    &:link,
+    &:visited {
+        color: white;
+    }
+
+    .no-touch &:hover,
+    .touch &:active {
+        background-color: var(--primary-color-hover);
+    }
+
+    @include breakpoint(mobile) {
+        padding: 2rem 4rem;
+        border-radius: 1.5rem;
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 100%;
+
+        svg {
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-left: 1.5rem;
+        }
+    }
+}
+
+.small-arrow-btn-filled {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 5rem;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 100%;
+    text-transform: uppercase;
+    color: white;
+    background-color: var(--primary-color);
+    border-radius: 2rem;
+    align-self: flex-start;
+    transition: color 0.2s, background-color 0.2s;
+    &:link,
+    &:visited {
+        color: white;
+    }
+
+    .no-touch &:hover,
+    .touch &:active {
+        background-color: var(--primary-color-hover);
+    }
+
+    &--orange {
+        background-color: var(--secondary-color);
+
+        .no-touch &:hover,
+        .touch &:active {
+            background-color: var(--secondary-color-hover);
+        }
+    }
+
+    &--green {
+        background: #4fcd3b;
+        .no-touch &:hover,
+        .touch &:active {
+            background: #4fcd3b;
+        }
+    }
+    svg {
+        flex-shrink: 0;
+        width: 2rem;
+        height: 2rem;
+        margin-left: 2rem;
+        fill: currentColor;
+    }
+
+    @include breakpoint(mobile) {
+        padding: 2rem 4rem;
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 100%;
+        border-radius: 1.5rem;
+        svg {
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-left: 1.5rem;
+        }
+    }
+}
+
+.outline-btn {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    border: 0.2rem solid #148eff;
+    border-radius: 1.5rem;
+    padding: 1.7rem 3rem;
+    flex-shrink: 0;
+    color: transparent;
+    background-color: #fff;
+
+    &--large {
+        padding: 2.5rem;
+    }
+    &:link,
+    &:visited {
+        color: transparent;
+    }
+    @include breakpoint(mobile) {
+        padding: 1.3rem 2.5rem;
+        border-radius: 1rem;
+
+        &--large {
+            padding: 1.7rem;
+        }
+    }
+    svg {
+        width: 1.7rem;
+        height: 1.7rem;
+        fill: var(--text-color);
+        transition: fill 0.2s;
+
+        @include breakpoint(mobile) {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+
+    .no-touch &:hover,
+    .touch &:active {
+        svg {
+            fill: var(--primary-color);
+        }
+    }
+
+    &:active,
+    &.active {
+        color: var(--primary-color);
+        svg {
+            fill: var(--primary-color);
+        }
+    }
+}

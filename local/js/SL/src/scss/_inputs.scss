@@ -1,0 +1,82 @@
+.text-input {
+    height: 7rem;
+    border: 2px solid #bed2e4;
+    border-radius: 2rem;
+    padding: 0 2.5rem;
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 100%;
+    transition: color 0.2s, border-color 0.2s;
+    color: #011f3a;
+    width: 100%;
+
+    @include placeholder {
+        color: #bed2e4;
+    }
+
+    &--small {
+        height: 5.5rem;
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 100%;
+        padding: 0 2rem;
+        border-radius: 1.5rem;
+    }
+
+    &:hover {
+        border-color: #495f73;
+    }
+
+    &:focus {
+        border-color: var(--primary-color);
+        color: #011f3a;
+    }
+
+    &.parsley-error {
+        border-color: var(--primary-color);
+    }
+
+    &--blue {
+        border-color: var(--primary-color);
+        color: white;
+
+        &:hover {
+            border-color: var(--primary-color);
+        }
+
+        &:focus {
+            border-color: var(--primary-color);
+            color: white;
+        }
+        @include placeholder {
+            color: rgba(white, 0.5);
+        }
+    }
+
+    &--white {
+        border-color: rgba(white, 0.5);
+        color: white;
+        @include placeholder {
+            color: rgba(white, 0.5);
+        }
+
+        &:hover {
+            border-color: white;
+        }
+
+        &:focus {
+            border-color: var(--primary-color);
+            color: white;
+        }
+    }
+
+    @include breakpoint(mobile) {
+        height: 5rem;
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 100%;
+        padding: 0 2rem;
+        border-radius: 1.5rem;
+        border-width: 1.5px;
+    }
+}

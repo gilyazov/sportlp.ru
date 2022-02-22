@@ -1,0 +1,224 @@
+.product-apply {
+}
+
+.product-apply__content {
+    padding: 5.5rem;
+    padding-left: 7rem;
+    padding-right: 9rem;
+    display: flex;
+    background: linear-gradient(264.38deg, #0d63b3 0%, #092b49 50.09%, #934238 96.18%);
+    box-shadow: 0px 0px 7.5rem rgba(0, 0, 0, 0.05);
+    border-radius: 2.5rem;
+    overflow: hidden;
+    justify-content: space-between;
+    color: white;
+    align-items: center;
+    @include breakpoint(mobile) {
+        flex-direction: column;
+        padding: 1.5rem;
+        background: linear-gradient(353.29deg, #0d63b3 -16.59%, #092b4a 51.11%, #a64b40 113.4%);
+        border-radius: 1.5rem;
+        justify-content: flex-start;
+        align-items: stretch;
+        padding-bottom: 2.5rem;
+    }
+}
+
+.product-apply__col {
+    display: flex;
+    flex-direction: column;
+
+    @include breakpointMF(small-tablet) {
+        &:nth-child(1) {
+            width: 50rem;
+        }
+
+        &:nth-child(2) {
+            width: 57rem;
+            
+        }
+        &:nth-child(3) {
+            width: 45rem;
+        }
+    }
+
+    @include breakpoint(mobile) {
+        display: contents;
+    }
+}
+
+.product-apply__heading {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 5rem;
+    line-height: 120%;
+    margin-bottom: 3rem;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 3rem;
+        line-height: 100%;
+        margin-bottom: 1.5rem;
+        order: -2;
+    }
+}
+
+.product-apply__contacts {
+    margin-top: 14rem;
+
+    @include breakpoint(mobile) {
+        margin: 0;
+        margin-bottom: 3rem;
+    }
+}
+
+.product-apply__contacts-heading {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 125%;
+    margin-bottom: 2rem;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 125%;
+        margin-bottom: 1rem;
+    }
+}
+
+.product-apply__contacts-phone {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 5rem;
+    line-height: 120%;
+    @include underline-large();
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 3rem;
+        line-height: 100%;
+    }
+}
+
+.product-apply__image {
+    display: block;
+    height: auto;
+
+    @include breakpoint(mobile) {
+        order: -1;
+    }
+}
+.product-apply__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-apply__form-heading {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 2.5rem;
+    line-height: 100%;
+    margin-bottom: 3rem;
+
+    @include breakpoint(mobile) {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 125%;
+        margin-bottom: 2rem;
+    }
+}
+
+.product-apply__form-fields {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-gap: 2rem;
+    margin-bottom: 3rem;
+
+    @include breakpoint(mobile) {
+        grid-gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+.product-apply__submit {
+    align-self: flex-start;
+    margin-bottom: 2.5rem;
+    @include breakpoint(mobile) {
+        width: 100%;
+        align-self: stretch;
+    }
+}
+
+.product-apply__policy {
+    display: flex;
+    align-items: flex-start;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.8rem;
+    line-height: 130%;
+    letter-spacing: 0.03em;
+    color: rgba(white, 0.4);
+    font-family: 'Stapel', sans-serif;
+    max-width: 34rem;
+    @include breakpoint(mobile) {
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 115%;
+    }
+}
+
+.product-apply__policy-text {
+    max-width: 40rem;
+    margin-left: 0.5rem;
+
+    @include breakpoint(mobile) {
+        max-width: none;
+        width: 50%;
+        flex-grow: 1;
+    }
+
+    a {
+        text-decoration: none;
+
+        & > span {
+            background-image: linear-gradient(currentColor, currentColor);
+            background-position: 0% 100%;
+            background-repeat: no-repeat;
+            background-size: 100% 1px;
+            transition: background-size 0.25s ease-out;
+        }
+
+        .no-touch &:hover,
+        .touch &:active {
+            & > span {
+                background-size: 0% 1px;
+            }
+        }
+    }
+}
+
+.product-apply__form-field-input {
+    color: white;
+    border-color: rgba(white, 0.5);
+
+    &:hover {
+        border-color: white;
+    }
+
+    &:focus {
+        color: white;
+        border-color: var(--primary-color);
+    }
+    @include placeholder {
+        color: rgba(white, 0.5);
+    }
+
+    @include breakpoint(mobile) {
+        border-color: rgba(white, 0.5);
+       
+    }
+}
