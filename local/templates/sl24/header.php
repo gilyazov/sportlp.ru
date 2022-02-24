@@ -28,6 +28,7 @@ $language= \Bitrix\Landing\Manager::getLangISO();
 	$APPLICATION->ShowHead();
 	$APPLICATION->ShowProperty('MetaOG');
 	$APPLICATION->ShowProperty('BeforeHeadClose');
+    \Bitrix\Main\UI\Extension::load('SL.build');
 	?>
 </head>
 <body class="no-touch <?$APPLICATION->ShowProperty('BodyClass');?>" ontouchstart="" <?$APPLICATION->ShowProperty('BodyTag');?>>

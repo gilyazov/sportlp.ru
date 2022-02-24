@@ -17,8 +17,7 @@ foreach ($jsConfig as $code => $ext)
 
 return [
     'js_core_public' => [
-        'landing_core',
-        'SL.build'
+        'landing_core'
     ],
     'js_core_edit' => [
         'landing_core_admin',

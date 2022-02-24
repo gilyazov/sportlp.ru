@@ -25,12 +25,14 @@ $this->setFrameMode(true);
         ?>
         <li class="catalog-page__results-list-item" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
             <div class="catalog-card">
-                <div class="catalog-card__label catalog-card__label--sale">
-                    <svg width="14" height="14" aria-hidden="true" class="icon-sale">
-                        <use xlink:href="#sale"></use>
-                    </svg>
-                    скидка
-                </div>
+                <?if($arItem["PROPERTIES"]["BADGE"]["VALUE"] && ($arBadge = $arItem["PROPERTIES"]["BADGE"])):?>
+                    <div class="catalog-card__label catalog-card__label--<?=$arBadge["VALUE_XML_ID"]?>">
+                        <svg width="14" height="14" aria-hidden="true" class="icon-<?=$arBadge["VALUE_XML_ID"]?>">
+                            <use xlink:href="#<?=$arBadge["VALUE_XML_ID"]?>"></use>
+                        </svg>
+                        <?=$arBadge["VALUE"]?>
+                    </div>
+                <?endif;?>
                 <div class="catalog-card__top-row">
                     <div class="catalog-card__image-slider">
                         <div class="swiper-container">

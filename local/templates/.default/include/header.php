@@ -1,4 +1,7 @@
-<header class="page-header">
+<?
+$page = $APPLICATION->GetCurPage();
+?>
+<header class="page-header<?if($page == "/about/"):?> page-header--white<?endif;?>">
 
     <div class="container">
         <div class="page-header__row">
@@ -98,6 +101,7 @@
             </div>
             <a href="<?=SITE_DIR?>" class="page-header__logo">
                 <img src="<?=STATIC_PATH?>img/logo.svg" alt="" class="page-header__logo-image">
+                <img src="<?=STATIC_PATH?>img/white-logo.svg" alt="" class="page-header__logo-image">
             </a>
             <div class="page-header__catalog">
                 <a href="#" class="page-header__catalog-link">
