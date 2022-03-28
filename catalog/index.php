@@ -11,7 +11,7 @@ $APPLICATION->SetTitle("Каталог");
 		"NEWS_COUNT" => "999",
 		"USE_SEARCH" => "N",
 		"USE_RSS" => "N",
-        "USE_RATING" => "Y",
+        "USE_RATING" => "N",
         "MAX_VOTE" => "5",
         "VOTE_NAMES" => "",
 		"USE_CATEGORIES" => "N",
@@ -61,7 +61,7 @@ $APPLICATION->SetTitle("Каталог");
 		"DETAIL_SET_CANONICAL_URL" => "N",
 		"DETAIL_ACTIVE_DATE_FORMAT" => "j F Y",
 		"DETAIL_FIELD_CODE" => array(
-			0 => "",
+			0 => "PREVIEW_PICTURE",
 			1 => "",
 		),
 		"DETAIL_PROPERTY_CODE" => array(

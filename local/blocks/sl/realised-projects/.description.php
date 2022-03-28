@@ -16,6 +16,13 @@ return array(
 
     ],
 	'nodes' => [
-
+        '.realised-projects__small-heading' => [
+            'name' => 'Серый заголовок',
+            'type' => 'text'
+        ],
+        '.realised-projects__large-heading' => [
+            'name' => 'Заголовок',
+            'type' => 'text'
+        ],
     ],
 );

@@ -16,12 +16,22 @@ $language= \Bitrix\Landing\Manager::getLangISO();
 ?><!DOCTYPE html>
 <html xml:lang="<?= $language;?>" lang="<?= $language;?>" class="<?$APPLICATION->ShowProperty('HtmlClass');?>">
 <head>
+    <script data-skip-moving="true">
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+            var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),
+                dl=l!='dataLayer'?'&l='+l:'';
+            j.async=true;
+            j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+            f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TJZ2B9M');
+    </script>
     <?$APPLICATION->ShowProperty('AfterHeadOpen');?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
     <meta name="HandheldFriendly" content="true" >
     <meta name="MobileOptimized" content="width">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <? include_once (DEFAULT_PATH .'include/favicon.php'); ?>
     <title><?$APPLICATION->ShowTitle();?></title>
     <?
     $APPLICATION->ShowHead();
@@ -31,6 +41,9 @@ $language= \Bitrix\Landing\Manager::getLangISO();
     ?>
 </head>
 <body class="no-touch  no-animated-header <?$APPLICATION->ShowProperty('BodyClass');?>" ontouchstart="" <?$APPLICATION->ShowProperty('BodyTag');?>>
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TJZ2B9M" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
 <div id="panel"><?$APPLICATION->ShowPanel();?></div>
 <?$APPLICATION->ShowProperty('Noscript');?>
 <?$APPLICATION->ShowProperty('AfterBodyOpen');?>

@@ -63,14 +63,16 @@ $this->setFrameMode(true);
     
     <div class="product-intro__col">
         <div class="product-intro__info">
-            <div class="product-intro__categories">
-                <div class="product-intro__category product-intro__category--bestseller">
-                    <svg width="14" height="14" aria-hidden="true" class="icon-cup">
-                        <use xlink:href="#cup"></use>
-                    </svg>
-                    хит-продаж
+            <?if($arResult["PROPERTIES"]["BADGE"]["VALUE"] && ($arBadge = $arResult["PROPERTIES"]["BADGE"])):?>
+                <div class="product-intro__categories">
+                    <div class="product-intro__category product-intro__category--<?=$arBadge["VALUE_XML_ID"]?>">
+                        <svg width="14" height="14" aria-hidden="true" class="icon-<?=$arBadge["VALUE_XML_ID"]?>">
+                            <use xlink:href="#<?=$arBadge["VALUE_XML_ID"]?>"></use>
+                        </svg>
+                        <?=$arBadge["VALUE"]?>
+                    </div>
                 </div>
-            </div>
+            <?endif;?>
             <div class="product-intro__rating">
 
                 <div class="product-intro__rating-stars">
@@ -101,16 +103,16 @@ $this->setFrameMode(true);
         </h1>
         <div class="product-intro__features">
             <div class="product-intro__feature">
-                <svg width="14" height="14" aria-hidden="true" class="icon-fuel">
-                    <use xlink:href="#fuel"></use>
+                <svg width="14" height="14" aria-hidden="true" class="icon-<?=$arResult["PROPERTIES"]["ATT_TYPE_FUEL"]["VALUE_XML_ID"]?>">
+                    <use xlink:href="#<?=$arResult["PROPERTIES"]["ATT_TYPE_FUEL"]["VALUE_XML_ID"]?>"></use>
                 </svg>
-                Бензин
+                <?=$arResult["PROPERTIES"]["ATT_TYPE_FUEL"]["VALUE"]?>
             </div>
             <div class="product-intro__feature">
                 <svg width="14" height="14" aria-hidden="true" class="icon-size">
                     <use xlink:href="#size"></use>
                 </svg>
-                Для стандартных катков
+                <?=$arResult["PROPERTIES"]["ATT_APPOINTMENT"]["VALUE"]?>
             </div>
         </div>
         <div class="product-intro__description">

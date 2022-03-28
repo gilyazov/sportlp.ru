@@ -23,6 +23,7 @@ $language= \Bitrix\Landing\Manager::getLangISO();
 	<meta name="HandheldFriendly" content="true" >
 	<meta name="MobileOptimized" content="width">
 	<meta name="apple-mobile-web-app-capable" content="yes">
+    <? include_once (DEFAULT_PATH .'include/favicon.php'); ?>
 	<title><?$APPLICATION->ShowTitle();?></title>
 	<?
 	$APPLICATION->ShowHead();

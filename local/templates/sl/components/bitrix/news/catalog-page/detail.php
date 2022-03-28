@@ -50,7 +50,7 @@ $this->setFrameMode(true);
                 "SHOW_404" => $arParams["SHOW_404"],
                 "FILE_404" => $arParams["FILE_404"],
                 "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-                "ADD_SECTIONS_CHAIN" => $arParams["ADD_SECTIONS_CHAIN"],
+                "ADD_SECTIONS_CHAIN" => "N",
                 "ACTIVE_DATE_FORMAT" => $arParams["DETAIL_ACTIVE_DATE_FORMAT"],
                 "CACHE_TYPE" => $arParams["CACHE_TYPE"],
                 "CACHE_TIME" => $arParams["CACHE_TIME"],
@@ -80,25 +80,175 @@ $this->setFrameMode(true);
             ),
             $component
         );?>
-        <?if($arParams["USE_RATING"]=="Y" && $ElementID):?>
-            <?$APPLICATION->IncludeComponent(
-                "bitrix:iblock.vote",
-                "stars",
-                Array(
-                    "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
-                    "IBLOCK_ID" => $arParams["IBLOCK_ID"],
-                    "ELEMENT_ID" => $ElementID,
-                    "MAX_VOTE" => $arParams["MAX_VOTE"],
-                    "VOTE_NAMES" => $arParams["VOTE_NAMES"],
-                    "CACHE_TYPE" => $arParams["CACHE_TYPE"],
-                    "CACHE_TIME" => $arParams["CACHE_TIME"],
-                ),
-                $component
-            );?>
-        <?endif?>
     </div>
 </section>
 
+<?$APPLICATION->IncludeComponent(
+    "bitrix:news.detail",
+    "product",
+    Array(
+        "DISPLAY_DATE" => $arParams["DISPLAY_DATE"],
+        "DISPLAY_NAME" => $arParams["DISPLAY_NAME"],
+        "DISPLAY_PICTURE" => $arParams["DISPLAY_PICTURE"],
+        "DISPLAY_PREVIEW_TEXT" => $arParams["DISPLAY_PREVIEW_TEXT"],
+        "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
+        "IBLOCK_ID" => $arParams["IBLOCK_ID"],
+        "FIELD_CODE" => $arParams["DETAIL_FIELD_CODE"],
+        "PROPERTY_CODE" => $arParams["DETAIL_PROPERTY_CODE"],
+        "DETAIL_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["detail"],
+        "SECTION_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["section"],
+        "META_KEYWORDS" => $arParams["META_KEYWORDS"],
+        "META_DESCRIPTION" => $arParams["META_DESCRIPTION"],
+        "BROWSER_TITLE" => $arParams["BROWSER_TITLE"],
+        "SET_CANONICAL_URL" => $arParams["DETAIL_SET_CANONICAL_URL"],
+        "DISPLAY_PANEL" => $arParams["DISPLAY_PANEL"],
+        "SET_LAST_MODIFIED" => $arParams["SET_LAST_MODIFIED"],
+        "SET_TITLE" => $arParams["SET_TITLE"],
+        "MESSAGE_404" => $arParams["MESSAGE_404"],
+        "SET_STATUS_404" => $arParams["SET_STATUS_404"],
+        "SHOW_404" => $arParams["SHOW_404"],
+        "FILE_404" => $arParams["FILE_404"],
+        "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+        "ADD_SECTIONS_CHAIN" => "N",
+        "ACTIVE_DATE_FORMAT" => $arParams["DETAIL_ACTIVE_DATE_FORMAT"],
+        "CACHE_TYPE" => $arParams["CACHE_TYPE"],
+        "CACHE_TIME" => $arParams["CACHE_TIME"],
+        "CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
+        "USE_PERMISSIONS" => $arParams["USE_PERMISSIONS"],
+        "GROUP_PERMISSIONS" => $arParams["GROUP_PERMISSIONS"],
+        "DISPLAY_TOP_PAGER" => $arParams["DETAIL_DISPLAY_TOP_PAGER"],
+        "DISPLAY_BOTTOM_PAGER" => $arParams["DETAIL_DISPLAY_BOTTOM_PAGER"],
+        "PAGER_TITLE" => $arParams["DETAIL_PAGER_TITLE"],
+        "PAGER_SHOW_ALWAYS" => "N",
+        "PAGER_TEMPLATE" => $arParams["DETAIL_PAGER_TEMPLATE"],
+        "PAGER_SHOW_ALL" => $arParams["DETAIL_PAGER_SHOW_ALL"],
+        "CHECK_DATES" => $arParams["CHECK_DATES"],
+        "ELEMENT_ID" => $arResult["VARIABLES"]["ELEMENT_ID"],
+        "ELEMENT_CODE" => $arResult["VARIABLES"]["ELEMENT_CODE"],
+        "SECTION_ID" => $arResult["VARIABLES"]["SECTION_ID"],
+        "SECTION_CODE" => $arResult["VARIABLES"]["SECTION_CODE"],
+        "IBLOCK_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["news"],
+        "USE_SHARE" => $arParams["USE_SHARE"],
+        "SHARE_HIDE" => $arParams["SHARE_HIDE"],
+        "SHARE_TEMPLATE" => $arParams["SHARE_TEMPLATE"],
+        "SHARE_HANDLERS" => $arParams["SHARE_HANDLERS"],
+        "SHARE_SHORTEN_URL_LOGIN" => $arParams["SHARE_SHORTEN_URL_LOGIN"],
+        "SHARE_SHORTEN_URL_KEY" => $arParams["SHARE_SHORTEN_URL_KEY"],
+        "ADD_ELEMENT_CHAIN" => "N",
+        'STRICT_SECTION_CHECK' => (isset($arParams['STRICT_SECTION_CHECK']) ? $arParams['STRICT_SECTION_CHECK'] : ''),
+    ),
+    $component
+);?>
+
+<section class="product-apply">
+    <div class="container">
+        <div class="product-apply__content">
+            <div class="product-apply__col">
+                <h2 class="product-apply__heading">
+                    Оставьте заявку на модель сейчас!
+                </h2>
+                <div class="product-apply__contacts">
+                    <h3 class="product-apply__contacts-heading">
+                        Позвоните нам и оставьте заявку
+                    </h3>
+                    <a href="+78000008888" class="product-apply__contacts-phone"><span>8 800 000-88-88</span></a>
+                </div>
+            </div>
+            <div class="product-apply__col">
+                <img data-src="<?=STATIC_PATH?>img/product-apply.png" alt="" class="product-apply__image lazyload">
+            </div>
+            <div class="product-apply__col">
+                <?$APPLICATION->IncludeComponent("bitrix:iblock.element.add.form", "product-apply__form", Array(
+                    "CUSTOM_TITLE_NAME" => "+7 000 000-00-00",	// * наименование *
+                    "CUSTOM_TITLE_PREVIEW_PICTURE" => "",	// * картинка анонса *
+                    "CUSTOM_TITLE_PREVIEW_TEXT" => "",	// * текст анонса *
+                    "CUSTOM_TITLE_TAGS" => "",	// * теги *
+                    "DEFAULT_INPUT_SIZE" => "30",	// Размер полей ввода
+                    "DETAIL_TEXT_USE_HTML_EDITOR" => "N",	// Использовать визуальный редактор для редактирования подробного текста
+                    "ELEMENT_ASSOC" => "CREATED_BY",	// Привязка к пользователю
+                    "GROUPS" => array(	// Группы пользователей, имеющие право на добавление/редактирование
+                        0 => "2",
+                    ),
+                    "IBLOCK_ID" => "11",	// Инфоблок
+                    "IBLOCK_TYPE" => "forms",	// Тип инфоблока
+                    "LEVEL_LAST" => "Y",	// Разрешить добавление только на последний уровень рубрикатора
+                    "LIST_URL" => "",	// Страница со списком своих элементов
+                    "MAX_FILE_SIZE" => "0",	// Максимальный размер загружаемых файлов, байт (0 - не ограничивать)
+                    "MAX_LEVELS" => "100000",	// Ограничить кол-во рубрик, в которые можно добавлять элемент
+                    "MAX_USER_ENTRIES" => "100000",	// Ограничить кол-во элементов для одного пользователя
+                    "PREVIEW_TEXT_USE_HTML_EDITOR" => "N",	// Использовать визуальный редактор для редактирования текста анонса
+                    "PROPERTY_CODES" => array(	// Свойства, выводимые на редактирование
+                        0 => "117",
+                        1 => "NAME",
+                    ),
+                    "PROPERTY_CODES_REQUIRED" => array(	// Свойства, обязательные для заполнения
+                        0 => "NAME",
+                        1 => "117",
+                    ),
+                    "RESIZE_IMAGES" => "N",	// Использовать настройки инфоблока для обработки изображений
+                    "SEF_MODE" => "N",	// Включить поддержку ЧПУ
+                    "STATUS" => "ANY",	// Редактирование возможно
+                    "STATUS_NEW" => "N",	// Деактивировать элемент
+                    "USER_MESSAGE_ADD" => "",	// Сообщение об успешном добавлении
+                    "USER_MESSAGE_EDIT" => "",	// Сообщение об успешном сохранении
+                    "USE_CAPTCHA" => "N",	// Использовать CAPTCHA
+                ),
+                    false
+                );?>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="catalog js-catalog">
+    <div class="container">
+        <div class="catalog__top-row">
+            <h2 class="small-heading catalog__small-heading">
+                Выбирайте и сравнивайте
+            </h2>
+            <h3 class="secondary-heading catalog__large-heading">
+                Смотрите также
+            </h3>
+        </div>
+
+        <?$APPLICATION->IncludeComponent(
+            "bitrix:news.list",
+            "catalog__categories",
+            Array(
+                "IBLOCK_TYPE" => "products",
+                "IBLOCK_ID" => 2,
+                "NEWS_COUNT" => 999,
+                "SORT_BY1" => "SORT",
+                "SORT_ORDER1" => "ASC",
+                "SORT_BY2" => "",
+                "SORT_ORDER2" => "",
+                "SET_TITLE" => "N",
+                "PROPERTY_CODE" => [
+                    "POPULAR"
+                ]
+            ),
+            false
+        );?>
+
+    </div>
+</section>
+
+<?if($arParams["USE_RATING"]=="Y" && $ElementID):?>
+    <?$APPLICATION->IncludeComponent(
+        "bitrix:iblock.vote",
+        "stars",
+        Array(
+            "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
+            "IBLOCK_ID" => $arParams["IBLOCK_ID"],
+            "ELEMENT_ID" => $ElementID,
+            "MAX_VOTE" => $arParams["MAX_VOTE"],
+            "VOTE_NAMES" => $arParams["VOTE_NAMES"],
+            "CACHE_TYPE" => $arParams["CACHE_TYPE"],
+            "CACHE_TIME" => $arParams["CACHE_TIME"],
+        ),
+        $component
+    );?>
+<?endif?>
 
 <?if($arParams["USE_CATEGORIES"]=="Y" && $ElementID):
 	global $arCategoryFilter;

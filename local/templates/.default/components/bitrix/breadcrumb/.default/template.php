@@ -31,7 +31,7 @@ for($index = 0; $index < $itemSize; $index++)
 	}
 	else
 	{
-		$strReturn .= ' <span>'.$title.'</span>';
+		$strReturn .= ' <a href="javascript:;" class="active"><span>'.$title.'</span></a>';
 	}
 }
 

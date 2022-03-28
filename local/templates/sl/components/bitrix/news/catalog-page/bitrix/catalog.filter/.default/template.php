@@ -26,17 +26,64 @@ $this->setFrameMode(true);
         Сбросить все фильтры
     </button>
     <div class="catalog-page__filters-blocks">
-        <?foreach($arResult["ITEMS"] as $arItem):?>
+        <?foreach($arResult["ITEMS"] as $key => $arItem):?>
 			<?if(!array_key_exists("HIDDEN", $arItem)):?>
-                <div class="catalog-page__filters-block">
-                    <h3 class="catalog-page__filters-block-heading"><?=$arItem["NAME"]?></h3>
-                    <div class="catalog-page__filters-brands"><?=$arItem["INPUT"]?></div>
+                <div class="catalog-page__filters-block js-modal" id="filters-<?=$key?>">
+                    <div class="catalog-page__filters-block-inner">
+
+                        <button class="catalog-page__filters-block-close js-close-modal" type="button">
+                            <svg width="14" height="14" aria-hidden="true" class="icon-close">
+                                <use xlink:href="#close"></use>
+                            </svg>
+                        </button>
+
+                        <h3 class="catalog-page__filters-block-heading"><?=$arItem["NAME"]?></h3>
+                        <div class="catalog-page__filters-brands">
+                            <?foreach ($arItem['LIST'] as $value => $option):?>
+                                <label class="catalog-page__filters-checkbox">
+                                    <input type="radio"
+                                           value="<?=$value?>"
+                                            name="<?=$arItem["INPUT_NAME"]?>" class="catalog-page__filters-checkbox-input"
+                                            <?=($arItem["INPUT_VALUE"] == $value ? "checked" : "")?>>
+                                    <span class="catalog-page__filters-checkbox-content">
+                                        <?if ($arItem['LIST_FULL'][$value]['EXTERNAL_ID']):?>
+                                            <svg width="14" height="14" aria-hidden="true" class="<?=$arItem['LIST_FULL'][$value]["EXTERNAL_ID"]?>">
+                                                <use xlink:href="#<?=$arItem['LIST_FULL'][$value]["EXTERNAL_ID"]?>"></use>
+                                            </svg>
+                                        <?endif;?>
+                                        <?=$option?>
+
+                                        <?if ($value):?>
+                                            <span class="catalog-page__filters-checkbox-info">
+                                            практично
+                                            <span class="catalog-page__filters-checkbox-info-icon">
+                                                <svg width="14" height="14" aria-hidden="true" class="icon-notice">
+                                                    <use xlink:href="#notice"></use>
+                                                </svg>
+                                                <span class="catalog-page__filters-checkbox-info-dropdown">
+                                                    <span
+                                                            class="catalog-page__filters-checkbox-info-dropdown-inner">
+                                                        Встроеная система автоматической мойки
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <?endif;?>
+                                    </span>
+                                </label>
+
+                            <?endforeach;?>
+                        </div>
+                        <button class="catalog-page__filters-block-submit" type="submit">
+                            Отлично
+                        </button>
+                    </div>
 				</div>
 			<?endif?>
 		<?endforeach;?>
     </div>
-    <input type="submit" name="set_filter" value="<?=GetMessage("IBLOCK_SET_FILTER")?>" />
+    <!--<input type="submit" name="set_filter" value="<?/*=GetMessage("IBLOCK_SET_FILTER")*/?>" />-->
     <input type="hidden" name="set_filter" value="Y" />
-    <input type="submit" name="del_filter" value="<?=GetMessage("IBLOCK_DEL_FILTER")?>" />
+    <!--<input type="submit" name="del_filter" value="<?/*=GetMessage("IBLOCK_DEL_FILTER")*/?>" />-->
 
 </form>

@@ -23,6 +23,10 @@ return array(
             'name' => 'Заголовок',
             'type' => 'text'
         ],
+        '.not-found__text p' => [
+            'name' => 'Текст',
+            'type' => 'text'
+        ],
         '.arrow-btn-filled' => [
             'name' => 'Ссылка',
             'type' => 'link',

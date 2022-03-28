@@ -22,15 +22,14 @@ $this->setFrameMode(true);
 <?endif?>
 
 <?if($arParams["USE_SEARCH"]=="Y"):?>
-<?=GetMessage("SEARCH_LABEL")?><?$APPLICATION->IncludeComponent(
-	"bitrix:search.form",
-	"flat",
-	Array(
-		"PAGE" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["search"]
-	),
-	$component
-);?>
-<br />
+    <?=GetMessage("SEARCH_LABEL")?><?$APPLICATION->IncludeComponent(
+        "bitrix:search.form",
+        "flat",
+        Array(
+            "PAGE" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["search"]
+        ),
+        $component
+    );?>
 <?endif?>
 
 <section class="catalog-page">
@@ -65,6 +64,33 @@ $this->setFrameMode(true);
                         </li>
                     </ul>
                 </div>
+
+                <div class="catalog-page__filters-nav-outside-wrapper">
+                    <div class="catalog-page__filters-nav-wrapper js-sticky-nav-wrapper">
+                        <div class="catalog-page__filters-nav js-filters-nav">
+                            <div class="swiper-container">
+                                <ul class="swiper-wrapper catalog-page__filters-nav-list">
+                                    <li class="swiper-slide catalog-page__filters-nav-list-item">
+                                        <a href="#filters-PROPERTY_69" class="catalog-page__filters-nav-link js-open-modal">
+                                            Вид топлива
+                                        </a>
+                                    </li>
+                                    <li class="swiper-slide catalog-page__filters-nav-list-item">
+                                        <a href="#filters-PROPERTY_70" class="catalog-page__filters-nav-link js-open-modal">
+                                            Площадь обработки, м²
+                                        </a>
+                                    </li>
+                                    <li class="swiper-slide catalog-page__filters-nav-list-item">
+                                        <a href="#filters-PROPERTY_82" class="catalog-page__filters-nav-link js-open-modal">
+                                            Бренд
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <div class="catalog-page__what-to-choose">
                 <a href="#" class="what-to-choose">
@@ -80,8 +106,6 @@ $this->setFrameMode(true);
                         </h3>
                         <div class="what-to-choose__read">
                             <span class="what-to-choose__read-text">
-
-
                                 читать
                             </span>
                             <svg width="14" height="14" aria-hidden="true" class="icon-diagonal-arrow">
@@ -93,41 +117,34 @@ $this->setFrameMode(true);
             </div>
         </div>
 
-        <div class="catalog-page__layout">
+        <div class="catalog-page__layout" id="catalogAjax">
+            <?if($_REQUEST['set_filter'] === 'Y' && $_GET['ajax'] !== 'N') {
+                $GLOBALS['APPLICATION']->RestartBuffer();
+            } ?>
+
             <div class="catalog-page__sidebar js-catalog-sticky-sidebar">
-                <div class="catalog-page__filters-popup js-modal" id="filters-modal">
-                    <div class="catalog-page__filters-popup-top-row">
-                        <h4 class="catalog-page__filters-popup-heading">
-                            Фильтры
-                        </h4>
-                        <button class="catalog-page__filters-popup-close js-close-modal">
-                            <span></span>
-                            <span></span>
-                        </button>
-                    </div>
-
-                    <?$APPLICATION->IncludeComponent(
-                        "bitrix:menu",
-                        "filters-categories",
-                        array(
-                            "ALLOW_MULTI_SELECT" => "N",
-                            "CHILD_MENU_TYPE" => "left",
-                            "COMPONENT_TEMPLATE" => ".default",
-                            "DELAY" => "N",
-                            "MAX_LEVEL" => "1",
-                            "MENU_CACHE_GET_VARS" => array(
-                            ),
-                            "MENU_CACHE_TIME" => "3600",
-                            "MENU_CACHE_TYPE" => "A",
-                            "MENU_CACHE_USE_GROUPS" => "N",
-                            "MENU_THEME" => "site",
-                            "ROOT_MENU_TYPE" => "left",
-                            "USE_EXT" => "Y"
+                <?$APPLICATION->IncludeComponent(
+                    "bitrix:menu",
+                    "filters-categories",
+                    array(
+                        "ALLOW_MULTI_SELECT" => "N",
+                        "CHILD_MENU_TYPE" => "left",
+                        "COMPONENT_TEMPLATE" => ".default",
+                        "DELAY" => "N",
+                        "MAX_LEVEL" => "1",
+                        "MENU_CACHE_GET_VARS" => array(
                         ),
-                        $component
-                    );?>
+                        "MENU_CACHE_TIME" => "3600",
+                        "MENU_CACHE_TYPE" => "A",
+                        "MENU_CACHE_USE_GROUPS" => "N",
+                        "MENU_THEME" => "site",
+                        "ROOT_MENU_TYPE" => "left",
+                        "USE_EXT" => "Y"
+                    ),
+                    $component
+                );?>
 
-                    <?if($arParams["USE_FILTER"]=="Y"):?>
+                <?if($arParams["USE_FILTER"]=="Y"):?>
                         <?$APPLICATION->IncludeComponent(
                             "bitrix:catalog.filter",
                             "",
@@ -146,18 +163,10 @@ $this->setFrameMode(true);
                         );
                         ?>
                     <?endif?>
-                </div>
             </div>
 
             <div class="catalog-page__main">
                 <div class="catalog-page__buttons">
-                    <a href="#filters-modal" class="arrow-btn-small catalog-page__mobile-filters-btn js-open-modal">
-                        Фильтры
-                        <svg width="14" height="14" aria-hidden="true" class="icon-filters">
-                            <use xlink:href="#filters"></use>
-                        </svg>
-                    </a>
-
                     <div class="catalog-page__sorting">
                         <button class="catalog-page__sorting-btn">
                             Сортировать
@@ -169,10 +178,7 @@ $this->setFrameMode(true);
                             Сортировать:
                         </h4>
                         <div class="catalog-page__sorting-dropdown">
-
                             <div class="catalog-page__sorting-dropdown-inner">
-
-
                                 <div class="catalog-page__sorting-links">
                                     <a href="#" class="catalog-page__sorting-link">
                                         по популярности
@@ -243,6 +249,10 @@ $this->setFrameMode(true);
                 $component
             );?>
             </div>
+
+            <?if($_REQUEST['set_filter'] === 'Y' && $_GET['ajax'] !== 'N') {
+                die();
+            } ?>
         </div>
 
     </div>

@@ -24,7 +24,7 @@ $this->setFrameMode(true);
         $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
         ?>
         <li class="catalog-page__results-list-item" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
-            <div class="catalog-card">
+            <div class="catalog-card catalog-card--compact">
                 <?if($arItem["PROPERTIES"]["BADGE"]["VALUE"] && ($arBadge = $arItem["PROPERTIES"]["BADGE"])):?>
                     <div class="catalog-card__label catalog-card__label--<?=$arBadge["VALUE_XML_ID"]?>">
                         <svg width="14" height="14" aria-hidden="true" class="icon-<?=$arBadge["VALUE_XML_ID"]?>">
@@ -37,16 +37,18 @@ $this->setFrameMode(true);
                     <div class="catalog-card__image-slider">
                         <div class="swiper-container">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="catalog-card__image-slider-card">
-                                        <img data-src="<?=Sl\Core\Tools::resizeImage($arItem["PREVIEW_PICTURE"]["ID"], 150, 150)?>" alt=""
-                                             class="catalog-card__image-slider-image lazyload">
+                                <?if($arItem["PREVIEW_PICTURE"]):?>
+                                    <div class="swiper-slide">
+                                        <div class="catalog-card__image-slider-card">
+                                            <img data-src="<?=Sl\Core\Tools::resizeImage($arItem["PREVIEW_PICTURE"]["ID"], 150, 150, true)?>" alt=""
+                                                 class="catalog-card__image-slider-image lazyload">
+                                        </div>
                                     </div>
-                                </div>
+                                <?endif;?>
                                 <?foreach ($arItem["PROPERTIES"]["ATT_PHOTO"]["VALUE"] as $photo):?>
                                     <div class="swiper-slide">
                                         <div class="catalog-card__image-slider-card">
-                                            <img data-src="<?=Sl\Core\Tools::resizeImage($photo, 150, 150)?>" alt=""
+                                            <img data-src="<?=Sl\Core\Tools::resizeImage($photo, 150, 150, true)?>" alt=""
                                                  class="catalog-card__image-slider-image lazyload">
                                         </div>
                                     </div>
@@ -88,10 +90,10 @@ $this->setFrameMode(true);
                 </div>
                 <div class="catalog-card__main-content">
                     <h4 class="catalog-card__title">
-                        <?=$arItem["NAME"]?>
+
                     </h4>
                     <div class="catalog-card__description">
-                        Продолжительная служба батареи
+                        <?=$arItem["PROPERTIES"]["DESTINATION"]["VALUE"]?>
                     </div>
                 </div>
                 <div class="catalog-card__stats">
@@ -100,10 +102,12 @@ $this->setFrameMode(true);
                             <svg width="14" height="14" aria-hidden="true" class="icon-area">
                                 <use xlink:href="#area"></use>
                             </svg>
-                            Площадь заливки
+                            <span class="catalog-card__stats-key-text">
+                                Площадь заливки
+                            </span>
                         </div>
                         <div class="catalog-card__stats-value">
-                            <?=$arItem["PROPERTIES"]["ATT_AREA_SURFACES"]["VALUE"] ?> м²
+                            <?=number_format($arItem["PROPERTIES"]["ATT_AREA_SURFACES"]["VALUE"], 1, ',', ' ' );?> м²
                         </div>
                     </div>
                     <div class="catalog-card__stats-item">
@@ -111,10 +115,12 @@ $this->setFrameMode(true);
                             <svg width="14" height="14" aria-hidden="true" class="icon-water">
                                 <use xlink:href="#water"></use>
                             </svg>
-                            Ёмкость для воды
+                            <span class="catalog-card__stats-key-text">
+                                Ёмкость для воды
+                            </span>
                         </div>
                         <div class="catalog-card__stats-value">
-                            <?=$arItem["PROPERTIES"]["ATT_WATER_TANK"]["VALUE"] ?>
+                            <?=number_format($arItem["PROPERTIES"]["ATT_WATER_TANK"]["VALUE"], 2, ',', ' ' );?>
                         </div>
                     </div>
                     <div class="catalog-card__stats-item">
@@ -122,10 +128,12 @@ $this->setFrameMode(true);
                             <svg width="14" height="14" aria-hidden="true" class="icon-snow">
                                 <use xlink:href="#snow"></use>
                             </svg>
-                            Ёмкость для снега
+                            <span class="catalog-card__stats-key-text">
+                                Ёмкость для снега
+                            </span>
                         </div>
                         <div class="catalog-card__stats-value">
-                            <?=$arItem["PROPERTIES"]["ATT_HOPPER_VOLUME"]["VALUE"] ?>
+                            <?=number_format($arItem["PROPERTIES"]["ATT_HOPPER_VOLUME"]["VALUE"], 2, ',', ' ' );?> м³
                         </div>
                     </div>
                 </div>

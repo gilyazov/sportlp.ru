@@ -13,35 +13,22 @@ return array(
 		'dynamic' => false,
 	),
 	'cards' => [
-        '.about__numbers-list-item' => [
-            'name' => 'Цифра',
-            'label' => [
-                '.about__numbers-card-number-inner'
-            ]
-        ]
+
     ],
 	'nodes' => [
-        '.small-heading' => [
+        '.catalog__small-heading' => [
+            'name' => 'Маленький заголовок',
+            'type' => 'text'
+        ],
+        '.catalog__large-heading' => [
             'name' => 'Заголовок',
             'type' => 'text'
         ],
-        '.about__text' => [
-            'name' => 'Текст',
-            'type' => 'text'
-        ],
-        '.about__more-link' => [
+
+        '.catalog__show-all' => [
             'name' => 'Ссылка',
             'type' => 'link',
             'skipContent' => true
-        ],
-
-        '.about__numbers-card-number-inner' => [
-            'name' => 'Цифра',
-            'type' => 'text'
-        ],
-        '.about__numbers-card-text-inner' => [
-            'name' => 'Описание',
-            'type' => 'text'
         ],
     ],
     'style' => array(
