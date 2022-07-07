@@ -46,6 +46,10 @@ if (\Bitrix\Main\Loader::includeModule('pai.phpoffice')) {
     $phone->getFont()->setBold(true);
     $richText->createTextRun(' +7 (843) 528 28 96');
     $sheet->getCell('A2')->setValue($richText);
+    $sheet->getStyle('A2')
+        ->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_TOP);
+    $sheet->getStyle('A2')
+        ->getAlignment()->setWrapText(true);
     // телефон
     $richTextPhone = new RichText();
     $email = $richTextPhone->createTextRun('E-mail:');
@@ -55,6 +59,10 @@ if (\Bitrix\Main\Loader::includeModule('pai.phpoffice')) {
     $boss->getFont()->setBold(true);
     $richTextPhone->createTextRun(' +7 917 894 26 76');
     $sheet->getCell('C2')->setValue($richTextPhone);
+    $sheet->getStyle('C2')
+        ->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_TOP);
+    $sheet->getStyle('C2')
+        ->getAlignment()->setWrapText(true);
     $sheet->getRowDimension('2')->setRowHeight(33);
     $sheet->mergeCells('A2:B2');
     $sheet->mergeCells('C2:F2');
@@ -207,18 +215,171 @@ if (\Bitrix\Main\Loader::includeModule('pai.phpoffice')) {
     $drawing->setCoordinates('A' . $celsKey);
     $sheet->getRowDimension($celsKey)->setRowHeight(140);
     $sheet->mergeCells('A'.$celsKey.':F'.$celsKey);
-    /*$sheet->mergeCells('A'.$celsKey.':B'.($celsKey+1));
+    // борт
+    $celsKey = $celsKey + 2;
+    $drawing = new Drawing();
+    $drawing->setPath($_SERVER["DOCUMENT_ROOT"] . "/compare/cross-img/bort.png");
+    $drawing->setWorksheet($sheet);
+    $drawing->setWidth(580);
+    $drawing->setResizeProportional(true);
+    $drawing->setCoordinates('A' . $celsKey);
+    $sheet->getRowDimension($celsKey)->setRowHeight(140);
+    $sheet->mergeCells('A'.$celsKey.':F'.$celsKey);
+    // тренажеры
+    $celsKey = $celsKey + 2;
+    $drawing = new Drawing();
+    $drawing->setPath($_SERVER["DOCUMENT_ROOT"] . "/compare/cross-img/trenazher.png");
+    $drawing->setWorksheet($sheet);
+    $drawing->setWidth(580);
+    $drawing->setResizeProportional(true);
+    $drawing->setCoordinates('A' . $celsKey);
+    $sheet->getRowDimension($celsKey)->setRowHeight(140);
+    $sheet->mergeCells('A'.$celsKey.':F'.$celsKey);
+    // заточка
+    $celsKey = $celsKey + 2;
+    $drawing = new Drawing();
+    $drawing->setPath($_SERVER["DOCUMENT_ROOT"] . "/compare/cross-img/stanki.png");
+    $drawing->setWorksheet($sheet);
+    $drawing->setWidth(580);
+    $drawing->setResizeProportional(true);
+    $drawing->setCoordinates('A' . $celsKey);
+    $sheet->getRowDimension($celsKey)->setRowHeight(140);
+    $sheet->mergeCells('A'.$celsKey.':F'.$celsKey);
+    // инвентарь
+    $celsKey = $celsKey + 2;
+    $drawing = new Drawing();
+    $drawing->setPath($_SERVER["DOCUMENT_ROOT"] . "/compare/cross-img/gum.png");
+    $drawing->setWorksheet($sheet);
+    $drawing->setWidth(580);
+    $drawing->setResizeProportional(true);
+    $drawing->setCoordinates('A' . $celsKey);
+    $sheet->getRowDimension($celsKey)->setRowHeight(140);
+    $sheet->mergeCells('A'.$celsKey.':F'.$celsKey);
+    // свет
+    $celsKey = $celsKey + 2;
+    $drawing = new Drawing();
+    $drawing->setPath($_SERVER["DOCUMENT_ROOT"] . "/compare/cross-img/lights.png");
+    $drawing->setWorksheet($sheet);
+    $drawing->setWidth(580);
+    $drawing->setResizeProportional(true);
+    $drawing->setCoordinates('A' . $celsKey);
+    $sheet->getRowDimension($celsKey)->setRowHeight(140);
+    $sheet->mergeCells('A'.$celsKey.':F'.$celsKey);
+    // end
+
+    // СТА №2
+    $celsKey = $celsKey + 3;
+    $styleArray = [
+        'font' => [
+            'bold' => true,
+            'color' => ['argb' => 'FFFFFF'],
+            'size' => 13
+        ],
+        'alignment' => [
+            'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
+        ],
+    ];
+    $sheet->getStyle("A" . $celsKey)->applyFromArray($styleArray);
+    $sheet->getStyle("A" . $celsKey)
+        ->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('3C78D8');
+    $sheet->setCellValue("A" . $celsKey, "Cвяжитесь с нами, чтобы узнать стоимость ледозаливочной техники:");
+    $sheet->mergeCells('A' . $celsKey . ':E' . $celsKey);
+    // контакты СТА
+    $celsKey++;
+    $styleArray = [
+        'font' => [
+            'size' => 18
+        ],
+        'alignment' => [
+            'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
+        ],
+    ];
+    $sheet->getStyle("A" . $celsKey)->applyFromArray($styleArray);
+    $sheet->setCellValue("A" . $celsKey, "8 800 101-92-28");
+    $sheet->mergeCells('A' . $celsKey . ':B' . $celsKey);
+    $sheet->getStyle("C" . $celsKey)->applyFromArray($styleArray);
+    $sheet->setCellValue("C" . $celsKey, "WA: +7 917 894-26-76");
+    $sheet->mergeCells('C' . $celsKey . ':E' . $celsKey);
+    // end
+
+    // youtube
+    $celsKey = $celsKey + 3;
+    $richTextYT = new RichText();
+    $obzor = $richTextYT->createTextRun('Смотрите больше обзоров ледозаливочной техники на нашем YouTube-канале.');
+    $obzor->getFont()->setBold(true);
+    $richTextYT->createTextRun('Сканируйте QR-код или переходите по ссылке: https://www.youtube.com/channel/UCg45Cn6OjHyfiKBfb1xzBtw ');
+    $sheet->getCell('A' . $celsKey)->setValue($richTextYT);
+    $sheet->mergeCells('A'.$celsKey.':B'.$celsKey);
+    $sheet->getStyle('A'.$celsKey)
+        ->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_TOP);
+    $sheet->getStyle('A' . $celsKey)
+        ->getAlignment()->setWrapText(true);
+    //qr
+    $drawing = new Drawing();
+    $drawing->setPath($_SERVER["DOCUMENT_ROOT"] . "/compare/cross-img/qr-code.gif");
+    $drawing->setWorksheet($sheet);
+    $drawing->setWidth(180);
+    $drawing->setResizeProportional(true);
+    $drawing->setCoordinates('D' . $celsKey);
+    $sheet->getRowDimension($celsKey)->setRowHeight(140);
+    $sheet->mergeCells('D'.$celsKey.':F'.$celsKey);
+    // обложка
+    $celsKey++;
+    $drawing = new Drawing();
+    $drawing->setPath($_SERVER["DOCUMENT_ROOT"] . "/compare/cross-img/YT-channel.png");
+    $drawing->setWorksheet($sheet);
+    $drawing->setWidth(550);
+    $drawing->setResizeProportional(true);
+    $drawing->setCoordinates('A' . $celsKey);
+    $sheet->getRowDimension($celsKey)->setRowHeight(250);
+    $sheet->mergeCells('A'.$celsKey.':F'.$celsKey);
+    // end
+
+    // печать
+    $celsKey = $celsKey + 2;
+    $celsKey++;
+    $drawing = new Drawing();
+    $drawing->setPath($_SERVER["DOCUMENT_ROOT"] . "/compare/cross-img/print.png");
+    $drawing->setWorksheet($sheet);
+    $drawing->setWidth(290);
+    $drawing->setResizeProportional(true);
+    $drawing->setCoordinates('A' . $celsKey);
+    //$sheet->getRowDimension($celsKey)->setRowHeight(250);
+    $sheet->mergeCells('A'.$celsKey.':B'.$celsKey);
+
     $sheet->getStyle("C" . $celsKey)->applyFromArray([
         'font' => [
             'bold' => true,
             'size' => 14
         ],
-        'alignment' => [
-            'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_TOP,
-        ],
     ]);
-    $sheet->setCellValue("C" . $celsKey, "Холодильное оборудование");
-    $sheet->mergeCells('C'.$celsKey.':E'.$celsKey);*/
+    $sheet->setCellValue("C" . $celsKey, "Контакты для обратной связи:");
+    $richTextPrint = new RichText();
+    $site = $richTextPrint->createTextRun('Сайт: ');
+    $site->getFont()->setBold(true);
+    $richTextPrint->createTextRun('http://sportlp.ru/');
+    $sheet->getCell('C' . ($celsKey+2))->setValue($richTextPrint);
+    $richTextPrint = new RichText();
+    $site = $richTextPrint->createTextRun('Тел. офиса: ');
+    $site->getFont()->setBold(true);
+    $richTextPrint->createTextRun('+7 (843) 528 28 96');
+    $sheet->getCell('C' . ($celsKey+3))->setValue($richTextPrint);
+    $richTextPrint = new RichText();
+    $site = $richTextPrint->createTextRun('E-mail: ');
+    $site->getFont()->setBold(true);
+    $richTextPrint->createTextRun('nms@sportlp.ru');
+    $sheet->getCell('C' . ($celsKey+4))->setValue($richTextPrint);
+    $richTextPrint = new RichText();
+    $site = $richTextPrint->createTextRun('Время работы: ');
+    $site->getFont()->setBold(true);
+    $richTextPrint->createTextRun('Ежедневно, с 8:00 до 22:00');
+    $sheet->getCell('C' . ($celsKey+5))->setValue($richTextPrint);
+    $richTextPrint = new RichText();
+    $site = $richTextPrint->createTextRun('Нуриев Мансур Саматович ');
+    $site->getFont()->setBold(true);
+    $richTextPrint->createTextRun('+7 917 894 26 76');
+    $sheet->getCell('C' . ($celsKey+6))->setValue($richTextPrint);
+    // end печать
 
     // итоговое сохранение
     $oWriter = IOFactory::createWriter($oSpreadsheet_Out, 'Xlsx');
