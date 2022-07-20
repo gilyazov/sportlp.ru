@@ -35,27 +35,29 @@
                     ),
                     false
                 );?>
-                <a href="#" class="what-to-choose comparison__what-to-choose">
-                    <div class="what-to-choose__bg">
-                        <img data-src="/local/js/SL/build/img/what-to-choose-2.jpg" alt="" class="what-to-choose__bg-image lazyload">
-                    </div>
-                    <svg width="14" height="14" aria-hidden="true" class="icon-question">
-                        <use xlink:href="#question"></use>
-                    </svg>
-                    <div class="what-to-choose__row">
-                        <h3 class="what-to-choose__title">
-                            Бензин, электричество или газ, что выбрать?
-                        </h3>
-                        <div class="what-to-choose__read">
-                            <span class="what-to-choose__read-text">
-                                читать
-                            </span>
-                            <svg width="14" height="14" aria-hidden="true" class="icon-diagonal-arrow">
-                                <use xlink:href="#diagonal-arrow"></use>
-                            </svg>
-                        </div>
-                    </div>
-                </a>
+
+                <?
+                global $arrFilterArticle;
+                $arrFilterArticle = Array(
+                    "PROPERTY_LOCATION" => 182
+                );
+                $APPLICATION->IncludeComponent(
+                    "bitrix:news.list",
+                    "article__comparison",
+                    Array(
+                        "IBLOCK_TYPE" => "news",
+                        "IBLOCK_ID" => 12,
+                        "NEWS_COUNT" => 1,
+                        "SORT_BY1" => "SORT",
+                        "SORT_ORDER1" => "ASC",
+                        "SET_TITLE" => "N",
+                        "FILTER_NAME" => "arrFilterArticle",
+                        "PROPERTY_CODE" => [
+                            "ARTICLE"
+                        ]
+                    ),
+                    false
+                );?>
             </div>
             <div class="comparison__main">
                 <div class="comparison__content">
@@ -97,7 +99,7 @@
                         </div>
                     </div>
                     <div class="comparison__buttons">
-                        <a href="#" class="arrow-btn">
+                        <a href="#" class="arrow-btn js-full-comparison">
                             Полное сравнение
                             <svg width="14" height="14" aria-hidden="true" class="icon-diagonal-arrow">
                                 <use xlink:href="#diagonal-arrow"></use>

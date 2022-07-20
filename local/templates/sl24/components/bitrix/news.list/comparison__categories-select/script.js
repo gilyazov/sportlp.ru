@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return input.checked;
         });
         if (checkedRadio){
+            console.log(checkedRadio.querySelector('input[type="radio"]'));
             ajaxCompare(checkedRadio.querySelector('input[type="radio"]'));
         }
 
@@ -69,9 +70,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 let product_1 = document.querySelector('input[name="comparison-a"]:checked').value;
                 let product_2 = document.querySelector('input[name="comparison-b"]:checked').value;
 
-                ajaxCompare('', false, [product_1, product_2]);
+                if (product_1 != product_2){
+                    ajaxCompare('', false, [product_1, product_2]);
+                }
+                else{
+                    alert("Необходимо выбрать разные модели.");
+                }
             });
         });
     };
 
+    // полное сравнение
+    const comparison = document.querySelector('.js-full-comparison');
+    comparison.addEventListener('click', (event) => {
+        event.preventDefault();
+        let id = $('[data-comparise]').data('comparise');
+        console.log(id);
+    });
 })

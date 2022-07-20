@@ -2,7 +2,7 @@
     <div class="container">
         <div class="page-footer__row">
             <div class="page-footer__col">
-                <a href="tel:+78000008888" class="page-footer__phone-link"><span>8 800 000-88-88</span></a>
+                <a href="<?= \Bitrix\Main\Config\Option::get("sl.core", "phone_link"); ?>" class="page-footer__phone-link"><span><?= \Bitrix\Main\Config\Option::get("sl.core", "phone"); ?></span></a>
                 <a href="#callback-modal" class="blue-small-btn page-footer__callback-btn js-open-modal">
                     Заказать звонок
                 </a>
@@ -15,36 +15,28 @@
             <div class="page-footer__col">
                 <a href="mailto:nms@sportlp.ru" class="page-footer__email-link"><span>nms@sportlp.ru</span></a>
                 <div class="page-footer__address">
-                    Казань, Оренбургский тракт,<br>
-                    д. 160, офис 304
+                    Казань, ул. Кул Гали, 7б
                 </div>
                 <div class="page-footer__mobile-divider">
 
                 </div>
                 <ul class="page-footer__social-list">
                     <li class="page-footer__social-list-item">
-                        <a href="#" class="page-footer__social-link" target="_blank">
+                        <a href="https://api.whatsapp.com/send?phone=79178942676" class="page-footer__social-link" target="_blank">
                             <svg width="14" height="14" aria-hidden="true" class="icon-whatsapp">
                                 <use xlink:href="#whatsapp"></use>
                             </svg>
                         </a>
                     </li>
                     <li class="page-footer__social-list-item">
-                        <a href="#" class="page-footer__social-link" target="_blank">
-                            <svg width="14" height="14" aria-hidden="true" class="icon-vk">
-                                <use xlink:href="#vk"></use>
+                        <a href="https://tgtg.su/+79178942676 " class="page-footer__social-link" target="_blank" rel="nofollow">
+                            <svg width="14" height="14" aria-hidden="true" class="icon-tg">
+                                <use xlink:href="#tg"></use>
                             </svg>
                         </a>
                     </li>
                     <li class="page-footer__social-list-item">
-                        <a href="#" class="page-footer__social-link" target="_blank">
-                            <svg width="14" height="14" aria-hidden="true" class="icon-fb">
-                                <use xlink:href="#fb"></use>
-                            </svg>
-                        </a>
-                    </li>
-                    <li class="page-footer__social-list-item">
-                        <a href="#" class="page-footer__social-link" target="_blank">
+                        <a href="https://youtube.com/channel/UCg45Cn6OjHyfiKBfb1xzBtw" class="page-footer__social-link" target="_blank">
                             <svg width="14" height="14" aria-hidden="true" class="icon-youtube">
                                 <use xlink:href="#youtube"></use>
                             </svg>
@@ -52,9 +44,9 @@
                     </li>
                 </ul>
                 <div class="page-footer__copyright">
-                    <?=date("Y")?> © «Спортлайн»
+                    <?=date("Y")?> © ООО "СЛП"
                 </div>
-                <a href="#" class="page-footer__policy">
+                <a href="/upload/medialibrary/95a/rvqvafvk760eys1hzwefq63l97psmjug/Privacy_Policy.pdf" target="_blank" class="page-footer__policy">
                     <span>
                         Политика конфиденциальности
                     </span>
@@ -64,144 +56,96 @@
                 <nav class="page-footer__nav">
                     <ul class="page-footer__nav-list">
                         <li class="page-footer__nav-list-item">
+                            <a href="/catalog/" class="page-footer__nav-section-link">
+                                <span>
+                                    Каталог
+                                </span>
+                            </a>
+                            <?$APPLICATION->IncludeComponent(
+                                "bitrix:news.list",
+                                "page-footer__nav-inner-list",
+                                Array(
+                                    "IBLOCK_TYPE" => "products",
+                                    "IBLOCK_ID" => 5,
+                                    "NEWS_COUNT" => 99,
+                                    "SORT_BY1" => "SORT",
+                                    "SORT_ORDER1" => "ASC",
+                                    "SET_TITLE" => "N",
+                                    "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+                                )
+                            );?>
+                        </li>
+                        <li class="page-footer__nav-list-item">
                             <a href="#" class="page-footer__nav-section-link">
-                                        <span>
-                                            Каталог
-                                        </span>
+                                <span>
+                                    Услуги
+                                </span>
                             </a>
                             <ul class="page-footer__nav-inner-list">
                                 <li class="page-footer__nav-inner-list-item">
                                     <a href="#" class="page-footer__nav-inner-link">
-                                                <span>
-                                                    Популярное
-                                                </span>
+                                        <span>
+                                            Тендерная документация
+                                        </span>
                                     </a>
                                 </li>
                                 <li class="page-footer__nav-inner-list-item">
                                     <a href="#" class="page-footer__nav-inner-link">
-                                                <span>
-                                                    Zamboni
-                                                </span>
+                                        <span>
+                                            Поставка комплектующих
+                                        </span>
                                     </a>
                                 </li>
                                 <li class="page-footer__nav-inner-list-item">
                                     <a href="#" class="page-footer__nav-inner-link">
-                                                <span>
-                                                    Engo
-                                                </span>
+                                        <span>
+                                            Реализация б/у техники
+                                        </span>
                                     </a>
                                 </li>
                                 <li class="page-footer__nav-inner-list-item">
                                     <a href="#" class="page-footer__nav-inner-link">
-                                                <span>
-                                                    Olympia
-                                                </span>
+                                        <span>
+                                            Холодильное оборудование
+                                        </span>
                                     </a>
                                 </li>
                                 <li class="page-footer__nav-inner-list-item">
                                     <a href="#" class="page-footer__nav-inner-link">
-                                                <span>
-                                                    Ice Group
-                                                </span>
+                                        <span>
+                                            Техническое обслуживание
+                                        </span>
                                     </a>
                                 </li>
                                 <li class="page-footer__nav-inner-list-item">
                                     <a href="#" class="page-footer__nav-inner-link">
-                                                <span>
-                                                    Форвард
-                                                </span>
+                                        <span>
+                                            Ремонт любой сложности
+                                        </span>
                                     </a>
                                 </li>
                                 <li class="page-footer__nav-inner-list-item">
                                     <a href="#" class="page-footer__nav-inner-link">
-                                                <span>
-                                                    WM
-                                                </span>
-                                    </a>
-                                </li>
-                                <li class="page-footer__nav-inner-list-item">
-                                    <a href="#" class="page-footer__nav-inner-link">
-                                                <span>
-                                                    УАЗ
-                                                </span>
+                                        <span>
+                                            Снаряжение для оснащения арены
+                                        </span>
                                     </a>
                                 </li>
                             </ul>
                         </li>
                         <li class="page-footer__nav-list-item">
-                            <a href="#" class="page-footer__nav-section-link">
-                                        <span>
-                                            Услуги
-                                        </span>
+                            <a href="/about/" class="page-footer__nav-section-link">
+                                <span>
+                                    О компании
+                                </span>
                             </a>
-                            <ul class="page-footer__nav-inner-list">
-                                <li class="page-footer__nav-inner-list-item">
-                                    <a href="#" class="page-footer__nav-inner-link">
-                                                <span>
-                                                    Тендерная документация
-                                                </span>
-                                    </a>
-                                </li>
-                                <li class="page-footer__nav-inner-list-item">
-                                    <a href="#" class="page-footer__nav-inner-link">
-                                                <span>
-                                                    Поставка комплектующих
-                                                </span>
-                                    </a>
-                                </li>
-                                <li class="page-footer__nav-inner-list-item">
-                                    <a href="#" class="page-footer__nav-inner-link">
-                                                <span>
-                                                    Реализация б/у техники
-                                                </span>
-                                    </a>
-                                </li>
-                                <li class="page-footer__nav-inner-list-item">
-                                    <a href="#" class="page-footer__nav-inner-link">
-                                                <span>
-                                                    Холодильное оборудование
-                                                </span>
-                                    </a>
-                                </li>
-                                <li class="page-footer__nav-inner-list-item">
-                                    <a href="#" class="page-footer__nav-inner-link">
-                                                <span>
-                                                    Техническое обслуживание
-                                                </span>
-                                    </a>
-                                </li>
-                                <li class="page-footer__nav-inner-list-item">
-                                    <a href="#" class="page-footer__nav-inner-link">
-                                                <span>
-                                                    Ремонт любой сложности
-                                                </span>
-                                    </a>
-                                </li>
-                                <li class="page-footer__nav-inner-list-item">
-                                    <a href="#" class="page-footer__nav-inner-link">
-                                                <span>
-                                                    Снаряжение для оснащения арены
-                                                </span>
-                                    </a>
-                                </li>
-
-                            </ul>
                         </li>
                         <li class="page-footer__nav-list-item">
-                            <a href="#" class="page-footer__nav-section-link">
-                                        <span>
-                                            О компании
-                                        </span>
+                            <a href="/contacts/" class="page-footer__nav-section-link">
+                                <span>
+                                    Контакты
+                                </span>
                             </a>
-
-                        </li>
-                        <li class="page-footer__nav-list-item">
-                            <a href="#" class="page-footer__nav-section-link">
-                                        <span>
-                                            Контакты
-                                        </span>
-                            </a>
-
                         </li>
                     </ul>
                 </nav>
@@ -269,6 +213,135 @@
             "USER_MESSAGE_ADD" => "",	// Сообщение об успешном добавлении
             "USER_MESSAGE_EDIT" => "",	// Сообщение об успешном сохранении
             "USE_CAPTCHA" => "N",	// Использовать CAPTCHA
+            "PREFIX" => "_modal_consultation",
+        ),
+            false
+        );?>
+    </div>
+</div>
+<div class="modal js-modal" id="callback-modal-comparison">
+    <div class="modal__inner-modal">
+        <picture>
+            <source srcset="<?=STATIC_PATH?>img/modal-bg.avif" type="image/avif">
+            <img src="<?=STATIC_PATH?>img/modal-bg.webp" alt="" class="modal__bg-image">
+        </picture>
+        <button class="modal__close js-close-modal">
+            <svg width="14" height="14" aria-hidden="true" class="icon-close">
+                <use xlink:href="#close"></use>
+            </svg>
+        </button>
+        <h3 class="modal__heading">
+            Вы&nbsp;можете сравнить 3&nbsp;модели техники
+        </h3>
+        <div class="modal__text hide-on-mobile">
+            <p>
+                Удалите модель из сравнения или обратитесь к нашему эксперту за полным сравнением
+            </p>
+        </div>
+        <?$APPLICATION->IncludeComponent("bitrix:iblock.element.add.form", "modal__form", Array(
+            "CUSTOM_TITLE_DATE_ACTIVE_FROM" => "",	// * дата начала *
+            "CUSTOM_TITLE_DATE_ACTIVE_TO" => "",	// * дата завершения *
+            "CUSTOM_TITLE_DETAIL_PICTURE" => "",	// * подробная картинка *
+            "CUSTOM_TITLE_DETAIL_TEXT" => "",	// * подробный текст *
+            "CUSTOM_TITLE_IBLOCK_SECTION" => "",	// * раздел инфоблока *
+            "CUSTOM_TITLE_NAME" => "+7 000 000-00-00",	// * наименование *
+            "CUSTOM_TITLE_PREVIEW_PICTURE" => "",	// * картинка анонса *
+            "CUSTOM_TITLE_PREVIEW_TEXT" => "",	// * текст анонса *
+            "CUSTOM_TITLE_TAGS" => "",	// * теги *
+            "DEFAULT_INPUT_SIZE" => "30",	// Размер полей ввода
+            "DETAIL_TEXT_USE_HTML_EDITOR" => "N",	// Использовать визуальный редактор для редактирования подробного текста
+            "ELEMENT_ASSOC" => "CREATED_BY",	// Привязка к пользователю
+            "GROUPS" => array(	// Группы пользователей, имеющие право на добавление/редактирование
+                0 => "2",
+            ),
+            "IBLOCK_ID" => "11",	// Инфоблок
+            "IBLOCK_TYPE" => "forms",	// Тип инфоблока
+            "LEVEL_LAST" => "Y",	// Разрешить добавление только на последний уровень рубрикатора
+            "LIST_URL" => "",	// Страница со списком своих элементов
+            "MAX_FILE_SIZE" => "0",	// Максимальный размер загружаемых файлов, байт (0 - не ограничивать)
+            "MAX_LEVELS" => "100000",	// Ограничить кол-во рубрик, в которые можно добавлять элемент
+            "MAX_USER_ENTRIES" => "100000",	// Ограничить кол-во элементов для одного пользователя
+            "PREVIEW_TEXT_USE_HTML_EDITOR" => "N",	// Использовать визуальный редактор для редактирования текста анонса
+            "PROPERTY_CODES" => array(	// Свойства, выводимые на редактирование
+                0 => "117",
+                1 => "NAME",
+            ),
+            "PROPERTY_CODES_REQUIRED" => array(	// Свойства, обязательные для заполнения
+                0 => "NAME",
+                1 => "117",
+            ),
+            "RESIZE_IMAGES" => "N",	// Использовать настройки инфоблока для обработки изображений
+            "SEF_MODE" => "N",	// Включить поддержку ЧПУ
+            "STATUS" => "ANY",	// Редактирование возможно
+            "STATUS_NEW" => "N",	// Деактивировать элемент
+            "USER_MESSAGE_ADD" => "",	// Сообщение об успешном добавлении
+            "USER_MESSAGE_EDIT" => "",	// Сообщение об успешном сохранении
+            "USE_CAPTCHA" => "N",	// Использовать CAPTCHA
+            "PREFIX" => "_modal_consultation",
+        ),
+            false
+        );?>
+    </div>
+</div>
+<div class="modal js-modal" id="callback-modal-doc">
+    <div class="modal__inner-modal">
+        <picture>
+            <source srcset="<?=STATIC_PATH?>img/modal-bg.avif" type="image/avif">
+            <img src="<?=STATIC_PATH?>img/modal-bg.webp" alt="" class="modal__bg-image">
+        </picture>
+        <button class="modal__close js-close-modal">
+            <svg width="14" height="14" aria-hidden="true" class="icon-close">
+                <use xlink:href="#close"></use>
+            </svg>
+        </button>
+        <h3 class="modal__heading">
+            Мы отправим документацию в мессенджере
+        </h3>
+        <div class="modal__text hide-on-mobile">
+            <p>
+                Заполните форму и получите документацию в ближайшее время!
+            </p>
+        </div>
+        <?$APPLICATION->IncludeComponent("bitrix:iblock.element.add.form", "modal__form", Array(
+            "CUSTOM_TITLE_DATE_ACTIVE_FROM" => "",	// * дата начала *
+            "CUSTOM_TITLE_DATE_ACTIVE_TO" => "",	// * дата завершения *
+            "CUSTOM_TITLE_DETAIL_PICTURE" => "",	// * подробная картинка *
+            "CUSTOM_TITLE_DETAIL_TEXT" => "",	// * подробный текст *
+            "CUSTOM_TITLE_IBLOCK_SECTION" => "",	// * раздел инфоблока *
+            "CUSTOM_TITLE_NAME" => "+7 000 000-00-00",	// * наименование *
+            "CUSTOM_TITLE_PREVIEW_PICTURE" => "",	// * картинка анонса *
+            "CUSTOM_TITLE_PREVIEW_TEXT" => "",	// * текст анонса *
+            "CUSTOM_TITLE_TAGS" => "",	// * теги *
+            "DEFAULT_INPUT_SIZE" => "30",	// Размер полей ввода
+            "DETAIL_TEXT_USE_HTML_EDITOR" => "N",	// Использовать визуальный редактор для редактирования подробного текста
+            "ELEMENT_ASSOC" => "CREATED_BY",	// Привязка к пользователю
+            "GROUPS" => array(	// Группы пользователей, имеющие право на добавление/редактирование
+                0 => "2",
+            ),
+            "IBLOCK_ID" => "11",	// Инфоблок
+            "IBLOCK_TYPE" => "forms",	// Тип инфоблока
+            "LEVEL_LAST" => "Y",	// Разрешить добавление только на последний уровень рубрикатора
+            "LIST_URL" => "",	// Страница со списком своих элементов
+            "MAX_FILE_SIZE" => "0",	// Максимальный размер загружаемых файлов, байт (0 - не ограничивать)
+            "MAX_LEVELS" => "100000",	// Ограничить кол-во рубрик, в которые можно добавлять элемент
+            "MAX_USER_ENTRIES" => "100000",	// Ограничить кол-во элементов для одного пользователя
+            "PREVIEW_TEXT_USE_HTML_EDITOR" => "N",	// Использовать визуальный редактор для редактирования текста анонса
+            "PROPERTY_CODES" => array(	// Свойства, выводимые на редактирование
+                0 => "117",
+                1 => "NAME",
+            ),
+            "PROPERTY_CODES_REQUIRED" => array(	// Свойства, обязательные для заполнения
+                0 => "NAME",
+                1 => "117",
+            ),
+            "RESIZE_IMAGES" => "N",	// Использовать настройки инфоблока для обработки изображений
+            "SEF_MODE" => "N",	// Включить поддержку ЧПУ
+            "STATUS" => "ANY",	// Редактирование возможно
+            "STATUS_NEW" => "N",	// Деактивировать элемент
+            "USER_MESSAGE_ADD" => "",	// Сообщение об успешном добавлении
+            "USER_MESSAGE_EDIT" => "",	// Сообщение об успешном сохранении
+            "USE_CAPTCHA" => "N",	// Использовать CAPTCHA
+            "PREFIX" => "_modal_doc",
         ),
             false
         );?>
@@ -470,3 +543,5 @@
         Извините, ваш браузер не поддерживается
     </div>
 </div>
+
+<script type="text/javascript" src="//api.venyoo.ru/wnew.js?wc=venyoo/default/science&widget_id=6755342139795578"></script>

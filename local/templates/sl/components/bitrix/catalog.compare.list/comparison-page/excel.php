@@ -21,7 +21,7 @@ $APPLICATION->RestartBuffer();
 if (\Bitrix\Main\Loader::includeModule('pai.phpoffice')) {
     $CURRENT_PAGE = (CMain::IsHTTPS()) ? "https://" : "http://";
     $CURRENT_PAGE .= $_SERVER["HTTP_HOST"];
-    $sOutFile = 'out.xlsx';
+    $sOutFile = 'sravnenie-mashin-SLP.xlsx';
 
     $oSpreadsheet_Out = new Spreadsheet();
     $oSpreadsheet_Out->getProperties()->setCreator('aydargilyazov.ru')
@@ -34,7 +34,10 @@ if (\Bitrix\Main\Loader::includeModule('pai.phpoffice')) {
     $drawing->setPath($_SERVER["DOCUMENT_ROOT"] . "/upload/medialibrary/6d5/woxaqthzgrg50w9qq5y3glvhpntcodw9/logo.png");
     $drawing->setWorksheet($sheet);
     $drawing->setCoordinates('A1');
-    $sheet->getRowDimension('1')->setRowHeight(76);
+    $drawing->setWidth(650);
+    $drawing->setResizeProportional(true);
+    $drawing->setOffsetY(20);
+    $sheet->getRowDimension('1')->setRowHeight(75);
     $sheet->mergeCells('A1:H1');
 
     // вступительные контакты
@@ -75,13 +78,13 @@ if (\Bitrix\Main\Loader::includeModule('pai.phpoffice')) {
     $sheet->getCell('A3')->setValue($richTextDate);
     $sheet->mergeCells('A3:H3');
 
-    $sheet->getColumnDimension('A')->setWidth(25);
+    $sheet->getColumnDimension('A')->setWidth(30);
     $i = 1;
     foreach ($arResult as $key => $arElement) {
         // картинки
         if ($photo = $arElement["PROPERTIES"]["COMPARE_TABLE_PHOTO"]["VALUE"]){
             $drawing = new Drawing();
-            $arFileTmp = \CFile::ResizeImageGet($photo,  array("width" => 100, "height" => 100),  BX_RESIZE_IMAGE_EXACT, true);
+            $arFileTmp = \CFile::ResizeImageGet($photo,  array("width" => 138, "height" => 138),  BX_RESIZE_IMAGE_EXACT, true);
             $drawing->setPath($_SERVER["DOCUMENT_ROOT"] . $arFileTmp['src']); // put your path and image here
             $drawing->setName($arElement["NAME"]);
             $drawing->setWorksheet($sheet);
@@ -89,8 +92,8 @@ if (\Bitrix\Main\Loader::includeModule('pai.phpoffice')) {
 
             $drawing->setResizeProportional(true);
 
-            $sheet->getColumnDimension($alphabet[$i])->setWidth(15);
-            $sheet->getRowDimension('4')->setRowHeight(83);
+            $sheet->getColumnDimension($alphabet[$i])->setWidth(20);
+            $sheet->getRowDimension('4')->setRowHeight(115);
             $drawing->setOffsetX(5);
             $drawing->setOffsetY(5);
         }
@@ -190,7 +193,7 @@ if (\Bitrix\Main\Loader::includeModule('pai.phpoffice')) {
     $sheet->setCellValue("A" . $celsKey, "8 800 101-92-28");
     $sheet->mergeCells('A' . $celsKey . ':B' . $celsKey);
     $sheet->getStyle("C" . $celsKey)->applyFromArray($styleArray);
-    $sheet->setCellValue("C" . $celsKey, "WA: +7 917 894-26-76");
+    $sheet->setCellValue("C" . $celsKey, "WhatsApp: +7 917 894-26-76");
     $sheet->mergeCells('C' . $celsKey . ':E' . $celsKey);
 
     // кросспродажи
@@ -267,6 +270,7 @@ if (\Bitrix\Main\Loader::includeModule('pai.phpoffice')) {
     $sheet->mergeCells('A'.$celsKey.':F'.$celsKey);
     // end
 
+    /*
     // СТА №2
     $celsKey = $celsKey + 3;
     $styleArray = [
@@ -298,7 +302,7 @@ if (\Bitrix\Main\Loader::includeModule('pai.phpoffice')) {
     $sheet->setCellValue("A" . $celsKey, "8 800 101-92-28");
     $sheet->mergeCells('A' . $celsKey . ':B' . $celsKey);
     $sheet->getStyle("C" . $celsKey)->applyFromArray($styleArray);
-    $sheet->setCellValue("C" . $celsKey, "WA: +7 917 894-26-76");
+    $sheet->setCellValue("C" . $celsKey, "WhatsApp: +7 917 894-26-76");
     $sheet->mergeCells('C' . $celsKey . ':E' . $celsKey);
     // end
 
@@ -334,6 +338,7 @@ if (\Bitrix\Main\Loader::includeModule('pai.phpoffice')) {
     $sheet->getRowDimension($celsKey)->setRowHeight(250);
     $sheet->mergeCells('A'.$celsKey.':F'.$celsKey);
     // end
+*/
 
     // печать
     $celsKey = $celsKey + 2;
@@ -460,7 +465,7 @@ class compareTableDraw{
 
     public function draw()
     {
-        $sOutFile = 'out.xlsx';
+        $sOutFile = 'sravnenie-mashin-SLP.xlsx';
         $oWriter = IOFactory::createWriter($this->oSpreadsheet_Out, 'Xlsx');
         //$oWriter->save($sOutFile);
 

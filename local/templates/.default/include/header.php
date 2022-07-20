@@ -1,7 +1,7 @@
 <?
 $page = $APPLICATION->GetCurPage();
 ?>
-<header class="page-header<?if($page == "/about/"):?> page-header--white<?endif;?>">
+<header class="page-header<? if ($page == "/about/"): ?> page-header--white<? endif; ?>">
 
     <div class="container">
         <div class="page-header__row">
@@ -14,33 +14,33 @@ $page = $APPLICATION->GetCurPage();
                             </a>
                         </li>
                         <li class="page-header__burger-menu-nav-list-item">
-                            <a href="#" class="page-header__burger-menu-nav-link">
+                            <a href="/compare/" class="page-header__burger-menu-nav-link">
                                 Сравнение
                                 <span class="page-header__burger-menu-nav-link-notifications">
                                     <svg width="14" height="14" aria-hidden="true" class="icon-comparisons">
                                         <use xlink:href="#comparisons"></use>
                                     </svg>
-                                    <span class="page-header__burger-menu-nav-link-notifications-count">
-                                        2
+                                    <span class="page-header__burger-menu-nav-link-notifications-count js-header-comparison-count">
+                                        <?=count($_SESSION['COMPARE_LIST'][2]['ITEMS']);?>
                                     </span>
                                 </span>
                             </a>
                         </li>
-                        <?$APPLICATION->IncludeComponent("bitrix:menu", "page-header__burger-menu", Array(
-                            "ALLOW_MULTI_SELECT" => "N",	// Разрешить несколько активных пунктов одновременно
-                            "CHILD_MENU_TYPE" => "left",	// Тип меню для остальных уровней
-                            "DELAY" => "N",	// Откладывать выполнение шаблона меню
-                            "MAX_LEVEL" => "1",	// Уровень вложенности меню
-                            "MENU_CACHE_GET_VARS" => "",	// Значимые переменные запроса
-                            "MENU_CACHE_TIME" => "3600",	// Время кеширования (сек.)
-                            "MENU_CACHE_TYPE" => "N",	// Тип кеширования
-                            "MENU_CACHE_USE_GROUPS" => "Y",	// Учитывать права доступа
-                            "ROOT_MENU_TYPE" => "top",	// Тип меню для первого уровня
-                            "USE_EXT" => "N",	// Подключать файлы с именами вида .тип_меню.menu_ext.php
+                        <? $APPLICATION->IncludeComponent("bitrix:menu", "page-header__burger-menu", array(
+                            "ALLOW_MULTI_SELECT" => "N",    // Разрешить несколько активных пунктов одновременно
+                            "CHILD_MENU_TYPE" => "left",    // Тип меню для остальных уровней
+                            "DELAY" => "N",    // Откладывать выполнение шаблона меню
+                            "MAX_LEVEL" => "1",    // Уровень вложенности меню
+                            "MENU_CACHE_GET_VARS" => "",    // Значимые переменные запроса
+                            "MENU_CACHE_TIME" => "3600",    // Время кеширования (сек.)
+                            "MENU_CACHE_TYPE" => "N",    // Тип кеширования
+                            "MENU_CACHE_USE_GROUPS" => "Y",    // Учитывать права доступа
+                            "ROOT_MENU_TYPE" => "top",    // Тип меню для первого уровня
+                            "USE_EXT" => "N",    // Подключать файлы с именами вида .тип_меню.menu_ext.php
                             "COMPONENT_TEMPLATE" => ""
                         ),
                             false
-                        );?>
+                        ); ?>
                     </ul>
                 </nav>
                 <ul class="page-header__burger-menu-social-list">
@@ -73,8 +73,9 @@ $page = $APPLICATION->GetCurPage();
                         </a>
                     </li>
                 </ul>
-                <a href="tel:88000008888" class="page-header__burger-menu-contact-link">
-                    8 800 000-88-88
+                <a href="<?= \Bitrix\Main\Config\Option::get("sl.core", "phone_link"); ?>"
+                   class="page-header__burger-menu-contact-link">
+                    <?= \Bitrix\Main\Config\Option::get("sl.core", "phone"); ?>
                 </a>
                 <a href="mailto:nms@sportlp.ru" class="page-header__burger-menu-contact-link">
                     nms@sportlp.ru
@@ -89,7 +90,7 @@ $page = $APPLICATION->GetCurPage();
                     <a href="#callback-modal" class="blue-small-btn js-open-modal">
                         Консультация
                     </a>
-                    <a href="#" class="arrow-btn-small arrow-btn-small--filled arrow-btn-small--green">
+                    <a href="whatsapp://send/?phone=79178942676&amp;text=Здравствуйте! Хочу получить консультацию по покупке ледозаливочной машины&amp;app_absent=1" class="arrow-btn-small arrow-btn-small--filled arrow-btn-small--green" target="_blank">
                         Написать в whatsapp
                         <svg width="14" height="14" aria-hidden="true" class="icon-whatsapp-large">
                             <use xlink:href="#whatsapp-large"></use>
@@ -97,9 +98,9 @@ $page = $APPLICATION->GetCurPage();
                     </a>
                 </div>
             </div>
-            <a href="<?=SITE_DIR?>" class="page-header__logo">
-                <img src="<?=STATIC_PATH?>img/logo.svg" alt="" class="page-header__logo-image">
-                <img src="<?=STATIC_PATH?>img/white-logo.svg" alt="" class="page-header__logo-image">
+            <a href="<?= SITE_DIR ?>" class="page-header__logo">
+                <img src="<?= STATIC_PATH ?>img/logo.svg" alt="" class="page-header__logo-image">
+                <img src="<?= STATIC_PATH ?>img/white-logo.svg" alt="" class="page-header__logo-image">
             </a>
             <div class="page-header__catalog">
                 <a href="/catalog/" class="page-header__catalog-link">
@@ -162,7 +163,7 @@ $page = $APPLICATION->GetCurPage();
                                                 <li class="page-header__catalog-dropdown-results-list-item">
                                                     <a href="#" class="page-header__catalog-dropdown-results-link">
                                                         <div class="page-header__catalog-dropdown-results-link-bg">
-                                                            <img data-src="<?/*=STATIC_PATH*/?>img/catalog-menu/1.jpg" alt=""
+                                                            <img data-src="<? /*=STATIC_PATH*/ ?>img/catalog-menu/1.jpg" alt=""
                                                                  class="page-header__catalog-dropdown-results-link-bg-image lazyload">
                                                         </div>
                                                         <h4 class="page-header__catalog-dropdown-results-link-title">
@@ -177,7 +178,7 @@ $page = $APPLICATION->GetCurPage();
                                                 <li class="page-header__catalog-dropdown-results-list-item">
                                                     <a href="#" class="page-header__catalog-dropdown-results-link">
                                                         <div class="page-header__catalog-dropdown-results-link-bg">
-                                                            <img data-src="<?/*=STATIC_PATH*/?>img/catalog-menu/2.jpg" alt=""
+                                                            <img data-src="<? /*=STATIC_PATH*/ ?>img/catalog-menu/2.jpg" alt=""
                                                                  class="page-header__catalog-dropdown-results-link-bg-image lazyload">
                                                         </div>
                                                         <h4 class="page-header__catalog-dropdown-results-link-title">
@@ -192,7 +193,7 @@ $page = $APPLICATION->GetCurPage();
                                                 <li class="page-header__catalog-dropdown-results-list-item">
                                                     <a href="#" class="page-header__catalog-dropdown-results-link">
                                                         <div class="page-header__catalog-dropdown-results-link-bg">
-                                                            <img data-src="<?/*=STATIC_PATH*/?>img/catalog-menu/3.jpg" alt=""
+                                                            <img data-src="<? /*=STATIC_PATH*/ ?>img/catalog-menu/3.jpg" alt=""
                                                                  class="page-header__catalog-dropdown-results-link-bg-image lazyload">
                                                         </div>
                                                         <h4 class="page-header__catalog-dropdown-results-link-title">
@@ -207,7 +208,7 @@ $page = $APPLICATION->GetCurPage();
                                                 <li class="page-header__catalog-dropdown-results-list-item">
                                                     <a href="#" class="page-header__catalog-dropdown-results-link">
                                                         <div class="page-header__catalog-dropdown-results-link-bg">
-                                                            <img data-src="<?/*=STATIC_PATH*/?>img/catalog-menu/4.jpg" alt=""
+                                                            <img data-src="<? /*=STATIC_PATH*/ ?>img/catalog-menu/4.jpg" alt=""
                                                                  class="page-header__catalog-dropdown-results-link-bg-image lazyload">
                                                         </div>
                                                         <h4 class="page-header__catalog-dropdown-results-link-title">
@@ -222,7 +223,7 @@ $page = $APPLICATION->GetCurPage();
                                                 <li class="page-header__catalog-dropdown-results-list-item">
                                                     <a href="#" class="page-header__catalog-dropdown-results-link">
                                                         <div class="page-header__catalog-dropdown-results-link-bg">
-                                                            <img data-src="<?/*=STATIC_PATH*/?>img/catalog-menu/5.jpg" alt=""
+                                                            <img data-src="<? /*=STATIC_PATH*/ ?>img/catalog-menu/5.jpg" alt=""
                                                                  class="page-header__catalog-dropdown-results-link-bg-image lazyload">
                                                         </div>
                                                         <h4 class="page-header__catalog-dropdown-results-link-title">
@@ -237,7 +238,7 @@ $page = $APPLICATION->GetCurPage();
                                                 <li class="page-header__catalog-dropdown-results-list-item">
                                                     <a href="#" class="page-header__catalog-dropdown-results-link">
                                                         <div class="page-header__catalog-dropdown-results-link-bg">
-                                                            <img data-src="<?/*=STATIC_PATH*/?>img/catalog-menu/6.jpg" alt=""
+                                                            <img data-src="<? /*=STATIC_PATH*/ ?>img/catalog-menu/6.jpg" alt=""
                                                                  class="page-header__catalog-dropdown-results-link-bg-image lazyload">
                                                         </div>
                                                         <h4 class="page-header__catalog-dropdown-results-link-title">
@@ -256,7 +257,7 @@ $page = $APPLICATION->GetCurPage();
                                                 <li class="page-header__catalog-dropdown-results-list-item">
                                                     <a href="#" class="page-header__catalog-dropdown-results-link">
                                                         <div class="page-header__catalog-dropdown-results-link-bg">
-                                                            <img data-src="<?/*=STATIC_PATH*/?>img/catalog-menu/1.jpg" alt=""
+                                                            <img data-src="<? /*=STATIC_PATH*/ ?>img/catalog-menu/1.jpg" alt=""
                                                                  class="page-header__catalog-dropdown-results-link-bg-image lazyload">
                                                         </div>
                                                         <h4 class="page-header__catalog-dropdown-results-link-title">
@@ -271,7 +272,7 @@ $page = $APPLICATION->GetCurPage();
                                                 <li class="page-header__catalog-dropdown-results-list-item">
                                                     <a href="#" class="page-header__catalog-dropdown-results-link">
                                                         <div class="page-header__catalog-dropdown-results-link-bg">
-                                                            <img data-src="<?/*=STATIC_PATH*/?>img/catalog-menu/2.jpg" alt=""
+                                                            <img data-src="<? /*=STATIC_PATH*/ ?>img/catalog-menu/2.jpg" alt=""
                                                                  class="page-header__catalog-dropdown-results-link-bg-image lazyload">
                                                         </div>
                                                         <h4 class="page-header__catalog-dropdown-results-link-title">
@@ -286,7 +287,7 @@ $page = $APPLICATION->GetCurPage();
                                                 <li class="page-header__catalog-dropdown-results-list-item">
                                                     <a href="#" class="page-header__catalog-dropdown-results-link">
                                                         <div class="page-header__catalog-dropdown-results-link-bg">
-                                                            <img data-src="<?/*=STATIC_PATH*/?>img/catalog-menu/3.jpg" alt=""
+                                                            <img data-src="<? /*=STATIC_PATH*/ ?>img/catalog-menu/3.jpg" alt=""
                                                                  class="page-header__catalog-dropdown-results-link-bg-image lazyload">
                                                         </div>
                                                         <h4 class="page-header__catalog-dropdown-results-link-title">
@@ -301,7 +302,7 @@ $page = $APPLICATION->GetCurPage();
                                                 <li class="page-header__catalog-dropdown-results-list-item">
                                                     <a href="#" class="page-header__catalog-dropdown-results-link">
                                                         <div class="page-header__catalog-dropdown-results-link-bg">
-                                                            <img data-src="<?/*=STATIC_PATH*/?>img/catalog-menu/4.jpg" alt=""
+                                                            <img data-src="<? /*=STATIC_PATH*/ ?>img/catalog-menu/4.jpg" alt=""
                                                                  class="page-header__catalog-dropdown-results-link-bg-image lazyload">
                                                         </div>
                                                         <h4 class="page-header__catalog-dropdown-results-link-title">
@@ -316,7 +317,7 @@ $page = $APPLICATION->GetCurPage();
                                                 <li class="page-header__catalog-dropdown-results-list-item">
                                                     <a href="#" class="page-header__catalog-dropdown-results-link">
                                                         <div class="page-header__catalog-dropdown-results-link-bg">
-                                                            <img data-src="<?/*=STATIC_PATH*/?>img/catalog-menu/5.jpg" alt=""
+                                                            <img data-src="<? /*=STATIC_PATH*/ ?>img/catalog-menu/5.jpg" alt=""
                                                                  class="page-header__catalog-dropdown-results-link-bg-image lazyload">
                                                         </div>
                                                         <h4 class="page-header__catalog-dropdown-results-link-title">
@@ -331,7 +332,7 @@ $page = $APPLICATION->GetCurPage();
                                                 <li class="page-header__catalog-dropdown-results-list-item">
                                                     <a href="#" class="page-header__catalog-dropdown-results-link">
                                                         <div class="page-header__catalog-dropdown-results-link-bg">
-                                                            <img data-src="<?/*=STATIC_PATH*/?>img/catalog-menu/6.jpg" alt=""
+                                                            <img data-src="<? /*=STATIC_PATH*/ ?>img/catalog-menu/6.jpg" alt=""
                                                                  class="page-header__catalog-dropdown-results-link-bg-image lazyload">
                                                         </div>
                                                         <h4 class="page-header__catalog-dropdown-results-link-title">
@@ -350,7 +351,7 @@ $page = $APPLICATION->GetCurPage();
                                                 <li class="page-header__catalog-dropdown-results-list-item">
                                                     <a href="#" class="page-header__catalog-dropdown-results-link">
                                                         <div class="page-header__catalog-dropdown-results-link-bg">
-                                                            <img data-src="<?/*=STATIC_PATH*/?>img/catalog-menu/1.jpg" alt=""
+                                                            <img data-src="<? /*=STATIC_PATH*/ ?>img/catalog-menu/1.jpg" alt=""
                                                                  class="page-header__catalog-dropdown-results-link-bg-image lazyload">
                                                         </div>
                                                         <h4 class="page-header__catalog-dropdown-results-link-title">
@@ -365,7 +366,7 @@ $page = $APPLICATION->GetCurPage();
                                                 <li class="page-header__catalog-dropdown-results-list-item">
                                                     <a href="#" class="page-header__catalog-dropdown-results-link">
                                                         <div class="page-header__catalog-dropdown-results-link-bg">
-                                                            <img data-src="<?/*=STATIC_PATH*/?>img/catalog-menu/2.jpg" alt=""
+                                                            <img data-src="<? /*=STATIC_PATH*/ ?>img/catalog-menu/2.jpg" alt=""
                                                                  class="page-header__catalog-dropdown-results-link-bg-image lazyload">
                                                         </div>
                                                         <h4 class="page-header__catalog-dropdown-results-link-title">
@@ -380,7 +381,7 @@ $page = $APPLICATION->GetCurPage();
                                                 <li class="page-header__catalog-dropdown-results-list-item">
                                                     <a href="#" class="page-header__catalog-dropdown-results-link">
                                                         <div class="page-header__catalog-dropdown-results-link-bg">
-                                                            <img data-src="<?/*=STATIC_PATH*/?>img/catalog-menu/3.jpg" alt=""
+                                                            <img data-src="<? /*=STATIC_PATH*/ ?>img/catalog-menu/3.jpg" alt=""
                                                                  class="page-header__catalog-dropdown-results-link-bg-image lazyload">
                                                         </div>
                                                         <h4 class="page-header__catalog-dropdown-results-link-title">
@@ -395,7 +396,7 @@ $page = $APPLICATION->GetCurPage();
                                                 <li class="page-header__catalog-dropdown-results-list-item">
                                                     <a href="#" class="page-header__catalog-dropdown-results-link">
                                                         <div class="page-header__catalog-dropdown-results-link-bg">
-                                                            <img data-src="<?/*=STATIC_PATH*/?>img/catalog-menu/4.jpg" alt=""
+                                                            <img data-src="<? /*=STATIC_PATH*/ ?>img/catalog-menu/4.jpg" alt=""
                                                                  class="page-header__catalog-dropdown-results-link-bg-image lazyload">
                                                         </div>
                                                         <h4 class="page-header__catalog-dropdown-results-link-title">
@@ -410,7 +411,7 @@ $page = $APPLICATION->GetCurPage();
                                                 <li class="page-header__catalog-dropdown-results-list-item">
                                                     <a href="#" class="page-header__catalog-dropdown-results-link">
                                                         <div class="page-header__catalog-dropdown-results-link-bg">
-                                                            <img data-src="<?/*=STATIC_PATH*/?>img/catalog-menu/5.jpg" alt=""
+                                                            <img data-src="<? /*=STATIC_PATH*/ ?>img/catalog-menu/5.jpg" alt=""
                                                                  class="page-header__catalog-dropdown-results-link-bg-image lazyload">
                                                         </div>
                                                         <h4 class="page-header__catalog-dropdown-results-link-title">
@@ -425,7 +426,7 @@ $page = $APPLICATION->GetCurPage();
                                                 <li class="page-header__catalog-dropdown-results-list-item">
                                                     <a href="#" class="page-header__catalog-dropdown-results-link">
                                                         <div class="page-header__catalog-dropdown-results-link-bg">
-                                                            <img data-src="<?/*=STATIC_PATH*/?>img/catalog-menu/6.jpg" alt=""
+                                                            <img data-src="<? /*=STATIC_PATH*/ ?>img/catalog-menu/6.jpg" alt=""
                                                                  class="page-header__catalog-dropdown-results-link-bg-image lazyload">
                                                         </div>
                                                         <h4 class="page-header__catalog-dropdown-results-link-title">
@@ -444,7 +445,7 @@ $page = $APPLICATION->GetCurPage();
                                                 <li class="page-header__catalog-dropdown-results-list-item">
                                                     <a href="#" class="page-header__catalog-dropdown-results-link">
                                                         <div class="page-header__catalog-dropdown-results-link-bg">
-                                                            <img data-src="<?/*=STATIC_PATH*/?>img/catalog-menu/1.jpg" alt=""
+                                                            <img data-src="<? /*=STATIC_PATH*/ ?>img/catalog-menu/1.jpg" alt=""
                                                                  class="page-header__catalog-dropdown-results-link-bg-image lazyload">
                                                         </div>
                                                         <h4 class="page-header__catalog-dropdown-results-link-title">
@@ -459,7 +460,7 @@ $page = $APPLICATION->GetCurPage();
                                                 <li class="page-header__catalog-dropdown-results-list-item">
                                                     <a href="#" class="page-header__catalog-dropdown-results-link">
                                                         <div class="page-header__catalog-dropdown-results-link-bg">
-                                                            <img data-src="<?/*=STATIC_PATH*/?>img/catalog-menu/2.jpg" alt=""
+                                                            <img data-src="<? /*=STATIC_PATH*/ ?>img/catalog-menu/2.jpg" alt=""
                                                                  class="page-header__catalog-dropdown-results-link-bg-image lazyload">
                                                         </div>
                                                         <h4 class="page-header__catalog-dropdown-results-link-title">
@@ -474,7 +475,7 @@ $page = $APPLICATION->GetCurPage();
                                                 <li class="page-header__catalog-dropdown-results-list-item">
                                                     <a href="#" class="page-header__catalog-dropdown-results-link">
                                                         <div class="page-header__catalog-dropdown-results-link-bg">
-                                                            <img data-src="<?/*=STATIC_PATH*/?>img/catalog-menu/3.jpg" alt=""
+                                                            <img data-src="<? /*=STATIC_PATH*/ ?>img/catalog-menu/3.jpg" alt=""
                                                                  class="page-header__catalog-dropdown-results-link-bg-image lazyload">
                                                         </div>
                                                         <h4 class="page-header__catalog-dropdown-results-link-title">
@@ -489,7 +490,7 @@ $page = $APPLICATION->GetCurPage();
                                                 <li class="page-header__catalog-dropdown-results-list-item">
                                                     <a href="#" class="page-header__catalog-dropdown-results-link">
                                                         <div class="page-header__catalog-dropdown-results-link-bg">
-                                                            <img data-src="<?/*=STATIC_PATH*/?>img/catalog-menu/4.jpg" alt=""
+                                                            <img data-src="<? /*=STATIC_PATH*/ ?>img/catalog-menu/4.jpg" alt=""
                                                                  class="page-header__catalog-dropdown-results-link-bg-image lazyload">
                                                         </div>
                                                         <h4 class="page-header__catalog-dropdown-results-link-title">
@@ -504,7 +505,7 @@ $page = $APPLICATION->GetCurPage();
                                                 <li class="page-header__catalog-dropdown-results-list-item">
                                                     <a href="#" class="page-header__catalog-dropdown-results-link">
                                                         <div class="page-header__catalog-dropdown-results-link-bg">
-                                                            <img data-src="<?/*=STATIC_PATH*/?>img/catalog-menu/5.jpg" alt=""
+                                                            <img data-src="<? /*=STATIC_PATH*/ ?>img/catalog-menu/5.jpg" alt=""
                                                                  class="page-header__catalog-dropdown-results-link-bg-image lazyload">
                                                         </div>
                                                         <h4 class="page-header__catalog-dropdown-results-link-title">
@@ -519,7 +520,7 @@ $page = $APPLICATION->GetCurPage();
                                                 <li class="page-header__catalog-dropdown-results-list-item">
                                                     <a href="#" class="page-header__catalog-dropdown-results-link">
                                                         <div class="page-header__catalog-dropdown-results-link-bg">
-                                                            <img data-src="<?/*=STATIC_PATH*/?>img/catalog-menu/6.jpg" alt=""
+                                                            <img data-src="<? /*=STATIC_PATH*/ ?>img/catalog-menu/6.jpg" alt=""
                                                                  class="page-header__catalog-dropdown-results-link-bg-image lazyload">
                                                         </div>
                                                         <h4 class="page-header__catalog-dropdown-results-link-title">
@@ -541,37 +542,41 @@ $page = $APPLICATION->GetCurPage();
                 </div>
             </div>
 
-            <?$APPLICATION->IncludeComponent("bitrix:menu", "page-header__nav", Array(
-                "ALLOW_MULTI_SELECT" => "N",	// Разрешить несколько активных пунктов одновременно
-                "CHILD_MENU_TYPE" => "left",	// Тип меню для остальных уровней
-                "DELAY" => "N",	// Откладывать выполнение шаблона меню
-                "MAX_LEVEL" => "1",	// Уровень вложенности меню
-                "MENU_CACHE_GET_VARS" => "",	// Значимые переменные запроса
-                "MENU_CACHE_TIME" => "3600",	// Время кеширования (сек.)
-                "MENU_CACHE_TYPE" => "N",	// Тип кеширования
-                "MENU_CACHE_USE_GROUPS" => "Y",	// Учитывать права доступа
-                "ROOT_MENU_TYPE" => "top",	// Тип меню для первого уровня
-                "USE_EXT" => "N",	// Подключать файлы с именами вида .тип_меню.menu_ext.php
+            <? $APPLICATION->IncludeComponent("bitrix:menu", "page-header__nav", array(
+                "ALLOW_MULTI_SELECT" => "N",    // Разрешить несколько активных пунктов одновременно
+                "CHILD_MENU_TYPE" => "left",    // Тип меню для остальных уровней
+                "DELAY" => "N",    // Откладывать выполнение шаблона меню
+                "MAX_LEVEL" => "1",    // Уровень вложенности меню
+                "MENU_CACHE_GET_VARS" => "",    // Значимые переменные запроса
+                "MENU_CACHE_TIME" => "3600",    // Время кеширования (сек.)
+                "MENU_CACHE_TYPE" => "N",    // Тип кеширования
+                "MENU_CACHE_USE_GROUPS" => "Y",    // Учитывать права доступа
+                "ROOT_MENU_TYPE" => "top",    // Тип меню для первого уровня
+                "USE_EXT" => "N",    // Подключать файлы с именами вида .тип_меню.menu_ext.php
                 "COMPONENT_TEMPLATE" => ""
             ),
                 false
-            );?>
+            ); ?>
 
-            <a href="#" class="page-header__whats-app">
+            <a href="tel:<?= \Bitrix\Main\Config\Option::get("sl.core", "phone"); ?>" class="page-header__phone">
                 <span>
-                    8 800 000-88-88
+                    <?= \Bitrix\Main\Config\Option::get("sl.core", "phone"); ?>
                 </span>
-                <img src="<?=STATIC_PATH?>img/whatsapp.svg" alt="" class="page-header__whats-app-logo">
             </a>
-            <a href="#" class="page-header__comparisons">
-                <svg width="14" height="14" aria-hidden="true" class="icon-comparisons">
-                    <use xlink:href="#comparisons"></use>
-                </svg>
-                <div class="page-header__comparisons-notifications">
-                    2
-                </div>
+            <a href="<?= \Bitrix\Main\Config\Option::get("sl.core", "phone_link"); ?>" class="page-header__whats-app">
+                <img src="<?= STATIC_PATH ?>img/whatsapp.svg" alt="" class="page-header__whats-app-logo">
             </a>
-            <a href="#callback-modal" class="page-header__mobile-phone-link js-open-modal">
+            <?/*if ($USER->IsAdmin()):*/?>
+                <a href="/compare/" class="page-header__comparisons">
+                    <svg width="14" height="14" aria-hidden="true" class="icon-comparisons">
+                        <use xlink:href="#comparisons"></use>
+                    </svg>
+                    <div class="page-header__comparisons-notifications js-header-comparison-count">
+                        <?=count($_SESSION['COMPARE_LIST'][2]['ITEMS']);?>
+                    </div>
+                </a>
+            <?/*endif;*/?>
+            <a href="tel:<?= \Bitrix\Main\Config\Option::get("sl.core", "phone"); ?>" class="page-header__mobile-phone-link">
                 <svg width="14" height="14" aria-hidden="true" class="icon-phone">
                     <use xlink:href="#phone"></use>
                 </svg>
