@@ -108,15 +108,16 @@ document.addEventListener('DOMContentLoaded', function() {
         promise.then(addItems);
 
         function addItems(){
-            console.log(arId);
-            arId.forEach(id => {
+            var promises = arId.map(function(id) {
                 let url = '/compare/?action=ADD_TO_COMPARE_LIST&ajax_action=Y&id=' + id;
-                $.get(url, function (data) {
+                return $.get(url, function (data) {
                     console.log(data);
                 });
             });
 
-            location.href = "/compare/";
+            Promise.all(promises).then(() => {
+                location.href = "/compare/";
+            });
         }
     });
 })

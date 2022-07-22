@@ -26,7 +26,7 @@ $this->setFrameMode(true);
     <?foreach($arResult["BRANDS"] as $key => $arBrand):?>
         <a href="#" class="catalog__categories-link<?if($key == 33):?> active<?endif;?>">
             <div class="catalog__categories-link-content">
-                <img src="<?=Sl\Core\Tools::resizeImage($arBrand["PREVIEW_PICTURE"], 150, 100, true)?>" alt="" class="catalog__categories-link-logo">
+                <img data-src="<?=Sl\Core\Tools::resizeImage($arBrand["PREVIEW_PICTURE"], 150, 100, true)?>" alt="" class="catalog__categories-link-logo lazyload">
                 <span class="catalog__categories-link-count">
                     <?=count($arBrand["ITEMS"])?>
                 </span>
@@ -39,7 +39,7 @@ $this->setFrameMode(true);
 <div class="catalog__tabs js-block-to-reveal" data-intersection-ratio="0.2">
     <div class="catalog__tab-item">
         <div class="catalog__brand">
-            <a href="#" class="catalog__brand-info">
+            <a href="/catalog/" class="catalog__brand-info">
                 <div class="catalog__brand-info-bg">
                     <img data-src="<?=STATIC_PATH?>img/engo.jpg" alt="" class="catalog__brand-info-bg-image lazyload">
                 </div>
@@ -131,12 +131,12 @@ $this->setFrameMode(true);
                                         <a href="<?=$arItem["DETAIL_PAGE_URL"]?>" class="blue-small-btn">
                                             Смотреть <span class="hide-on-mobile">модель</span>
                                         </a>
-                                        <a href="#" class="outline-btn">
+                                        <!--<a href="#" class="outline-btn">
                                             <svg width="14" height="14" aria-hidden="true" class="icon-heart">
                                                 <use xlink:href="#heart"></use>
                                             </svg>
-                                        </a>
-                                        <a href="#" class="outline-btn js-comparison-btn">
+                                        </a>-->
+                                        <a href="#" class="outline-btn js-comparison-btn" data-id="<?=$arItem["ID"]?>">
                                             <svg width="14" height="14" aria-hidden="true" class="icon-comparisons">
                                                 <use xlink:href="#comparisons"></use>
                                             </svg>
@@ -254,12 +254,12 @@ $this->setFrameMode(true);
                                             <a href="<?=$arItem["DETAIL_PAGE_URL"]?>" class="blue-small-btn">
                                                 Смотреть <span class="hide-on-mobile">модель</span>
                                             </a>
-                                            <a href="#" class="outline-btn">
+                                            <!--<a href="#" class="outline-btn">
                                                 <svg width="14" height="14" aria-hidden="true" class="icon-heart">
                                                     <use xlink:href="#heart"></use>
                                                 </svg>
-                                            </a>
-                                            <a href="#" class="outline-btn js-comparison-btn">
+                                            </a>-->
+                                            <a href="#" class="outline-btn js-comparison-btn" data-id="<?=$arItem["ID"]?>">
                                                 <svg width="14" height="14" aria-hidden="true" class="icon-comparisons">
                                                     <use xlink:href="#comparisons"></use>
                                                 </svg>
