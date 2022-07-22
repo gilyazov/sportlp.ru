@@ -84,7 +84,39 @@ document.addEventListener('DOMContentLoaded', function() {
     const comparison = document.querySelector('.js-full-comparison');
     comparison.addEventListener('click', (event) => {
         event.preventDefault();
-        let id = $('[data-comparise]').data('comparise');
-        console.log(id);
+        let splitId = $('[data-comparise]').data('comparise');
+        let arId = splitId.split(",");
+
+        function clearAll()
+        {
+            return new Promise((resolve, reject) => {
+                BX.ajax.runAction('sl:core.api.fullcompare.clear', {
+                    data: {
+                        arId: arId
+                    }
+                }).then(function (response) {
+                    console.log(response);
+                    resolve("Успех");
+                }, function (response) {
+                    console.log(response);
+                    reject("Ошибка");
+                });
+            });
+        }
+
+        const promise = clearAll();
+        promise.then(addItems);
+
+        function addItems(){
+            console.log(arId);
+            arId.forEach(id => {
+                let url = '/compare/?action=ADD_TO_COMPARE_LIST&ajax_action=Y&id=' + id;
+                $.get(url, function (data) {
+                    console.log(data);
+                });
+            });
+
+            location.href = "/compare/";
+        }
     });
 })

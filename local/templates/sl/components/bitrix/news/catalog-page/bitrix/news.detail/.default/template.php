@@ -74,33 +74,35 @@ $this->setFrameMode(true);
                 </div>
             <?endif;?>
             <div class="product-intro__rating">
+                <?if($arResult["PROPERTIES"]["rating"]["VALUE"]):?>
+                    <?$rating = ceil($arResult["PROPERTIES"]["rating"]["VALUE"]/0.5)*0.5;?>
+                    <div class="product-intro__rating-stars">
+                        <?for($i=1;$i<=$rating;$i++){?>
+                            <svg width="14" height="14" aria-hidden="true" class="icon-star">
+                                <use xlink:href="#star"></use>
+                            </svg>
+                        <?}?>
 
-                <div class="product-intro__rating-stars">
-                    <svg width="14" height="14" aria-hidden="true" class="icon-star">
-                        <use xlink:href="#star"></use>
-                    </svg>
-                    <svg width="14" height="14" aria-hidden="true" class="icon-star">
-                        <use xlink:href="#star"></use>
-                    </svg>
-                    <svg width="14" height="14" aria-hidden="true" class="icon-star">
-                        <use xlink:href="#star"></use>
-                    </svg>
-                    <svg width="14" height="14" aria-hidden="true" class="icon-star">
-                        <use xlink:href="#star"></use>
-                    </svg>
-                    <svg width="14" height="14" aria-hidden="true" class="icon-star">
-                        <use xlink:href="#star"></use>
-                    </svg>
-                </div>
-                <div class="product-intro__rating-reviews">
-                    10 отзывов
-                </div>
-
+                        <?if(is_decimal($rating)):?>
+                            <svg width="14" height="14" aria-hidden="true" class="icon-star">
+                                <use xlink:href="#halfstar"></use>
+                            </svg>
+                        <?endif;?>
+                    </div>
+                <?endif;?>
+                <?if(($count = count($arResult["PROPERTIES"]["vote_count"]["VALUE"])) && $arResult["PROPERTIES"]["vote_count"]["VALUE"]):?>
+                    <div class="product-intro__rating-reviews">
+                        <?=\Sl\Core\Tools::declOfNum($count, ["отзыв", "отзыва", "отзывов"])?>
+                    </div>
+                <?endif;?>
             </div>
         </div>
         <h1 class="product-intro__main-title">
             <?=$arResult["NAME"]?>
         </h1>
+        <?if($price = $arResult["PROPERTIES"]["PRICE"]["VALUE"]):?>
+            <span class="product-intro__price"><?=number_format($price, 0, ',', ' ' )?> ₽</span>
+        <?endif;?>
         <div class="product-intro__features">
             <div class="product-intro__feature">
                 <svg width="14" height="14" aria-hidden="true" class="icon-<?=$arResult["PROPERTIES"]["ATT_TYPE_FUEL"]["VALUE_XML_ID"]?>">
@@ -117,22 +119,22 @@ $this->setFrameMode(true);
         </div>
         <div class="product-intro__description">
             <p>
-                Предназначена для использования в более жестких условиях эксплуатации.
+                <?=$arResult["PROPERTIES"]["INTRO_DESCRIPTION"]["VALUE"]?>
             </p>
         </div>
         <div class="product-intro__buttons">
-            <a href="#" class="arrow-btn-filled">
+            <a href="#callback-modal" class="arrow-btn-filled js-open-modal">
                 Оставить заявку
                 <svg width="14" height="14" aria-hidden="true" class="icon-diagonal-arrow">
                     <use xlink:href="#diagonal-arrow"></use>
                 </svg>
             </a>
-            <a href="#" class="outline-btn outline-btn--large">
+            <!--<a href="#" class="outline-btn outline-btn--large">
                 <svg width="14" height="14" aria-hidden="true" class="icon-heart">
                     <use xlink:href="#heart"></use>
                 </svg>
-            </a>
-            <a href="#" class="outline-btn outline-btn--large js-comparison-btn">
+            </a>-->
+            <a href="#" class="outline-btn outline-btn--large js-comparison-btn" data-id="<?=$arResult["ID"]?>">
                 <svg width="14" height="14" aria-hidden="true" class="icon-comparisons">
                     <use xlink:href="#comparisons"></use>
                 </svg>

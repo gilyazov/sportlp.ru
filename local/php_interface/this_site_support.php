@@ -1,0 +1,1 @@
+<a href="http://aydargilyazov.ru" target="_blank" title="разработка" class="login-footer-link">Разработка</a>

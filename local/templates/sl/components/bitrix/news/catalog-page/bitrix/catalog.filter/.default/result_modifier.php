@@ -12,13 +12,16 @@ foreach ($arResult['ITEMS'] as $key => &$arItem){
         }
     }
     elseif ($arItem["INPUT_NAME"] == "arrFilter_pf[BRAND]"){
-        $arItem["LIST"][''] = "Все";
+        $arItem["LIST"]['']["NAME"] = "Все";
         $arFilter = Array("IBLOCK_ID"=>5, "ACTIVE"=>"Y");
-        $res = CIBlockElement::GetList(Array(), $arFilter, false, false, ["ID", "NAME"]);
+        $res = CIBlockElement::GetList([], $arFilter, false, false, ["ID", "NAME", "PROPERTY_FILTER_TITLE", "PROPERTY_FILTER_DESCRIPTION"]);
         while($ob = $res->GetNextElement())
         {
             $arFields = $ob->GetFields();
-            $arItem["LIST"][$arFields["ID"]] = $arFields["NAME"];
+            $arFields["TITLE"] = $arFields["PROPERTY_FILTER_TITLE_VALUE"];
+            $arFields["DESCRIPTION"] = $arFields["PROPERTY_FILTER_DESCRIPTION_VALUE"];
+
+            $arItem["LIST"][$arFields["ID"]] = $arFields;
         }
     }
 }

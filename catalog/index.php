@@ -1,5 +1,7 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
+$APPLICATION->SetPageProperty("keywords", "ледозаливочная техника");
+$APPLICATION->SetPageProperty("description", "Каталог моделей ледозаливочной техники");
 $APPLICATION->SetTitle("Каталог");
 ?><?$APPLICATION->IncludeComponent(
 	"bitrix:news", 
@@ -11,15 +13,15 @@ $APPLICATION->SetTitle("Каталог");
 		"NEWS_COUNT" => "999",
 		"USE_SEARCH" => "N",
 		"USE_RSS" => "N",
-        "USE_RATING" => "N",
-        "MAX_VOTE" => "5",
-        "VOTE_NAMES" => "",
+		"USE_RATING" => "N",
+		"MAX_VOTE" => "5",
+		"VOTE_NAMES" => "",
 		"USE_CATEGORIES" => "N",
 		"USE_FILTER" => "Y",
 		"SORT_BY1" => "SORT",
 		"SORT_ORDER1" => "ASC",
-		"SORT_BY2" => "ACTIVE_FROM",
-		"SORT_ORDER2" => "DESC",
+		"SORT_BY2" => "",
+		"SORT_ORDER2" => "",
 		"CHECK_DATES" => "Y",
 		"SEF_MODE" => "Y",
 		"SEF_FOLDER" => "/catalog/",
@@ -67,6 +69,7 @@ $APPLICATION->SetTitle("Каталог");
 		"DETAIL_PROPERTY_CODE" => array(
 			0 => "ATT_WARRANTY",
 			1 => "ATT_PHOTO",
+			2 => "",
 		),
 		"DETAIL_DISPLAY_TOP_PAGER" => "N",
 		"DETAIL_DISPLAY_BOTTOM_PAGER" => "Y",
@@ -91,13 +94,17 @@ $APPLICATION->SetTitle("Каталог");
 			1 => "",
 		),
 		"FILTER_PROPERTY_CODE" => array(
-			0 => "BRAND",
-			1 => "ATT_TYPE_FUEL",
-            2 => "ATT_PROCESSING_AREA"
+			0 => "ATT_TYPE_FUEL",
+			1 => "ATT_PROCESSING_AREA",
+			2 => "BRAND",
+			3 => "",
 		),
 		"SEF_URL_TEMPLATES" => array(
 			"news" => "",
-			"section" => "#SECTION_CODE#/",
+            "brand" => "brand/",
+            "drive_type" => "drive-type/",
+            "arena_type" => "arena-type/",
+            "section" => "#SECTION_CODE#/",
 			"detail" => "#SECTION_CODE#/#ELEMENT_CODE#/",
 		)
 	),

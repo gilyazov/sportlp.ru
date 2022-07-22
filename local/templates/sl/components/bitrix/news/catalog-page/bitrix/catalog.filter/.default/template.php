@@ -39,7 +39,7 @@ $this->setFrameMode(true);
 
                         <h3 class="catalog-page__filters-block-heading"><?=$arItem["NAME"]?></h3>
                         <div class="catalog-page__filters-brands">
-                            <?foreach ($arItem['LIST'] as $value => $option):?>
+                            <?foreach ($arItem['LIST'] as $value => $arOption):?>
                                 <label class="catalog-page__filters-checkbox">
                                     <input type="radio"
                                            value="<?=$value?>"
@@ -51,11 +51,16 @@ $this->setFrameMode(true);
                                                 <use xlink:href="#<?=$arItem['LIST_FULL'][$value]["EXTERNAL_ID"]?>"></use>
                                             </svg>
                                         <?endif;?>
-                                        <?=$option?>
+                                        <?
+                                        /*echo "<pre>";
+                                        print_r($arOption);
+                                        echo "</pre>";*/
+                                        ?>
+                                        <?echo (is_array($arOption) ? $arOption["NAME"] : $arOption)?>
 
-                                        <?if ($value):?>
+                                        <?if (is_array($arOption)):?>
                                             <span class="catalog-page__filters-checkbox-info">
-                                            практично
+                                            <?=$arOption["TITLE"]?>
                                             <span class="catalog-page__filters-checkbox-info-icon">
                                                 <svg width="14" height="14" aria-hidden="true" class="icon-notice">
                                                     <use xlink:href="#notice"></use>
@@ -63,7 +68,7 @@ $this->setFrameMode(true);
                                                 <span class="catalog-page__filters-checkbox-info-dropdown">
                                                     <span
                                                             class="catalog-page__filters-checkbox-info-dropdown-inner">
-                                                        Встроеная система автоматической мойки
+                                                        <?=$arOption["DESCRIPTION"]?>
                                                     </span>
                                                 </span>
                                             </span>
@@ -74,7 +79,7 @@ $this->setFrameMode(true);
 
                             <?endforeach;?>
                         </div>
-                        <button class="catalog-page__filters-block-submit" type="submit">
+                        <button class="catalog-page__filters-block-submit js-close-modal" type="button">
                             Отлично
                         </button>
                     </div>

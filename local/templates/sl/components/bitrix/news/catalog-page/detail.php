@@ -151,12 +151,15 @@ $this->setFrameMode(true);
                     <h3 class="product-apply__contacts-heading">
                         Позвоните нам и оставьте заявку
                     </h3>
-                    <a href="+78000008888" class="product-apply__contacts-phone"><span>8 800 000-88-88</span></a>
+                    <a href="<?= \Bitrix\Main\Config\Option::get("sl.core", "phone_link"); ?>" class="product-apply__contacts-phone"><span><?= \Bitrix\Main\Config\Option::get("sl.core", "phone"); ?></span></a>
                 </div>
             </div>
-            <div class="product-apply__col">
-                <img data-src="<?=STATIC_PATH?>img/product-apply.png" alt="" class="product-apply__image lazyload">
-            </div>
+            <?$res = CIBlockElement::GetByID($ElementID);
+            if($arElement = $res->GetNext()):?>
+                <div class="product-apply__col">
+                    <img data-src="<?=Sl\Core\Tools::resizeImage($arElement["PREVIEW_PICTURE"], 570, 430, true)?>" alt="" class="product-apply__image lazyload">
+                </div>
+            <?endif;?>
             <div class="product-apply__col">
                 <?$APPLICATION->IncludeComponent("bitrix:iblock.element.add.form", "product-apply__form", Array(
                     "CUSTOM_TITLE_NAME" => "+7 000 000-00-00",	// * наименование *
@@ -223,6 +226,7 @@ $this->setFrameMode(true);
                 "SORT_BY2" => "",
                 "SORT_ORDER2" => "",
                 "SET_TITLE" => "N",
+                "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
                 "PROPERTY_CODE" => [
                     "POPULAR"
                 ]

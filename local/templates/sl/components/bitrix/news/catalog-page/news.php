@@ -40,36 +40,39 @@ $this->setFrameMode(true);
                 <h1 class="catalog-page__main-heading">
                     Каталог
                 </h1>
-                <div class="catalog-page__categories">
-                    <ul class="catalog-page__categories-list">
-                        <li class="catalog-page__categories-list-item active">
-                            <a href="#" class="catalog-page__categories-link">
-                                Всей техники
-                            </a>
-                        </li>
-                        <li class="catalog-page__categories-list-item">
-                            <a href="#" class="catalog-page__categories-link">
-                                По брендам
-                            </a>
-                        </li>
-                        <li class="catalog-page__categories-list-item">
-                            <a href="#" class="catalog-page__categories-link">
-                                По типам ледорвых арен
-                            </a>
-                        </li>
-                        <li class="catalog-page__categories-list-item">
-                            <a href="#" class="catalog-page__categories-link">
-                                По типам привода
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+
+                <?$APPLICATION->IncludeComponent(
+                    "bitrix:menu",
+                    "catalog-page__categories",
+                    array(
+                        "ALLOW_MULTI_SELECT" => "N",
+                        "CHILD_MENU_TYPE" => "catalog",
+                        "COMPONENT_TEMPLATE" => ".default",
+                        "DELAY" => "N",
+                        "MAX_LEVEL" => "1",
+                        "MENU_CACHE_GET_VARS" => array(
+                        ),
+                        "MENU_CACHE_TIME" => "3600",
+                        "MENU_CACHE_TYPE" => "A",
+                        "MENU_CACHE_USE_GROUPS" => "N",
+                        "MENU_THEME" => "site",
+                        "ROOT_MENU_TYPE" => "catalog",
+                        "USE_EXT" => "Y"
+                    ),
+                    $component
+                );?>
 
                 <div class="catalog-page__filters-nav-outside-wrapper">
                     <div class="catalog-page__filters-nav-wrapper js-sticky-nav-wrapper">
                         <div class="catalog-page__filters-nav js-filters-nav">
                             <div class="swiper-container">
                                 <ul class="swiper-wrapper catalog-page__filters-nav-list">
+                                    <li class="swiper-slide catalog-page__filters-nav-list-item">
+                                        <a href="#filters-categories"
+                                           class="catalog-page__filters-nav-link js-open-modal">
+                                            Категории
+                                        </a>
+                                    </li>
                                     <li class="swiper-slide catalog-page__filters-nav-list-item">
                                         <a href="#filters-PROPERTY_69" class="catalog-page__filters-nav-link js-open-modal">
                                             Вид топлива
@@ -92,29 +95,28 @@ $this->setFrameMode(true);
                 </div>
 
             </div>
-            <div class="catalog-page__what-to-choose">
-                <a href="#" class="what-to-choose">
-                    <div class="what-to-choose__bg">
-                        <img data-src="<?=STATIC_PATH?>img/what-to-choose.jpg" alt="" class="what-to-choose__bg-image lazyload">
-                    </div>
-                    <svg width="14" height="14" aria-hidden="true" class="icon-question">
-                        <use xlink:href="#question"></use>
-                    </svg>
-                    <div class="what-to-choose__row">
-                        <h3 class="what-to-choose__title">
-                            Как подобрать подходящую модель?
-                        </h3>
-                        <div class="what-to-choose__read">
-                            <span class="what-to-choose__read-text">
-                                читать
-                            </span>
-                            <svg width="14" height="14" aria-hidden="true" class="icon-diagonal-arrow">
-                                <use xlink:href="#diagonal-arrow"></use>
-                            </svg>
-                        </div>
-                    </div>
-                </a>
-            </div>
+            <?
+            global $arrFilterArticle;
+            $arrFilterArticle = Array(
+                "PROPERTY_LOCATION" => 183
+            );
+            $APPLICATION->IncludeComponent(
+                "bitrix:news.list",
+                "article__catalog",
+                Array(
+                    "IBLOCK_TYPE" => "news",
+                    "IBLOCK_ID" => 12,
+                    "NEWS_COUNT" => 1,
+                    "SORT_BY1" => "SORT",
+                    "SORT_ORDER1" => "ASC",
+                    "SET_TITLE" => "N",
+                    "FILTER_NAME" => "arrFilterArticle",
+                    "PROPERTY_CODE" => [
+                        "ARTICLE"
+                    ]
+                ),
+                false
+            );?>
         </div>
 
         <div class="catalog-page__layout" id="catalogAjax">
@@ -145,24 +147,24 @@ $this->setFrameMode(true);
                 );?>
 
                 <?if($arParams["USE_FILTER"]=="Y"):?>
-                        <?$APPLICATION->IncludeComponent(
-                            "bitrix:catalog.filter",
-                            "",
-                            Array(
-                                "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
-                                "IBLOCK_ID" => $arParams["IBLOCK_ID"],
-                                "FILTER_NAME" => $arParams["FILTER_NAME"],
-                                "FIELD_CODE" => $arParams["FILTER_FIELD_CODE"],
-                                "PROPERTY_CODE" => $arParams["FILTER_PROPERTY_CODE"],
-                                "CACHE_TYPE" => $arParams["CACHE_TYPE"],
-                                "CACHE_TIME" => $arParams["CACHE_TIME"],
-                                "CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
-                                "PAGER_PARAMS_NAME" => $arParams["PAGER_PARAMS_NAME"],
-                            ),
-                            $component
-                        );
-                        ?>
-                    <?endif?>
+                    <?$APPLICATION->IncludeComponent(
+                        "bitrix:catalog.filter",
+                        "",
+                        Array(
+                            "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
+                            "IBLOCK_ID" => $arParams["IBLOCK_ID"],
+                            "FILTER_NAME" => $arParams["FILTER_NAME"],
+                            "FIELD_CODE" => $arParams["FILTER_FIELD_CODE"],
+                            "PROPERTY_CODE" => $arParams["FILTER_PROPERTY_CODE"],
+                            "CACHE_TYPE" => $arParams["CACHE_TYPE"],
+                            "CACHE_TIME" => $arParams["CACHE_TIME"],
+                            "CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
+                            "PAGER_PARAMS_NAME" => $arParams["PAGER_PARAMS_NAME"],
+                        ),
+                        $component
+                    );
+                    ?>
+                <?endif?>
             </div>
 
             <div class="catalog-page__main">
@@ -180,10 +182,14 @@ $this->setFrameMode(true);
                         <div class="catalog-page__sorting-dropdown">
                             <div class="catalog-page__sorting-dropdown-inner">
                                 <div class="catalog-page__sorting-links">
-                                    <a href="#" class="catalog-page__sorting-link">
+                                    <a
+                                        href="<?echo $APPLICATION->GetCurPageParam("SORT_BY=PROPERTY_rating&SORT_ORDER=DESC", ["SORT_BY", "SORT_ORDER"]);?>"
+                                        class="catalog-page__sorting-link<?if($_REQUEST["SORT_BY"] == "PROPERTY_rating"):?> active<?endif;?>">
                                         по популярности
                                     </a>
-                                    <a href="#" class="catalog-page__sorting-link active">
+                                    <a
+                                        href="<?echo $APPLICATION->GetCurPageParam("SORT_BY=PROPERTY_ATT_AREA_SURFACES&SORT_ORDER=DESC", ["SORT_BY", "SORT_ORDER"]);?>"
+                                        class="catalog-page__sorting-link<?if($_REQUEST["SORT_BY"] == "PROPERTY_ATT_AREA_SURFACES"):?> active<?endif;?>">
                                         по площади обработки
                                         <svg width="14" height="14" aria-hidden="true" class="icon-sort">
                                             <use xlink:href="#sort"></use>
@@ -196,58 +202,58 @@ $this->setFrameMode(true);
                 </div>
 
                 <?$APPLICATION->IncludeComponent(
-                "bitrix:news.list",
-                "",
-                Array(
-                    "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
-                    "IBLOCK_ID" => $arParams["IBLOCK_ID"],
-                    "NEWS_COUNT" => $arParams["NEWS_COUNT"],
-                    "SORT_BY1" => $arParams["SORT_BY1"],
-                    "SORT_ORDER1" => $arParams["SORT_ORDER1"],
-                    "SORT_BY2" => $arParams["SORT_BY2"],
-                    "SORT_ORDER2" => $arParams["SORT_ORDER2"],
-                    "FIELD_CODE" => $arParams["LIST_FIELD_CODE"],
-                    "PROPERTY_CODE" => $arParams["LIST_PROPERTY_CODE"],
-                    "DETAIL_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["detail"],
-                    "SECTION_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["section"],
-                    "IBLOCK_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["news"],
-                    "DISPLAY_PANEL" => $arParams["DISPLAY_PANEL"],
-                    "SET_TITLE" => $arParams["SET_TITLE"],
-                    "SET_LAST_MODIFIED" => $arParams["SET_LAST_MODIFIED"],
-                    "MESSAGE_404" => $arParams["MESSAGE_404"],
-                    "SET_STATUS_404" => $arParams["SET_STATUS_404"],
-                    "SHOW_404" => $arParams["SHOW_404"],
-                    "FILE_404" => $arParams["FILE_404"],
-                    "INCLUDE_IBLOCK_INTO_CHAIN" => $arParams["INCLUDE_IBLOCK_INTO_CHAIN"],
-                    "CACHE_TYPE" => $arParams["CACHE_TYPE"],
-                    "CACHE_TIME" => $arParams["CACHE_TIME"],
-                    "CACHE_FILTER" => $arParams["CACHE_FILTER"],
-                    "CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
-                    "DISPLAY_TOP_PAGER" => $arParams["DISPLAY_TOP_PAGER"],
-                    "DISPLAY_BOTTOM_PAGER" => $arParams["DISPLAY_BOTTOM_PAGER"],
-                    "PAGER_TITLE" => $arParams["PAGER_TITLE"],
-                    "PAGER_TEMPLATE" => $arParams["PAGER_TEMPLATE"],
-                    "PAGER_SHOW_ALWAYS" => $arParams["PAGER_SHOW_ALWAYS"],
-                    "PAGER_DESC_NUMBERING" => $arParams["PAGER_DESC_NUMBERING"],
-                    "PAGER_DESC_NUMBERING_CACHE_TIME" => $arParams["PAGER_DESC_NUMBERING_CACHE_TIME"],
-                    "PAGER_SHOW_ALL" => $arParams["PAGER_SHOW_ALL"],
-                    "PAGER_BASE_LINK_ENABLE" => $arParams["PAGER_BASE_LINK_ENABLE"],
-                    "PAGER_BASE_LINK" => $arParams["PAGER_BASE_LINK"],
-                    "PAGER_PARAMS_NAME" => $arParams["PAGER_PARAMS_NAME"],
-                    "DISPLAY_DATE" => $arParams["DISPLAY_DATE"],
-                    "DISPLAY_NAME" => "Y",
-                    "DISPLAY_PICTURE" => $arParams["DISPLAY_PICTURE"],
-                    "DISPLAY_PREVIEW_TEXT" => $arParams["DISPLAY_PREVIEW_TEXT"],
-                    "PREVIEW_TRUNCATE_LEN" => $arParams["PREVIEW_TRUNCATE_LEN"],
-                    "ACTIVE_DATE_FORMAT" => $arParams["LIST_ACTIVE_DATE_FORMAT"],
-                    "USE_PERMISSIONS" => $arParams["USE_PERMISSIONS"],
-                    "GROUP_PERMISSIONS" => $arParams["GROUP_PERMISSIONS"],
-                    "FILTER_NAME" => $arParams["FILTER_NAME"],
-                    "HIDE_LINK_WHEN_NO_DETAIL" => $arParams["HIDE_LINK_WHEN_NO_DETAIL"],
-                    "CHECK_DATES" => $arParams["CHECK_DATES"],
-                ),
-                $component
-            );?>
+                    "bitrix:news.list",
+                    "",
+                    Array(
+                        "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
+                        "IBLOCK_ID" => $arParams["IBLOCK_ID"],
+                        "NEWS_COUNT" => $arParams["NEWS_COUNT"],
+                        "SORT_BY1" => ($_REQUEST["SORT_BY"] ?: $arParams["SORT_BY1"]),
+                        "SORT_ORDER1" => ($_REQUEST["SORT_ORDER"] ?: $arParams["SORT_ORDER1"]),
+                        "SORT_BY2" => $arParams["SORT_BY2"],
+                        "SORT_ORDER2" => $arParams["SORT_ORDER2"],
+                        "FIELD_CODE" => $arParams["LIST_FIELD_CODE"],
+                        "PROPERTY_CODE" => $arParams["LIST_PROPERTY_CODE"],
+                        "DETAIL_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["detail"],
+                        "SECTION_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["section"],
+                        "IBLOCK_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["news"],
+                        "DISPLAY_PANEL" => $arParams["DISPLAY_PANEL"],
+                        "SET_TITLE" => $arParams["SET_TITLE"],
+                        "SET_LAST_MODIFIED" => $arParams["SET_LAST_MODIFIED"],
+                        "MESSAGE_404" => $arParams["MESSAGE_404"],
+                        "SET_STATUS_404" => $arParams["SET_STATUS_404"],
+                        "SHOW_404" => $arParams["SHOW_404"],
+                        "FILE_404" => $arParams["FILE_404"],
+                        "INCLUDE_IBLOCK_INTO_CHAIN" => $arParams["INCLUDE_IBLOCK_INTO_CHAIN"],
+                        "CACHE_TYPE" => "N",
+                        "CACHE_TIME" => $arParams["CACHE_TIME"],
+                        "CACHE_FILTER" => $arParams["CACHE_FILTER"],
+                        "CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
+                        "DISPLAY_TOP_PAGER" => $arParams["DISPLAY_TOP_PAGER"],
+                        "DISPLAY_BOTTOM_PAGER" => $arParams["DISPLAY_BOTTOM_PAGER"],
+                        "PAGER_TITLE" => $arParams["PAGER_TITLE"],
+                        "PAGER_TEMPLATE" => $arParams["PAGER_TEMPLATE"],
+                        "PAGER_SHOW_ALWAYS" => $arParams["PAGER_SHOW_ALWAYS"],
+                        "PAGER_DESC_NUMBERING" => $arParams["PAGER_DESC_NUMBERING"],
+                        "PAGER_DESC_NUMBERING_CACHE_TIME" => $arParams["PAGER_DESC_NUMBERING_CACHE_TIME"],
+                        "PAGER_SHOW_ALL" => $arParams["PAGER_SHOW_ALL"],
+                        "PAGER_BASE_LINK_ENABLE" => $arParams["PAGER_BASE_LINK_ENABLE"],
+                        "PAGER_BASE_LINK" => $arParams["PAGER_BASE_LINK"],
+                        "PAGER_PARAMS_NAME" => $arParams["PAGER_PARAMS_NAME"],
+                        "DISPLAY_DATE" => $arParams["DISPLAY_DATE"],
+                        "DISPLAY_NAME" => "Y",
+                        "DISPLAY_PICTURE" => $arParams["DISPLAY_PICTURE"],
+                        "DISPLAY_PREVIEW_TEXT" => $arParams["DISPLAY_PREVIEW_TEXT"],
+                        "PREVIEW_TRUNCATE_LEN" => $arParams["PREVIEW_TRUNCATE_LEN"],
+                        "ACTIVE_DATE_FORMAT" => $arParams["LIST_ACTIVE_DATE_FORMAT"],
+                        "USE_PERMISSIONS" => $arParams["USE_PERMISSIONS"],
+                        "GROUP_PERMISSIONS" => $arParams["GROUP_PERMISSIONS"],
+                        "FILTER_NAME" => $arParams["FILTER_NAME"],
+                        "HIDE_LINK_WHEN_NO_DETAIL" => $arParams["HIDE_LINK_WHEN_NO_DETAIL"],
+                        "CHECK_DATES" => $arParams["CHECK_DATES"],
+                    ),
+                    $component
+                );?>
             </div>
 
             <?if($_REQUEST['set_filter'] === 'Y' && $_GET['ajax'] !== 'N') {

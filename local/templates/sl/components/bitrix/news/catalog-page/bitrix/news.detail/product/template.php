@@ -73,7 +73,7 @@ echo "</pre>";*/
                     <li class="product-specs__list-item">
                         <div class="product-specs__card">
                             <div class="product-specs__amount">
-                                <?=number_format($arResult["PROPERTIES"]["ATT_HOPPER_VOLUME"]["VALUE"], 2, ',', ' ' )?>
+                                <?=$arResult["PROPERTIES"]["ATT_HOPPER_VOLUME"]["VALUE"]?>
                             </div>
                             <div class="product-specs__text">
                                 ёмкость для снега
@@ -131,14 +131,16 @@ echo "</pre>";*/
                         </span>
                     </a>
                 </li>
+                <?if($arResult["REVIEWS"]):?>
+                    <li class="product-details__tabs-nav-list-item">
+                        <a href="#" class="product-details__tabs-nav-link">
+                            <span>
+                                Отзывы
+                            </span>
+                        </a>
+                    </li>
+                <?endif;?>
                 <!--<li class="product-details__tabs-nav-list-item">
-                    <a href="#" class="product-details__tabs-nav-link">
-                        <span>
-                            Отзывы
-                        </span>
-                    </a>
-                </li>
-                <li class="product-details__tabs-nav-list-item">
                     <a href="#" class="product-details__tabs-nav-link">
                         <span>
                             Вопрос-ответ
@@ -221,89 +223,54 @@ echo "</pre>";*/
                         </table>
                     </div>
 
-                    <a href="#callback-modal" class="product-details__materials-card js-open-modal hide-on-mobile">
-                        <h4 class="product-details__materials-card-title">
-                            Презентационные материалы
-                        </h4>
-                        <div class="product-details__materials-card-year">
-                            2022
-                        </div>
-                        <img src="<?=STATIC_PATH?>img/material-card-1.png" alt="" class="product-details__materials-card-image">
-                        <div class="product-details__materials-card-text">
-                            <span>
+                    <?if($file = $arResult["PROPERTIES"]["ATT_LINK_CATALOG"]["VALUE"]):?>
+                        <?$arFile = CFile::GetFileArray($file);?>
+                        <a href="<?=$arFile["SRC"]?>" class="product-details__materials-card">
+                            <h4 class="product-details__materials-card-title">
                                 Презентационные материалы
-                            </span>
-                        </div>
-                        <div class="product-details__materials-card-size">
-                            pdf, 5 мб
-                        </div>
-                        <svg width="14" height="14" aria-hidden="true" class="icon-download">
-                            <use xlink:href="#download"></use>
-                        </svg>
-                    </a>
-                    <a href="#callback-modal" class="product-details__materials-card product-details__materials-card--orange js-open-modal hide-on-mobile">
-                        <h4 class="product-details__materials-card-title">
-                            Презентационные материалы
-                        </h4>
-                        <div class="product-details__materials-card-year">
-                            2022
-                        </div>
-                        <img src="<?=STATIC_PATH?>img/material-card-2.png" alt="" class="product-details__materials-card-image">
-                        <div class="product-details__materials-card-text">
-                            <span>
-                                Презентационные материалы
-                            </span>
-                        </div>
-                        <div class="product-details__materials-card-size">
-                            pdf, 5 мб
-                        </div>
-                        <svg width="14" height="14" aria-hidden="true" class="icon-download">
-                            <use xlink:href="#download"></use>
-                        </svg>
-                    </a>
+                            </h4>
+                            <div class="product-details__materials-card-year">
+                                2022
+                            </div>
+                            <img src="<?=STATIC_PATH?>img/material-card-1.png" alt="" class="product-details__materials-card-image">
+                            <div class="product-details__materials-card-text">
+                                <span>
+                                    Презентационные материалы
+                                </span>
+                            </div>
+                            <div class="product-details__materials-card-size">
+                                <?=pathinfo($arFile['ORIGINAL_NAME'], PATHINFO_EXTENSION)?>, <?=CFile::FormatSize($arFile['FILE_SIZE'])?>
+                            </div>
+                            <svg width="14" height="14" aria-hidden="true" class="icon-download">
+                                <use xlink:href="#download"></use>
+                            </svg>
+                        </a>
+                    <?endif;?>
 
-                    <?$link = "https://api.whatsapp.com/send?phone=79178942676&text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B8%D1%82%D1%8C%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E%20%D0%BF%D0%BE%20%D0%BF%D0%BE%D0%BA%D1%83%D0%BF%D0%BA%D0%B5%20%D0%BB%D1%8C%D0%B4%D0%BE%D0%B7%D0%B0%D0%BB%D0%B8%D0%B2%D0%BE%D1%87%D0%BD%D0%BE%D0%B9%20%D0%BC%D0%B0%D1%88%D0%B8%D0%BD%D1%8B";?>
-                    <a href="<?=$link?>" target="_blank" class="product-details__materials-card show-on-mobile">
-                        <h4 class="product-details__materials-card-title">
-                            Презентационные материалы
-                        </h4>
-                        <div class="product-details__materials-card-year">
-                            2022
-                        </div>
-                        <img src="<?=STATIC_PATH?>img/material-card-1.png" alt="" class="product-details__materials-card-image">
-                        <div class="product-details__materials-card-text">
-                            <span>
+                    <?if($file = $arResult["PROPERTIES"]["TECHNICAL_DOCUMENTATION"]["VALUE"]):?>
+                        <?$arFile = CFile::GetFileArray($file);?>
+                        <a href="<?=$arFile["SRC"]?>"
+                           class="product-details__materials-card product-details__materials-card--orange" download="">
+                            <h4 class="product-details__materials-card-title">
                                 Презентационные материалы
-                            </span>
-                        </div>
-                        <div class="product-details__materials-card-size">
-                            pdf, 5 мб
-                        </div>
-                        <svg width="14" height="14" aria-hidden="true" class="icon-download">
-                            <use xlink:href="#download"></use>
-                        </svg>
-                    </a>
-                    <a href="<?=$link?>" target="_blank" class="product-details__materials-card product-details__materials-card--orange show-on-mobile">
-                        <h4 class="product-details__materials-card-title">
-                            Презентационные материалы
-                        </h4>
-                        <div class="product-details__materials-card-year">
-                            2022
-                        </div>
-                        <img src="<?=STATIC_PATH?>img/material-card-2.png" alt="" class="product-details__materials-card-image">
-                        <div class="product-details__materials-card-text">
-                            <span>
-                                Презентационные материалы
-                            </span>
-                        </div>
-                        <div class="product-details__materials-card-size">
-                            pdf, 5 мб
-                        </div>
-                        <svg width="14" height="14" aria-hidden="true" class="icon-download">
-                            <use xlink:href="#download"></use>
-                        </svg>
-                    </a>
-
+                            </h4>
+                            <div class="product-details__materials-card-year">
+                                2022
+                            </div>
+                            <img src="<?=STATIC_PATH?>img/material-card-2.png" alt="" class="product-details__materials-card-image">
+                            <div class="product-details__materials-card-text">
+                                <span>
+                                    Презентационные материалы
+                                </span>
+                            </div>
+                            <div class="product-details__materials-card-size">
+                                <?=pathinfo($arFile['ORIGINAL_NAME'], PATHINFO_EXTENSION)?>, <?=CFile::FormatSize($arFile['FILE_SIZE'])?>
+                            </div>
+                            <svg width="14" height="14" aria-hidden="true" class="icon-download">
+                                <use xlink:href="#download"></use>
+                            </svg>
+                        </a>
+                    <?endif;?>
                 </div>
             </div>
             <div class="product-details__tab-item">
@@ -398,7 +365,7 @@ echo "</pre>";*/
                             <?endforeach;?>
                         </ul>
 
-                        <a href="#" class="blue-btn product-details__complectation-expert-btn">
+                        <a href="#callback-modal" class="blue-btn product-details__complectation-expert-btn js-open-modal">
                             Обсудить с экспертом
                         </a>
                     </div>
@@ -410,160 +377,61 @@ echo "</pre>";*/
                     </div>
                 </div>
             </div>
-            <!--<div class="product-details__tab-item">
+            <div class="product-details__tab-item">
                 <div class="product-details__reviews">
-                    <div class="product-details__reviews-text">
+                    <!--<div class="product-details__reviews-text">
                         <p>
                             Отзывы собраны на основе комментариев клиентов использующих данную модель
                         </p>
-                    </div>
+                    </div>-->
                     <ul class="product-details__reviews-list">
-                        <li class="product-details__reviews-list-item">
-                            <div class="product-details__reviews-card">
-                                <img src="img/quote.svg" alt="" class="product-details__reviews-card-icon">
-                                <div class="product-details__reviews-card-rating">
-                                    <svg width="14" height="14" aria-hidden="true" class="icon-star">
-                                        <use xlink:href="#star"></use>
-                                    </svg>
-                                    5.0
-                                </div>
-                                <div class="product-details__reviews-card-content">
-                                    <h4 class="product-details__reviews-card-title">
-                                        Заказывали подбор и поставку машины
-                                    </h4>
-                                    <div class="product-details__reviews-card-text">
-                                        <p>
-                                            Менеджер компании погрузился в суть вопроса и подобрал нам идеальную модель!
-                                            Все сотрудники компании высоко- квалифицированны и полностью оправдывают
-                                            ожидания.
-                                        </p>
+                        <?foreach ($arResult["REVIEWS"] as $arReview):?>
+                            <li class="product-details__reviews-list-item">
+                                <div class="product-details__reviews-card">
+                                    <img src="<?=STATIC_PATH?>img/quote.svg" alt="" class="product-details__reviews-card-icon">
+                                    <div class="product-details__reviews-card-rating">
+                                        <svg width="14" height="14" aria-hidden="true" class="icon-star">
+                                            <use xlink:href="#star"></use>
+                                        </svg>
+                                        <?=$arReview["PROPERTY_RATING_VALUE"]?>
                                     </div>
-                                </div>
-                                <div class="product-details__reviews-card-author">
-                                    <div class="product-details__reviews-card-author-content">
-                                        <div class="product-details__reviews-card-author-name">
-                                            Алишер Нуриев
-                                        </div>
-                                        <div class="product-details__reviews-card-author-role">
-                                            Директор «Слобода арена», пос. Рыбная слобода
+                                    <div class="product-details__reviews-card-content">
+                                        <h4 class="product-details__reviews-card-title">
+                                            <?=$arReview["NAME"]?>
+                                        </h4>
+                                        <div class="product-details__reviews-card-text">
+                                            <p>
+                                                <?=$arReview["PREVIEW_TEXT"]?>
+                                            </p>
                                         </div>
                                     </div>
-                                    <img src="img/author-logo.png" alt="" class="product-details__reviews-card-logo">
-                                </div>
-                            </div>
-                        </li>
-                        <li class="product-details__reviews-list-item">
-                            <div class="product-details__reviews-card">
-                                <img src="img/quote.svg" alt="" class="product-details__reviews-card-icon">
-                                <div class="product-details__reviews-card-rating">
-                                    <svg width="14" height="14" aria-hidden="true" class="icon-star">
-                                        <use xlink:href="#star"></use>
-                                    </svg>
-                                    5.0
-                                </div>
-                                <div class="product-details__reviews-card-content">
-                                    <h4 class="product-details__reviews-card-title">
-                                        Заказывали подбор и поставку машины
-                                    </h4>
-                                    <div class="product-details__reviews-card-text">
-                                        <p>
-                                            Менеджер компании погрузился в суть вопроса и подобрал нам идеальную модель!
-                                            Все сотрудники компании высоко- квалифицированны и полностью оправдывают
-                                            ожидания.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="product-details__reviews-card-author">
-                                    <div class="product-details__reviews-card-author-content">
-                                        <div class="product-details__reviews-card-author-name">
-                                            Алишер Нуриев
+
+                                    <?if($author = $arReview["PROPERTY_AUTHOR_VALUE"]["SUB_VALUES"]):?>
+                                        <div class="product-details__reviews-card-author">
+                                            <div class="product-details__reviews-card-author-content">
+                                                <div class="product-details__reviews-card-author-name">
+                                                    <?=$author["A_FIO"]["VALUE"]?>
+                                                </div>
+                                                <div class="product-details__reviews-card-author-role">
+                                                    <?=$author["A_POSITION"]["VALUE"]?>
+                                                </div>
+                                            </div>
+                                            <img src="<?=Sl\Core\Tools::resizeImage($author["A_LOGO"]["VALUE"], 200, 120, true)?>" alt="" class="product-details__reviews-card-logo">
                                         </div>
-                                        <div class="product-details__reviews-card-author-role">
-                                            Директор «Слобода арена», пос. Рыбная слобода
-                                        </div>
-                                    </div>
-                                    <img src="img/author-logo.png" alt="" class="product-details__reviews-card-logo">
+                                    <?endif;?>
                                 </div>
-                            </div>
-                        </li>
-                        <li class="product-details__reviews-list-item">
-                            <div class="product-details__reviews-card">
-                                <img src="img/quote.svg" alt="" class="product-details__reviews-card-icon">
-                                <div class="product-details__reviews-card-rating">
-                                    <svg width="14" height="14" aria-hidden="true" class="icon-star">
-                                        <use xlink:href="#star"></use>
-                                    </svg>
-                                    5.0
-                                </div>
-                                <div class="product-details__reviews-card-content">
-                                    <h4 class="product-details__reviews-card-title">
-                                        Заказывали подбор и поставку машины
-                                    </h4>
-                                    <div class="product-details__reviews-card-text">
-                                        <p>
-                                            Менеджер компании погрузился в суть вопроса и подобрал нам идеальную модель!
-                                            Все сотрудники компании высоко- квалифицированны и полностью оправдывают
-                                            ожидания.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="product-details__reviews-card-author">
-                                    <div class="product-details__reviews-card-author-content">
-                                        <div class="product-details__reviews-card-author-name">
-                                            Алишер Нуриев
-                                        </div>
-                                        <div class="product-details__reviews-card-author-role">
-                                            Директор «Слобода арена», пос. Рыбная слобода
-                                        </div>
-                                    </div>
-                                    <img src="img/author-logo.png" alt="" class="product-details__reviews-card-logo">
-                                </div>
-                            </div>
-                        </li>
-                        <li class="product-details__reviews-list-item">
-                            <div class="product-details__reviews-card">
-                                <img src="img/quote.svg" alt="" class="product-details__reviews-card-icon">
-                                <div class="product-details__reviews-card-rating">
-                                    <svg width="14" height="14" aria-hidden="true" class="icon-star">
-                                        <use xlink:href="#star"></use>
-                                    </svg>
-                                    5.0
-                                </div>
-                                <div class="product-details__reviews-card-content">
-                                    <h4 class="product-details__reviews-card-title">
-                                        Заказывали подбор и поставку машины
-                                    </h4>
-                                    <div class="product-details__reviews-card-text">
-                                        <p>
-                                            Менеджер компании погрузился в суть вопроса и подобрал нам идеальную модель!
-                                            Все сотрудники компании высоко- квалифицированны и полностью оправдывают
-                                            ожидания.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="product-details__reviews-card-author">
-                                    <div class="product-details__reviews-card-author-content">
-                                        <div class="product-details__reviews-card-author-name">
-                                            Алишер Нуриев
-                                        </div>
-                                        <div class="product-details__reviews-card-author-role">
-                                            Директор «Слобода арена», пос. Рыбная слобода
-                                        </div>
-                                    </div>
-                                    <img src="img/author-logo.png" alt="" class="product-details__reviews-card-logo">
-                                </div>
-                            </div>
-                        </li>
+                            </li>
+                        <?endforeach;?>
                     </ul>
-                    <div class="product-details__reviews-buttons">
+                    <!--<div class="product-details__reviews-buttons">
                         <a href="#" class="arrow-btn">Показать еще</a>
                         <a href="#review-modal" class="blue-btn js-open-modal">
                             Оставить отзыв
                         </a>
-                    </div>
+                    </div>-->
                 </div>
             </div>
-            <div class="product-details__tab-item">
+            <!--<div class="product-details__tab-item">
                 <div class="product-details__faq">
                     <div class="product-details__faq-col">
                         <div class="product-details__faq-accordion js-accordion">
@@ -640,6 +508,17 @@ echo "</pre>";*/
                     </div>
                 </div>
             </div>-->
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="article__layout">
+            <div class="article__main">
+                <div class="article__main-content">
+                    <?=$arResult["~DETAIL_TEXT"]?>
+                </div>
+            </div>
         </div>
     </div>
 </section>

@@ -8,7 +8,7 @@ CModule::AddAutoloadClasses(
         //'Sl\Core\Tools' => 'lib/tools.php',
     ]
 );
-define("LANDING_DEVELOPER_MODE", true);
+//define("LANDING_DEVELOPER_MODE", true);
 define ("STATIC_PATH", '/local/js/SL/build/');
 define ("DEFAULT_PATH", $_SERVER['DOCUMENT_ROOT'] . '/local/templates/.default/');
 $eventManager = EventManager::getInstance();

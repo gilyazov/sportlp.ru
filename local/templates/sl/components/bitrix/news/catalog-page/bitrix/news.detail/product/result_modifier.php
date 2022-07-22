@@ -7,5 +7,17 @@ $arResult["COMPLETE"] = [
     "ATT_REVERSE_BUZZER", "ATT_TOOL_KIT", "ATT_WATER_LVL_INDICATOR", "ATT_OPERATING_INSTRUCTIONS",
     "ATT_WHEEL_WASH", "ATT_ICE_WASHING_SYSTEM", "ATT_LASER_LVL_SETTING", "ATT_AUTO_FILLING_SYSTEM",
     "ATT_STAINLESS_WATER_TANKS", "ATT_CABIN", "ATT_SIDE_DISCHARGE", "ATT_LARGE_ICE_CUTTER",
-    "ATT_MAGNETIC_COVER", "ATT_WARM_CABIN", "ATT_AUGER_WASHING_SYSTEM", "ATT_LCD_DISPLAY"
+    "ATT_MAGNETIC_COVER", "ATT_WARM_CABIN", "ATT_AUGER_WASHING_SYSTEM", "ATT_LCD_DISPLAY",
+    "ATT_PROPANE", "ATT_DIESEL", "ATT_PETROL", "ATT_ELECTRO"
 ];
+
+// отзывы
+$arSelect = Array("ID", "NAME", "PREVIEW_TEXT", "PROPERTY_RATING", "PROPERTY_AUTHOR");
+$arFilter = Array("IBLOCK_ID"=>8, "PROPERTY_PRODUCT"=>$arResult["ID"], "ACTIVE"=>"Y");
+$res = CIBlockElement::GetList(Array(), $arFilter, false, false, $arSelect);
+while($ob = $res->GetNextElement())
+{
+    $arFields = $ob->GetFields();
+
+    $arResult["REVIEWS"][] = $arFields;
+}

@@ -13,6 +13,7 @@ function ajaxFilter(myForm, data) {
 
                 $('#catalogAjax').html(dataHtml);
                 window.SL_API.initializeCatalogCardsSliders();
+                window.SL_API.comparisonAdd();
 
                 if (data.del_filter){
                     BX.ajax.history.put(null, url);
@@ -29,7 +30,7 @@ function ajaxFilter(myForm, data) {
 
 BX.ready(function(){
     let myForm = document.querySelector("[name = arrFilter_form]");
-    $('#catalogAjax').on('change', 'input, select', function () {
+    $('#catalogAjax').on('change', 'input:not(.text-input--small), select', function () {
         let str = $(this).closest('[name = arrFilter_form]').serialize();
 
         ajaxFilter(myForm, str);

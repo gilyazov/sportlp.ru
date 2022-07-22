@@ -1,0 +1,7 @@
+.catalog-card__label--promo, .catalog-card__label--sanctions {
+    background: linear-gradient(0deg,rgba(2,21,39,.1),rgba(2,21,39,.1)),linear-gradient(85.67deg,#f8a52d .44%,#b51c26 100%);
+}
+
+.catalog-card__label--new {
+    background: linear-gradient(0deg,rgba(2,21,39,.1),rgba(2,21,39,.1)),linear-gradient(85.67deg,#afdb30 .44%,#3d8b18 100%);
+}

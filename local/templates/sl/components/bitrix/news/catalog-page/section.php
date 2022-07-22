@@ -94,29 +94,28 @@ $this->setFrameMode(true);
                 </div>
 
             </div>
-            <div class="catalog-page__what-to-choose">
-                <a href="#" class="what-to-choose">
-                    <div class="what-to-choose__bg">
-                        <img data-src="<?=STATIC_PATH?>img/what-to-choose.jpg" alt="" class="what-to-choose__bg-image lazyload">
-                    </div>
-                    <svg width="14" height="14" aria-hidden="true" class="icon-question">
-                        <use xlink:href="#question"></use>
-                    </svg>
-                    <div class="what-to-choose__row">
-                        <h3 class="what-to-choose__title">
-                            Как подобрать подходящую модель?
-                        </h3>
-                        <div class="what-to-choose__read">
-                            <span class="what-to-choose__read-text">
-                                читать
-                            </span>
-                            <svg width="14" height="14" aria-hidden="true" class="icon-diagonal-arrow">
-                                <use xlink:href="#diagonal-arrow"></use>
-                            </svg>
-                        </div>
-                    </div>
-                </a>
-            </div>
+            <?
+            global $arrFilterArticle;
+            $arrFilterArticle = Array(
+                "PROPERTY_LOCATION" => 183
+            );
+            $APPLICATION->IncludeComponent(
+                "bitrix:news.list",
+                "article__catalog",
+                Array(
+                    "IBLOCK_TYPE" => "news",
+                    "IBLOCK_ID" => 12,
+                    "NEWS_COUNT" => 1,
+                    "SORT_BY1" => "SORT",
+                    "SORT_ORDER1" => "ASC",
+                    "SET_TITLE" => "N",
+                    "FILTER_NAME" => "arrFilterArticle",
+                    "PROPERTY_CODE" => [
+                        "ARTICLE"
+                    ]
+                ),
+                false
+            );?>
         </div>
 
         <div class="catalog-page__layout" id="catalogAjax">
